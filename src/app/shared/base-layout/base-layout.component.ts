@@ -1,7 +1,6 @@
 /*
 ============================================
 ; Title: bcrs
-; File Name: base-layout.component.ts
 ; Author: Professor Krasso
 ; Date: 7 September 2022
 ; Modified By: Seth Kerrey, Laura Kendl

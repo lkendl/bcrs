@@ -1,4 +1,4 @@
-<!--
+/**
 ============================================
 ; Title: bcrs
 ; Author: Professor Krasso
@@ -7,6 +7,5 @@
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service. 
 ===========================================
--->
+*/
 
-<router-outlet></router-outlet>
