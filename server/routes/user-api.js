@@ -17,3 +17,210 @@ const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response');
 const RoleSchema = require('../schemas/user-role');
 
+// configurations
+const router = express.Router();
+const saltRounds = 10; // default salt rounds for hashing algorithm
+
+/**
+ * FindAll
+ */
+router.get('/', async (req, res) => {
+    try
+    {
+        User.find({})
+          .where('isDisabled')
+          .equals(false)
+          .exec(function(err, users)
+          {
+              if (err)
+              {
+                  console.log(err);
+                  const findAllMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                  res.status(500).send(findAllMongodbErrorResponse.toObject());
+              }
+              else
+              {
+                  console.log(users);
+                  const findAllUsersResponse = new BaseResponse(200, 'Query successful', users);
+                  res.json(findAllUsersResponse.toObject());
+              }
+          })
+    }
+    catch (e)
+    {
+        const findAllCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+        res.status(500).send(findAllCatchErrorResponse.toObject());
+    }
+});
+
+/**
+ * FindById
+ */
+router.get('/:id', async(req, res) => {
+    try
+    {
+        User.findOne({'_id': req.params.id}, function(err, user) {
+            if (err)
+            {
+                console.log(err);
+                const findIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(findByIdMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(user);
+                const findByIdResponse = new BaseResponse(200, 'Query successful', user);
+                res.json(findByIdResponse.toObject());
+            }
+        })
+    }
+    catch (e)
+    {
+        console.log(e);
+        const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
+        res.status(500).send(findByIdCatchErrorResponse.toObject());;
+    }
+});
+
+/**
+ * CreateUser
+ */
+router.post('/', async(req, res) => {
+    try
+    {
+        let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+        standardRole = {
+            role: 'standard'
+        }
+
+        // user object
+        let newUser = {
+          userName: req.body.userName,
+          password: hashedPassword,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          phoneNumber: req.body.phoneNumber,
+          address: req.body.address,
+          email: req.body.email,
+          role: standardRole
+        };
+
+        User.create(newUser, function(err, user) {
+            if (err)
+            {
+                console.log(err);
+                const createUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(createUserMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(user);
+                const createUserResponse = new BaseResponse(200, 'Query successful', user);
+                res.json(createUserResponse.toObject());
+            }
+        })
+    }
+    catch (e)
+    {
+        console.log(e);
+        const createUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+        res.status(500).send(createUserCatchErrorResponse.toObject());
+    }
+});
+
+/**
+ * UpdateUser
+ */
+router.put('/:id', async (req, res) => {
+    try {
+        User.findOne({'_id': req.params.id}, function(err, user) {
+            if (err)
+            {
+              console.log(err);
+              const updateUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+              res.status(500).send(updateUserMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(user);
+
+                user.set({
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    phoneNumber: req.body.phoneNumber,
+                    address: req.body.address,
+                    email: req.body.email
+                })
+
+                user.save(function(err, savedUser) {
+                    if (err)
+                    {
+                        console.log(err);
+                        const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(savedUserMongodbErrorResponse.toObject());
+                    }
+                    else
+                    {
+                        console.log(savedUser);
+                        const saveUserResponse = new BaseResponse(200, 'Query successful', savedUser);
+                        res.json(saveUserResponse.toObject());
+                    }
+                })
+            }
+        })
+    }
+    catch (e)
+    {
+        console.log(e);
+        const updateUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+        res.status(500).send(updateUserCatchErrorResponse.toObject());
+    }
+});
+
+/**
+ * DeleteUser
+ */
+router.delete('/:id', async (req, res) => {
+    try
+    {
+        User.findOne({'_id': req.params.id}, function(err, user) {
+            if (err)
+            {
+                console.log(err);
+                const deleteUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(deleteUserMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(user);
+
+                user.set({
+                    isDisabled: true
+                });
+
+                user.save(function(err, savedUser) {
+                    if (err)
+                    {
+                        console.log(err);
+                        const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.json(savedUserMongodbErrorResponse.toObject());
+                    }
+                    else
+                    {
+                        console.log(savedUser);
+                        const savedUserResponse = new BaseResponse(200, 'Query successful', savedUser);
+                        res.json(savedUserResponse.toObject());
+                    }
+                })
+            }
+        })
+    }
+    catch (e)
+    {
+        console.log(e);
+        const deleteUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+        res.status(500).send(deleteUserCatchErrorResponse.toObject());
+    }
+});
+
+module.exports = router;
