@@ -1,4 +1,4 @@
-/**
+/*
 ============================================
 ; Title: bcrs
 ; Author: Professor Krasso
@@ -8,17 +8,3 @@
 ; service repair fees, generates invoices, and tracks purchases by service.
 ===========================================
 */
-
-.main-welcome {
-  margin-top: 30px;
-}
-
-.title {
-  text-align: center;
-  font-weight: lighter;
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 14px;
-}
