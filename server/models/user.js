@@ -11,7 +11,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const userRoleSchema = require('../schemas/user-role.js');
+const userRoleSchema = require('../schemas/user-role');
 const SelectedSecurityQuestionSchema = require('../schemas/selected-security-question');
 
 let userSchema = new Schema({
@@ -23,7 +23,7 @@ let userSchema = new Schema({
   address:                    { type: String },
   email:                      { type: String },
   isDisabled:                 { type: Boolean, default: false },
-  role:                       userRoleSchema,
+  role:                       UserRoleSchema,
   selectedSecurityQuestions:  [SelectedSecurityQuestionSchema],
   dateCreated:                { type: Date, default: new Date() },
   dateModified:               { type: Date }
