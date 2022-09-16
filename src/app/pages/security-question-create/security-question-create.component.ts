@@ -22,18 +22,18 @@ import { SecurityQuestion } from './../../shared/security-question.interface';
 })
 export class SecurityQuestionCreateComponent implements OnInit {
   form: FormGroup;
-  this.form = this.fb.group({
-    text: [null, Validators.compose([Validators.required])],
-  });
+  // this.form = this.fb.group({
+  //   text: [null, Validators.compose([Validators.required])],
+  // });
 
   constructor(private fb: FormBuilder, private router: Router, private securityQuestionService: SecurityQuestionService) {
   }
 
   ngOnInit(): void {
     // OUTDATED CODE - PLACED BEFORE CONSTRUCTOR
-    // this.form = this.fb.group({
-    //   text: [null, Validators.compose([Validators.required])],
-    // });
+    this.form = this.fb.group({
+      text: [null, Validators.compose([Validators.required])],
+    });
   }
 
   create(): void {
@@ -51,7 +51,7 @@ export class SecurityQuestionCreateComponent implements OnInit {
     // UPDATED SUBSCRIBE CODE
     this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe({
       next: (res) => {
-        this.router.navigate(['./security-questions'])
+        this.router.navigate(['/security-questions'])
       },
       error: (e) => {
         console.log(e);
