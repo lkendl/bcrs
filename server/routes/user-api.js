@@ -63,7 +63,7 @@ router.get('/:id', async(req, res) => {
             if (err)
             {
                 console.log(err);
-                const findIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
                 res.status(500).send(findByIdMongodbErrorResponse.toObject());
             }
             else
@@ -156,8 +156,8 @@ router.put('/:id', async (req, res) => {
                     if (err)
                     {
                         console.log(err);
-                        const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                        res.status(500).send(savedUserMongodbErrorResponse.toObject());
+                        const saveUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(saveUserMongodbErrorResponse.toObject());
                     }
                     else
                     {
