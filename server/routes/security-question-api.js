@@ -57,7 +57,7 @@ router.get('/', async(req, res) => {
 router.get('/:id', async(req, res) => {
     try
     {
-        SecurityQuestion.findOne({'_id': req.params.id}, function(err, SecurityQuestion) {
+        SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion) {
             if (err)
             {
                 console.log(err);
@@ -66,8 +66,8 @@ router.get('/:id', async(req, res) => {
             }
             else
             {
-                console.log(SecurityQuestion);
-                const findByIdResponse = new BaseResponse(200, 'Query successful', SecurityQuestion);
+                console.log(securityQuestion);
+                const findByIdResponse = new BaseResponse(200, 'Query successful', securityQuestion);
                 res.json(findByIdResponse.toObject());
             }
         })
@@ -90,12 +90,18 @@ router.post('/', async(req,res) => {
             text: req.body.text
         };
 
-        SecurityQuestion.create(newSecurityQuestion, function(err, SecurityQuestion) {
+        SecurityQuestion.create(newSecurityQuestion, function(err, securityQuestion) {
             if (err)
             {
                 console.log(err);
                 const createSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
                 res.status(500).send(createSecurityQuestionMongodbErrorResponse.toObject());
+            }
+            else
+            {
+              console.log(securityQuestion);
+              const createSecurityQuestionResponse = new BaseResponse(200, 'Query successful', securityQuestion);
+              res.json(createSecurityQuestionResponse.toObject());
             }
         })
     }
@@ -122,7 +128,7 @@ router.put('/:id', async(req,res) => {
           }
           else
           {
-              console.log(securityQuestions);
+              console.log(securityQuestion);
 
               securityQuestion.set({
                   text: req.body.text
