@@ -73,6 +73,12 @@ app.use('/api/security-questions', SecurityQuestionApi);
 /**
  * Create and start server
  */
-http.createServer(app).listen(port, function() {
-  console.log(`Application started and listening on port: ${port}`)
-}); // end http create server function
+// http.createServer(app).listen(port, function() {
+//   console.log(`Application started and listening on port: ${port}`)
+// });
+// end http create server function
+
+// Wire-up the Express server.
+app.listen(PORT, () => {
+  console.log('Application started and listening on PORT: ' + PORT);
+})
