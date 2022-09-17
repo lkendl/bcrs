@@ -22,8 +22,8 @@ import { Message } from 'primeng/api/message';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  form: FormGroup;
-  errorMessages: Message[];
+  form!: FormGroup;
+  errorMessages!: Message[];
 
   constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) {
   }
