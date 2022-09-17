@@ -22,6 +22,38 @@ const router = express.Router();
 /**
  * User sign-in
  */
+/**
+ * signin
+ * @openapi
+ * /api/session/signin:
+ *   post:
+ *     tags:
+ *       - Session
+ *     description: API to signin user
+ *     summary: Signin user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - userName
+ *               - password
+ *             properties:
+ *              userName:
+ *                type: string
+ *              password:
+ *                type: string
+ *     responses:
+ *       '200':
+ *         description: Login successful
+ *       '401':
+ *         description: Invalid username and/or password, please try again
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
+ */
 router.post('/signin', async(req, res) => {
     try
     {
