@@ -48,6 +48,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { DialogModule } from '@angular/cdk/dialog';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -81,7 +84,10 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule,
+    MessageModule,
+    MessagesModule
 
   ],
   providers: [],
