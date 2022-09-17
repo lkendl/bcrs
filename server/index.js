@@ -17,6 +17,8 @@ const http = require('http');
 const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
 
 /**
  * Routes
@@ -24,6 +26,21 @@ const mongoose = require('mongoose');
 const UserApi = require('./routes/user-api');
 const SessionApi = require('./routes/session-api');
 const SecurityQuestionApi = require('./routes/security-question-api');
+
+/**
+ * Swagger
+ */
+const options = {
+  definition: {
+      openapi: '3.0.0',
+      info: {
+          title: 'Nodebucket',
+          version: '1.0.0',
+      },
+  },
+  apis: ['./server/routes/*.js'], // files containing annotations for the OpenAPI Specification
+};
+const openapiSpecification = swaggerJsdoc(options);
 
 /**
  * App configurations.
@@ -66,6 +83,7 @@ mongoose.connect(CONN, {
 /**
  * APIs
  */
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api/users', UserApi);
 app.use('/api/session', SessionApi);
 app.use('/api/security-questions', SecurityQuestionApi);
