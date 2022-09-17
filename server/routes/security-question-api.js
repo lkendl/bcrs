@@ -21,6 +21,23 @@ const router = express.Router();
 /**
  * FindAll
  */
+/**
+ * findAll
+ * @openapi
+ * /api/security-questions:
+ *   get:
+ *     tags:
+ *       - Security Questions
+ *     description: API for returning an array of security questions from MongoDB Atlas.
+ *     summary: Returns an array of security questions
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
+ */
 router.get('/', async(req, res) => {
     try
     {
@@ -54,6 +71,30 @@ router.get('/', async(req, res) => {
 /**
  * FindById
  */
+/**
+ * findById
+ * @openapi
+ * /api/security-questions/{id}:
+ *  get:
+ *    tags:
+ *      - Security Questions
+ *    description: API for returning a single security question object from MongoDB
+ *    summary: Returns a security question document
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *        description: The security question id requested by user
+ *        schema:
+ *          type: string
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
+ */
 router.get('/:id', async(req, res) => {
     try
     {
@@ -82,6 +123,33 @@ router.get('/:id', async(req, res) => {
 
 /**
  * CreateSecurityQuestion
+ */
+/**
+ * createSecurityQuestion
+ * @openapi
+ * /api/security-questions:
+ *   post:
+ *     tags:
+ *       - Security Questions
+ *     description: API to create new security question objects
+ *     summary: Creates a new security question object
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - text
+ *             properties:
+ *              text:
+ *                type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
  */
 router.post('/', async(req,res) => {
     try
