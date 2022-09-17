@@ -12,8 +12,8 @@
 import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog/delete-record-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SecurityQuestionService } from './../../shared/security-question.service';
-import { SecurityQuestion } from './../../shared/security-question.interface';
+import { SecurityQuestionService } from './../../shared/services/security-question.service';
+import { SecurityQuestion } from './../../shared/models/security-question.interface';
 
 @Component({
   selector: 'app-security-question-list',

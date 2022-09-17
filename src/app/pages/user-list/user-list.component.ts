@@ -12,8 +12,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog/delete-record-dialog.component';
-import { UserService } from "src/app/shared/user.service";
-import { User } from "src/app/shared/user.interface";
+import { UserService } from "src/app/shared/services/user.service";
+import { User } from "src/app/shared/models/user.interface";
 
 
 @Component({
