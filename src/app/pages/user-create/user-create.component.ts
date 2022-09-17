@@ -21,9 +21,9 @@ import { UserService } from 'src/app/shared/user.service';
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent implements OnInit {
-  user: User;
-  userId: string;
-  form: FormGroup;
+  user!: User;
+  userId!: string;
+  form!: FormGroup;
   roles: any;
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
@@ -42,13 +42,13 @@ export class UserCreateComponent implements OnInit {
 
   createUser(): void {
     const newUser: User = {
-      userName: this.form.controls.userName.value,
-      password: this.form.controls.password.value,
-      firstName: this.form.controls.firstName.value,
-      lastName: this.form.controls.lastName.value,
-      phoneNumber: this.form.controls.phoneNumber.value,
-      address: this.form.controls.address.value,
-      email: this.form.controls.email.value
+      userName: this.form.controls['userName'].value,
+      password: this.form.controls['password'].value,
+      firstName: this.form.controls['firstName'].value,
+      lastName: this.form.controls['lastName'].value,
+      phoneNumber: this.form.controls['phoneNumber'].value,
+      address: this.form.controls['address'].value,
+      email: this.form.controls['email'].value
     };
 
     this.userService.createUser(newUser).subscribe(res => {
