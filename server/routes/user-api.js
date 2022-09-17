@@ -24,6 +24,23 @@ const saltRounds = 10; // default salt rounds for hashing algorithm
 /**
  * FindAll
  */
+/**
+ * findAll
+ * @openapi
+ * /api/users:
+ *   get:
+ *     tags:
+ *       - Users
+ *     description: API for returning an array of users from MongoDB Atlas.
+ *     summary: Returns an array of users
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
+ */
 router.get('/', async (req, res) => {
     try
     {
@@ -56,6 +73,30 @@ router.get('/', async (req, res) => {
 /**
  * FindById
  */
+/**
+ * findById
+ * @openapi
+ * /api/users/{id}:
+ *  get:
+ *    tags:
+ *      - Users
+ *    description: API for returning a single user object from MongoDB
+ *    summary: Returns an user document
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *        description: The user id requested by user
+ *        schema:
+ *          type: string
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
+ */
 router.get('/:id', async(req, res) => {
     try
     {
@@ -84,6 +125,36 @@ router.get('/:id', async(req, res) => {
 
 /**
  * CreateUser
+ */
+/**
+ * createUser
+ * @openapi
+ * /api/users:
+ *   post:
+ *     tags:
+ *       - Users
+ *     description: API to create new user objects
+ *     summary: Creates a new user object
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - userName
+ *               - password
+ *             properties:
+ *              userName:
+ *                type: string
+ *              password:
+ *                type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
  */
 router.post('/', async(req, res) => {
     try
