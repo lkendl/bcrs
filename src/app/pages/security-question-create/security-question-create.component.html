@@ -6,6 +6,11 @@
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service.
+; Resources:
+; [Ref A]: Stackoverflow: https://stackoverflow.com/questions/65486599/
+; error-ts2739-type-abstractcontrol-is-missing-the-following-properties-from-ty (error TS2739: Type
+; 'AbstractControl' is missing the following properties from type 'FormControl': registerOnChange,
+; registerOnDisabledChange)
 ===========================================
 -->
 
@@ -19,7 +24,9 @@
         <mat-card-content>
           <div fxLayout="column" fxLayoutGap="10px">
             <mat-form-field>
-              <input type="text" matInput [formControl]="form.controls['text']"
+
+              <!-- [REF A] Add the built-in casting operator $any() to [formControl] value to fix Type 'AbstractControl<any, any>' error. -->
+              <input type="text" matInput [formControl]="$any(form.controls['text'])"
                     placeholder="Question text" (keydown.enter)="create()" />
 
               <mat-error *ngIf="form.controls.text.hasError('required') && form.controls.text.touched" class="error">
