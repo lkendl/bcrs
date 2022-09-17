@@ -21,26 +21,44 @@ import { User } from 'src/app/shared/user.interface';
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit {
-  user: User;
-  userId: string;
-  form: FormGroup;
+  user!: User;
+  userId: string | null;
+  form!: FormGroup;
   roles: any;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService) {
     this.userId = this.route.snapshot.paramMap.get('userId');
 
-    this.userService.findUserById(this.userId).subscribe(res => {
+  //   this.userService.findUserById(this.userId!).subscribe(res => {
+  //     this.user = res['data'];
+  //   }, err => {
+  //     console.log(err);
+  //   }, () => {
+  //     this.form.controls['firstName'].setValue(this.user.firstName);
+  //     this.form.controls['lastName'].setValue(this.user.lastName);
+  //     this.form.controls['phoneNumber'].setValue(this.user.phoneNumber);
+  //     this.form.controls['address'].setValue(this.user.address);
+  //     this.form.controls['email'].setValue(this.user.email);
+  //   });
+  // }
+
+  // UPDATED SUBSCRIBE CODE
+  this.userService.findUserById(this.userId!).subscribe({
+    next: (res) => {
       this.user = res['data'];
-    }, err => {
-      console.log(err);
-    }, () => {
-      this.form.controls.firstName.setValue(this.user.firstName);
-      this.form.controls.lastName.setValue(this.user.lastName);
-      this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
-      this.form.controls.address.setValue(this.user.address);
-      this.form.controls.email.setValue(this.user.email);
-    });
-  }
+    },
+    error: (e) => {
+      console.log(e);
+    },
+    complete: () => {
+      this.form.controls['firstName'].setValue(this.user.firstName);
+      this.form.controls['lastName'].setValue(this.user.lastName);
+      this.form.controls['phoneNumber'].setValue(this.user.phoneNumber);
+      this.form.controls['address'].setValue(this.user.address);
+      this.form.controls['email'].setValue(this.user.email);
+    }
+  });
+}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -54,19 +72,30 @@ export class UserDetailsComponent implements OnInit {
 
   saveUser(): void {
     const updatedUser: User = {
-      firstName: this.form.controls.firstName.value,
-      lastName: this.form.controls.lastName.value,
-      phoneNumber: this.form.controls.phoneNumber.value,
-      address: this.form.controls.address.value,
-      email: this.form.controls.email.value
+      firstName: this.form.controls['firstName'].value,
+      lastName: this.form.controls['lastName'].value,
+      phoneNumber: this.form.controls['phoneNumber'].value,
+      address: this.form.controls['address'].value,
+      email: this.form.controls['email'].value
     };
 
-    this.userService.updatedUser(this.userId, updatedUser).subscribe(res => {
+  //   this.userService.updateUser(this.userId!, updatedUser).subscribe(res => {
+  //     this.router.navigate(['/users']);
+  //   }, err => {
+  //     console.log(err);
+  //   });
+  // }
+
+  // UPDATED SUBSCRIBE CODE
+  this.userService.updateUser(this.userId!, updatedUser).subscribe({
+    next: (res) => {
       this.router.navigate(['/users']);
-    }, err => {
-      console.log(err);
-    });
-  }
+    },
+    error: (e) => {
+      console.log(e);
+    }
+  });
+}
 
   cancel(): void {
     this.router.navigate(['/users']);

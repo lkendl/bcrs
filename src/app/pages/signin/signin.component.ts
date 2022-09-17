@@ -22,8 +22,8 @@ import { Message } from 'primeng/api/message';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  form: FormGroup;
-  errorMessages: Message[];
+  form!: FormGroup;
+  errorMessages!: Message[];
 
   constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) {
   }
@@ -36,8 +36,8 @@ export class SigninComponent implements OnInit {
   }
 
   signin(): void {
-    const userName = this.form.controls.userName.value;
-    const password = this.form.controls.password.value;
+    const userName = this.form.controls['userName'].value;
+    const password = this.form.controls['password'].value;
 
     // REPLACE OUTDATED SUBSCRIBE CODE
     // this.http.post('/api/session/signin', {
@@ -57,25 +57,25 @@ export class SigninComponent implements OnInit {
     //     console.log(err);
     // });
 
-     // UPDATED SUBSCRIBE CODE
-     this.http.post('/api/session/signin', {
-      userName,
-      password
-    }).subscribe({
-      next: (res) => {
-        console.log(res['data']);
-        this.cookieService.set('sessionuser', res['data'].userName, 1);
-        this.router.navigate(['/']);
+     // UPDATED SUBSCRIBE CODE - UNCOMMENT TO FIX 'DATA' ERROR
+    //  this.http.post('/api/session/signin', {
+    //   userName,
+    //   password
+    // }).subscribe({
+    //   next: (res) => {
+    //     console.log(res['data']);
+    //     this.cookieService.set('sessionuser', res['data'].userName, 1);
+    //     this.router.navigate(['/']);
         /*
         if (res['data'].userName) {
         }*/
-      },
-      error: (e) => {
-        this.errorMessages = [
-          { severity: 'error', summary: "Error", detail: e.message }
-        ]
-        console.log(e);
-      }
-    });
+    //   },
+    //   error: (e) => {
+    //     this.errorMessages = [
+    //       { severity: 'error', summary: "Error", detail: e.message }
+    //     ]
+    //     console.log(e);
+    //   }
+    // });
   }
 }

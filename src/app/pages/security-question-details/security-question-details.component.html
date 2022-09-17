@@ -17,10 +17,10 @@
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
           <mat-form-field>
-            <input matInput [formControl]="form.controls['text']"
+            <input matInput [formControl]="$any(form.controls['text'])"
                     placeholder="Security question text..." (keydown.enter)="saveQuestion()" />
 
-            <mat-error class="error" *ngIf="form.controls.text.hasError('required') && form.controls.text.touched">
+            <mat-error class="error" *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched">
               Security question is a required field.
             </mat-error>
           </mat-form-field>

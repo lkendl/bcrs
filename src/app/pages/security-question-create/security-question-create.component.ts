@@ -21,7 +21,7 @@ import { SecurityQuestion } from './../../shared/security-question.interface';
   styleUrls: ['./security-question-create.component.css']
 })
 export class SecurityQuestionCreateComponent implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
   // this.form = this.fb.group({
   //   text: [null, Validators.compose([Validators.required])],
   // });
@@ -38,7 +38,7 @@ export class SecurityQuestionCreateComponent implements OnInit {
 
   create(): void {
     const newSecurityQuestion: SecurityQuestion = {
-      text: this.form.controls.text.value
+      text: this.form.controls['text'].value
     }
 
     // REPLACE OUTDATED SUBSCRIBE CODE

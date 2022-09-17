@@ -11,7 +11,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteRecordDialog } from './../../shared/delete-record-dialog/delete-record-dialog.component';
+import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog/delete-record-dialog.component';
 import { UserService } from "src/app/shared/user.service";
 import { User } from "src/app/shared/user.interface";
 
@@ -22,7 +22,7 @@ import { User } from "src/app/shared/user.interface";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  users: User[];
+  users!: User[];
   displayedColumns = [
     'userName',
     'firstName',
@@ -35,13 +35,25 @@ export class UserListComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private userService: UserService) {
 
-    this.userService.findAllUsers().subscribe(res => {
+  //   this.userService.findAllUsers().subscribe(res => {
+  //     this.users = res['data'];
+  //     console.log(this.users);
+  //   }, err => {
+  //     console.log(err);
+  //   });
+  // }
+
+  // UPDATED SUBSCRIBE CODE
+  this.userService.findAllUsers().subscribe({
+    next: (res) => {
       this.users = res['data'];
       console.log(this.users);
-    }, err => {
-      console.log(err);
-    });
-  }
+    },
+    error: (e) => {
+      console.log(e);
+    }
+  });
+}
 
   ngOnInit(): void {
   }

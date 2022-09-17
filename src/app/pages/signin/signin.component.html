@@ -48,22 +48,22 @@
 
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Username</mat-label>
-                  <input type="text" matInput [formControl]="form.controls['userName']" />
+                  <input type="text" matInput [formControl]="$any(form.controls['userName'])" />
 
-                  <mat-error class="error" *ngIf="form.controls.userName.hasError('required') && form.controls.userName.touched">
+                  <mat-error class="error" *ngIf="form.controls['userName'].hasError('required') && form.controls['userName'].touched">
                     Username is a required field.
                   </mat-error>
                 </mat-form-field>
 
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Password</mat-label>
-                  <input type="password" matInput [formControl]="form.controls['password']" />
+                  <input type="password" matInput [formControl]="$any(form.controls['password'])" />
 
-                  <mat-error class="error" *ngIf="form.controls.password.hasError('required') && form.controls.password.touched">
+                  <mat-error class="error" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">
                     Password is a required field.
                   </mat-error>
 
-                  <mat-error class="error" *ngIf="form.controls.password.hasError('pattern') && form.controls.password.touched">
+                  <mat-error class="error" *ngIf="form.controls['password'].hasError('pattern') && form.controls['password'].touched">
                     Password must be at least 8 characters, contain one letter, and one number.
                   </mat-error>
                 </mat-form-field>
