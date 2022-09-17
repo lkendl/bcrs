@@ -51,12 +51,24 @@ export class UserCreateComponent implements OnInit {
       email: this.form.controls['email'].value
     };
 
-    this.userService.createUser(newUser).subscribe(res => {
+  //OUTDATED SUBSCRIBE CODE
+  //   this.userService.createUser(newUser).subscribe(res => {
+  //     this.router.navigate(['/users']);
+  //   }, err => {
+  //     console.log(err);
+  //   });
+  // }
+
+  // UPDATED SUBSCRIBE CODE
+  this.userService.createUser(newUser).subscribe({
+    next: (res) => {
       this.router.navigate(['/users']);
-    }, err => {
-      console.log(err);
-    });
-  }
+    },
+    error: (e) => {
+      console.log(e);
+    }
+  });
+}
 
   cancel(): void {
     this.router.navigate(['/users']);
