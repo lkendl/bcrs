@@ -29,7 +29,7 @@
               <input type="text" matInput [formControl]="$any(form.controls['text'])"
                     placeholder="Question text" (keydown.enter)="create()" />
 
-              <mat-error *ngIf="form.controls.text.hasError('required') && form.controls.text.touched" class="error">
+              <mat-error *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched" class="error">
                 Security question is a required field.
               </mat-error>
             </mat-form-field>
