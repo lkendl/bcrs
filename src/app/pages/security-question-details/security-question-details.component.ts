@@ -20,16 +20,19 @@ import { SecurityQuestion } from './../../shared/security-question.interface';
   templateUrl: './security-question-details.component.html',
   styleUrls: ['./security-question-details.component.css']
 })
+
 export class SecurityQuestionDetailsComponent implements OnInit {
-  question: SecurityQuestion;
-  questionId: string;
-  form: FormGroup;
-  this.form = this.fb.group({
-    text: [null, Validators.compose([Validators.required])],
-  });
+  question!: SecurityQuestion;
+  questionId!: string | null;
+  form!: FormGroup;
+
+
+  // this.form = this.fb.group({
+  //   text: [null, Validators.compose([Validators.required])],
+  // });
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private securityQuestionService: SecurityQuestionService) {
-    this.questionId = this.route.snapshot.paramMap.get('questionId');
+    this.questionId = this.route.snapshot.paramMap.get('questionId')!;
 
     // REPLACE OUTDATED SUBSCRIBE CODE
     // this.securityQuestionService.findSecurityQuestionById(this.questionId).subscribe(res => {
@@ -40,7 +43,7 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     //   this.form.controls.text.setValue(this.question.text);
     // })
 
-    // UPDATED SUBSCRIBE CODE - VERIFY!!!!!!!
+    // UPDATED SUBSCRIBE CODE
     this.securityQuestionService.findSecurityQuestionById(this.questionId).subscribe({
       next: (res) => {
         this.question = res['data'];
@@ -48,21 +51,21 @@ export class SecurityQuestionDetailsComponent implements OnInit {
       error: (e) => {
         console.log(e);
       },
-      complete() {
-        this.form.controls.text.setValue(this.question.text);
-    });
+      complete: () => {
+        this.form.controls['text'].setValue(this.question.text);
+    }});
   }
 
   ngOnInit(): void {
     // OUTDATED CODE - PLACED BEFORE CONSTRUCTOR
-    // this.form = this.fb.group({
-    //   text: [null, Validators.compose([Validators.required])],
-    // });
+    this.form = this.fb.group({
+      text: [null, Validators.compose([Validators.required])],
+    });
   }
 
   saveQuestion(): void {
     const updatedSecurityQuestion: SecurityQuestion = {
-      text: this.form.controls.text.value
+      text: this.form.controls['text'].value
     }
 
     // REPLACE OUTDATED SUBSCRIBE CODE
@@ -71,7 +74,7 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     // });
 
     // UPDATED SUBSCRIBE CODE
-    this.securityQuestionService.updatedSecurityQuestion(this.questionId, updatedSecurityQuestion).subscribe({
+    this.securityQuestionService.updateSecurityQuestion(this.questionId!, updatedSecurityQuestion).subscribe({
       next: (res) => {
         this.router.navigate(['./security-questions'])
       },

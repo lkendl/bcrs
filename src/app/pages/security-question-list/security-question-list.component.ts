@@ -23,7 +23,7 @@ import { SecurityQuestion } from './../../shared/security-question.interface';
 })
 export class SecurityQuestionListComponent implements OnInit {
 
-  securityQuestions: SecurityQuestion[];
+  securityQuestions!: SecurityQuestion[];
   displayedColumns = ['question', 'functions'];
 
   constructor(private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
