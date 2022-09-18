@@ -15,7 +15,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Message } from 'primeng/api/message';
 import { Router } from '@angular/router';
-import { SessionService } from 'src/app/shared/services/session.service';
 import { User } from 'src/app/shared/models/user.interface';
 
 @Component({
