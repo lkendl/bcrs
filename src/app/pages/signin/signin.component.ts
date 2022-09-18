@@ -10,11 +10,13 @@
 */
 
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { Message } from 'primeng/api/message';
+import { Router } from '@angular/router';
+import { SessionService } from 'src/app/shared/services/session.service';
+import { User } from 'src/app/shared/models/user.interface';
 
 @Component({
   selector: 'app-signin',
@@ -22,60 +24,76 @@ import { Message } from 'primeng/api/message';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  form!: FormGroup;
-  errorMessages!: Message[];
 
-  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) {
+  errorMessages: Message[] = [];
+
+  // Create user variable to store the login information.
+  user: User;
+
+  // Use the FormBuilder to create a new FormGroup with one FormControl named id.
+  signinForm: FormGroup = this.fb.group({
+    userName: [null, Validators.compose([Validators.required])],
+    password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])] // Adds Angular's built-in Validator to the form.
+  })
+
+  // Add dependency injections for FormBuilder, Router, cookieService and sessionService.
+  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient, private sessionService: SessionService) {
+
+    // Define User object as an empty User object.
+    this.user = {} as User;
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      userName: [null, Validators.compose([Validators.required])],
-      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])],
-    });
   }
 
-  signin(): void {
-    const userName = this.form.controls['userName'].value;
-    const password = this.form.controls['password'].value;
+  signin() {
+    // Get userName and password input values from form.
+    const userName = this.signinForm.controls['userName'].value;
+    const password = this.signinForm.controls['password'].value;
 
     // REPLACE OUTDATED SUBSCRIBE CODE
-    // this.http.post('/api/session/signin', {
-    //   userName,
-    //   password
-    // }).subscribe(res => {
-    //   console.log(res['data']);
-    //   this.cookieService.set('sessionuser', res['data'].userName, 1);
-    //   this.router.navigate(['/']);
-    //   /*
-    //   if (res['data'].userName) {
-    //   }*/
-    //   }, err => {
-    //     this.errorMessages = [
-    //       { severity: 'error', summary: "Error", detail: err.message }
-    //     ]
-    //     console.log(err);
-    // });
+      // this.http.post('/api/session/signin', {
+      //   userName,
+      //   password
+      // }).subscribe(res => {
+      //   console.log(res['data']);
+      //   this.cookieService.set('sessionuser', res['data'].userName, 1);
+      //   this.router.navigate(['/']);
+      //   /*
+      //   if (res['data'].userName) {
+      //   }*/
+      //   }, err => {
+      //     this.errorMessages = [
+      //       { severity: 'error', summary: "Error", detail: err.message }
+      //     ]
+      //     console.log(err);
+      // });
 
      // UPDATED SUBSCRIBE CODE - UNCOMMENT TO FIX 'DATA' ERROR
-    //  this.http.post('/api/session/signin', {
-    //   userName,
-    //   password
-    // }).subscribe({
-    //   next: (res) => {
-    //     console.log(res['data']);
-    //     this.cookieService.set('sessionuser', res['data'].userName, 1);
-    //     this.router.navigate(['/']);
+     this.http.post('/api/session/signin', {
+      userName,
+      password
+      // Call API and subscribe to event.
+    }).subscribe({
+      next: (res) => {
+        // If there is a value inside emp, it will be true here. If true, add to cookie service. Use .data property from the baseResponse object.
+        if (res.data) {
+           // Store response data inside the empty employee object.
+           this.user = res.data;
+        }
+        console.log(res.data);
+        this.cookieService.set('session_user', res.data.userName, 1);
+        this.router.navigate(['/']);
         /*
         if (res['data'].userName) {
         }*/
-    //   },
-    //   error: (e) => {
-    //     this.errorMessages = [
-    //       { severity: 'error', summary: "Error", detail: e.message }
-    //     ]
-    //     console.log(e);
-    //   }
-    // });
+      },
+      error: (e) => {
+        this.errorMessages = [
+          { severity: 'error', summary: "Error", detail: e.message }
+        ]
+        console.log(e);
+      }
+    });
   }
 }

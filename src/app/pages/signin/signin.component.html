@@ -42,28 +42,28 @@
 
           <mat-card class="mat-elevation-z0">
 
-            <form [formGroup]="form" (ngSubmit)="signin(); form.reset()" #loginForm="ngForm">
+            <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()" #loginForm="ngForm">
 
               <mat-card-content fxLayout="column" fxLayoutGap="10px">
 
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Username</mat-label>
-                  <input type="text" matInput [formControl]="$any(form.controls['userName'])" />
+                  <input type="text" matInput [formControl]="$any(signinForm.controls['userName'])" />
 
-                  <mat-error class="error" *ngIf="form.controls['userName'].hasError('required') && form.controls['userName'].touched">
+                  <mat-error class="error" *ngIf="signinForm.controls['userName'].hasError('required') && signinForm.controls['userName'].touched">
                     Username is a required field.
                   </mat-error>
                 </mat-form-field>
 
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Password</mat-label>
-                  <input type="password" matInput [formControl]="$any(form.controls['password'])" />
+                  <input type="password" matInput [formControl]="$any(signinForm.controls['password'])" />
 
-                  <mat-error class="error" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">
+                  <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched">
                     Password is a required field.
                   </mat-error>
 
-                  <mat-error class="error" *ngIf="form.controls['password'].hasError('pattern') && form.controls['password'].touched">
+                  <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('pattern') && signinForm.controls['password'].touched">
                     Password must be at least 8 characters, contain one letter, and one number.
                   </mat-error>
                 </mat-form-field>
@@ -71,7 +71,7 @@
                 </mat-card-content>
 
                 <mat-card-actions>
-                  <button type="submit" [disabled]="!form.valid" fxFlex mat-raised-button color="accent">Submit</button>
+                  <button type="submit" [disabled]="!signinForm.valid" fxFlex mat-raised-button color="accent">Submit</button>
                 </mat-card-actions>
 
                 <br />
