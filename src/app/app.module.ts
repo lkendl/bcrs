@@ -34,7 +34,8 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
-
+// Services
+import { CookieService } from 'ngx-cookie-service';
 /**
  * Angular material imports
  */
@@ -56,6 +57,9 @@ import { MessagesModule } from 'primeng/messages';
 @NgModule({
   declarations: [
     AppComponent,
+    AuthLayoutComponent,
+    BaseLayoutComponent,
+    DeleteRecordDialogComponent,
     HomeComponent,
     SecurityQuestionCreateComponent,
     SecurityQuestionDetailsComponent,
@@ -63,34 +67,30 @@ import { MessagesModule } from 'primeng/messages';
     SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
-    UserListComponent,
-    AuthLayoutComponent,
-    BaseLayoutComponent,
-    DeleteRecordDialogComponent
+    UserListComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatTableModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    BrowserModule,
     DialogModule,
+    FlexLayoutModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatTableModule,
+    MatToolbarModule,
     MessageModule,
-    MessagesModule
-
+    MessagesModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
