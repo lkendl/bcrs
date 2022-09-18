@@ -9,6 +9,7 @@
 ===========================================
 */
 
+// Pass httpCode, a message and data within the class.
 class BaseResponse {
   constructor(httpCode, message, data) {
     this.httpCode = httpCode;
@@ -16,6 +17,7 @@ class BaseResponse {
     this.data = data;
   }
 
+  // Create a single object that returns to the user interface.
   toObject() {
     return {
       'httpCode': this.httpCode,
