@@ -76,7 +76,7 @@ export class SigninComponent implements OnInit {
       // Call API and subscribe to event.
     }).subscribe({
       next: (res) => {
-        // If there is a value inside emp, it will be true here. If true, add to cookie service. Use .data property from the baseResponse object.
+        // If there is a value inside user, it will be true here. If true, add to cookie service. Use .data property from the baseResponse object.
         if (res.data) {
            // Store response data inside the empty employee object.
            this.user = res.data;
