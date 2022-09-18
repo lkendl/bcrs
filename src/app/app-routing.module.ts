@@ -22,6 +22,7 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -65,10 +66,19 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       {
+        path: 'not-found',
+        component: NotFoundComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'signin',
         component: SigninComponent
       }
     ]
+  },
+  {
+    path: '**', // If there is any URL not found in the routing file, redirects to session/not-found.
+    redirectTo: 'session/not-found' // Session is the parent route.
   }
 ];
 
