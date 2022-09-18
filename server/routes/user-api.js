@@ -13,8 +13,8 @@
 const express = require('express');
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
-const BaseResponse = require('../services/base-response');
-const ErrorResponse = require('../services/error-response');
+const BaseResponse = require('../models/base-response');
+const ErrorResponse = require('../models/error-response');
 const RoleSchema = require('../schemas/user-role');
 
 // configurations
