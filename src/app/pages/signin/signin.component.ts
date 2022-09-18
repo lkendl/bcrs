@@ -15,8 +15,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Message } from 'primeng/api/message';
 import { Router } from '@angular/router';
-import { SessionService } from 'src/app/shared/services/session.service';
 import { User } from 'src/app/shared/models/user.interface';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-signin',
@@ -37,7 +37,7 @@ export class SigninComponent implements OnInit {
   })
 
   // Add dependency injections for FormBuilder, Router, cookieService and sessionService.
-  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient, private sessionService: SessionService) {
+  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient, private sessionService: UserService) {
 
     // Define User object as an empty User object.
     this.user = {} as User;
@@ -82,7 +82,7 @@ export class SigninComponent implements OnInit {
            this.user = res.data;
         }
         console.log(res.data);
-        this.cookieService.set('session_user', res.data.userName, 1);
+        this.cookieService.set('sessionuser', res.data.userName, 1);
         this.router.navigate(['/']);
         /*
         if (res['data'].userName) {
