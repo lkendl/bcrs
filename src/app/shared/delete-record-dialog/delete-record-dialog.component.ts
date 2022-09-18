@@ -11,7 +11,7 @@
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../../../../server/models/dialog-data.interface';
+import { DialogData } from '../models/dialog-data.interface';
 
 @Component({
   selector: 'app-delete-record-dialog',
