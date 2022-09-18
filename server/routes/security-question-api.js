@@ -12,8 +12,8 @@
 // require statements
 const express = require('express');
 const SecurityQuestion = require('../models/security-question');
-const ErrorResponse = require('../services/error-response');
-const BaseResponse = require('../services/base-response');
+const ErrorResponse = require('../models/error-response')
+const BaseResponse = require('../models/base-response');
 
 // configurations
 const router = express.Router();
