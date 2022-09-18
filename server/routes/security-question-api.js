@@ -182,7 +182,42 @@ router.post('/', async(req,res) => {
 });
 
 /**
- * UpdateSecurityQuestion
+ * UpdateSecurityQuestions
+ */
+/**
+ * updateSecurityQuestions
+ * @openapi
+ * /api/security-questions/{id}:
+ *   put:
+ *     tags:
+ *       - Security Questions
+ *     description: API to update security question objects
+ *     summary: Updates a security question object
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The security question's id
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - text
+ *             properties:
+ *              text:
+ *                description: Security question input
+ *                type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
  */
 router.put('/:id', async(req,res) => {
     try
@@ -228,7 +263,31 @@ router.put('/:id', async(req,res) => {
 });
 
 /**
- * DeleteSecurityQuestion
+ * DeleteSecurityQuestions
+ */
+/**
+ * deleteSecurityQuestions
+ * @openapi
+ * /api/security-questions/{id}:
+ *   delete:
+ *     tags:
+ *       - Security Questions
+ *     description: API to delete security question objects
+ *     summary: Deletes a new security question object
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The security question's id
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
  */
 router.delete('/:id', async (req, res) => {
     try

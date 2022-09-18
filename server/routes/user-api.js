@@ -202,6 +202,57 @@ router.post('/', async(req, res) => {
 /**
  * UpdateUser
  */
+/**
+ * updateUser
+ * @openapi
+ * /api/users/{id}:
+ *   put:
+ *     tags:
+ *       - Users
+ *     description: API to update user objects
+ *     summary: Updates a user object
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The user's id
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - firstName
+ *               - lastName
+ *               - phoneNumber
+ *               - address
+ *               - email
+ *             properties:
+ *              firstName:
+ *                description: User's first name
+ *                type: string
+ *              lastName:
+ *                description: User's last name
+ *                type: string
+ *              phoneNumber:
+ *                description: User's phone number
+ *                type: number
+ *              address:
+ *                description: User's mailing address
+ *                type: string
+ *              email:
+ *                description: User's email address
+ *                type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
+ */
 router.put('/:id', async (req, res) => {
     try {
         User.findOne({'_id': req.params.id}, function(err, user) {
@@ -250,6 +301,30 @@ router.put('/:id', async (req, res) => {
 
 /**
  * DeleteUser
+ */
+/**
+ * deleteUser
+ * @openapi
+ * /api/users/{id}:
+ *   delete:
+ *     tags:
+ *       - Users
+ *     description: API to delete user objects
+ *     summary: Deletes a user object
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The user's id
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
  */
 router.delete('/:id', async (req, res) => {
     try
