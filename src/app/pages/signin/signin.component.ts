@@ -75,14 +75,14 @@ export class SigninComponent implements OnInit {
       password
       // Call API and subscribe to event.
     }).subscribe({
-      next: (res) => {
+      next: (res:any) => {
         // If there is a value inside user, it will be true here. If true, add to cookie service. Use .data property from the baseResponse object.
-        if (res.data) {
+        if (res['data']) {
            // Store response data inside the empty employee object.
-           this.user = res.data;
+           this.user = res['data'];
         }
-        console.log(res.data);
-        this.cookieService.set('sessionuser', res.data.userName, 1);
+        console.log(res['data']);
+        this.cookieService.set('sessionuser', res['data'].userName, 1);
         this.router.navigate(['/']);
         /*
         if (res['data'].userName) {
