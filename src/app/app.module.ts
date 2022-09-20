@@ -30,6 +30,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+
 // Shared
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
@@ -67,7 +69,8 @@ import { MessagesModule } from 'primeng/messages';
     SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
-    UserListComponent
+    UserListComponent,
+    NotFoundComponent
   ],
   imports: [
     AppRoutingModule,
