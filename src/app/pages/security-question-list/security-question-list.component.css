@@ -8,3 +8,7 @@
 ; service repair fees, generates invoices, and tracks purchases by service. 
 ===========================================
 */
+
+.mat-cell {
+  padding: 10px 25px;
+}
