@@ -10,13 +10,28 @@
 */
 
 .logo {
-  margin-left: 75px;
-  font-size: 24px;
-  font-weight: lighter;;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.header {
+  height: 110px;
 }
 
 .navbar-container {
-  padding: 5px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar-container-left {
+  display: flex;
+}
+
+.navbar-container-right {
+  padding-top: 30px;
+  margin-left: auto;
+  margin-right: 50px;
 }
 
 .navbar-link {
@@ -25,7 +40,8 @@
 }
 
 .main-content {
-  padding-left: 30px;
+  margin: 0 50px;
+
 }
 
 .footer {
