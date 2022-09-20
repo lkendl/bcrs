@@ -72,13 +72,6 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field>
-            <input type="text" matInput [formControl]="$any(form.controls['userName'])" placeholder="Username" />
-            <mat-error class="error" *ngIf="form.controls['userName'].hasError('required') && form.controls['userName'].touched">
-              Username is a required field.
-            </mat-error>
-          </mat-form-field>
-
         </div>
       </mat-card-content>
 
