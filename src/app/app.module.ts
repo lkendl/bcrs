@@ -36,8 +36,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+
 // Services
 import { CookieService } from 'ngx-cookie-service';
+
 /**
  * Angular material imports
  */
@@ -52,8 +54,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { DialogModule } from '@angular/cdk/dialog';
+
+/**
+ * PrimeNG
+ */
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
+import { TableModule } from 'primeng/table'
 
 
 @NgModule({
@@ -91,7 +98,8 @@ import { MessagesModule } from 'primeng/messages';
     MatToolbarModule,
     MessageModule,
     MessagesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
