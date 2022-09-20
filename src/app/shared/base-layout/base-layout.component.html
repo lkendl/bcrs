@@ -13,22 +13,34 @@
 
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar>
+    <mat-toolbar class="header">
       <div class="navbar-container">
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
 
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
-        <button class="navbar-link" mat-button routerLink="/users">Users</button>
-        <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
-        <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
+        <div class="navbar-container-left">
+          <a routerLink="/" class="navbar-link">
+            <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
+          </a>
+        </div>
+
+        <div class="navbar-container-right">
+          <button class="navbar-link" routerLink="/" mat-button>Home</button>
+          <button class="navbar-link" mat-button>About</button>
+          <button class="navbar-link" mat-button routerLink="/users">Users</button>
+          <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
+          <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
+          <button class="navbar-link" mat-button [matMenuTriggerFor]="menu">  username</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+        </div>
+
       </div>
-
     </mat-toolbar>
   </nav>
 
   <!-- main content -->
-  <div fxFlex>
+  <div fxFlex style="display:flex;flex-direction:column;">
     <main class="main-content" fxFlex="100%;">
       <router-outlet></router-outlet>
     </main>
