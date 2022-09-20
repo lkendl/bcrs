@@ -42,13 +42,13 @@
 
           <mat-card class="mat-elevation-z0">
 
-            <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()" #loginForm="ngForm">
+            <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()">
 
               <mat-card-content fxLayout="column" fxLayoutGap="10px">
 
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Username</mat-label>
-                  <input type="text" matInput [formControl]="$any(signinForm.controls['userName'])" />
+                  <input type="text" matInput formControlName="userName" />
 
                   <mat-error class="error" *ngIf="signinForm.controls['userName'].hasError('required') && signinForm.controls['userName'].touched">
                     Username is a required field.
@@ -57,7 +57,7 @@
 
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Password</mat-label>
-                  <input type="password" matInput [formControl]="$any(signinForm.controls['password'])" />
+                  <input type="password" matInput formControlName="password" />
 
                   <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched">
                     Password is a required field.
