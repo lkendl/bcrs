@@ -6,91 +6,98 @@
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service.
+; Code Attribution:
+;   box border design from CodePen by Swarup Kumar Kulia [ref:A]
+;     https://codepen.io/uiswarup/pen/RBByzW
 ===========================================
 -->
-<mat-toolbar color="primary">
-  <mat-toolbar-row></mat-toolbar-row>
-  <mat-toolbar-row>
-    <div class="layout-header-container">
-      <p class="layout-header-text">
-        Bob's Computer Repair Shop <br />
-        <mat-icon>build</mat-icon>
-      </p>
-    </div>
-  </mat-toolbar-row>
-  <mat-toolbar-row></mat-toolbar-row>
-  <mat-toolbar-row></mat-toolbar-row>
-</mat-toolbar>
 
-  <div fxLayout="row wrap" fxLayoutAlign="center start">
-    <div fxFlex.gt-sm="55" fxFlex="100">
 
-      <br /><br />
+<!-- [ref:A] -->
+<div class="box">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 
-      <mat-card class="card-container mat-elevation-z4">
-        <mat-card-title class="mat-headline card-title">Employee Sign in</mat-card-title>
+  <div class="content">
+  <!-- /[ref:A] -->
+    <div fxLayout="column">
 
-        <mat-card-subtitle style="text-align: center;" class="mat-headline">You must enter a valid username and password to proceed.
-        </mat-card-subtitle>
+      <div fxFlex>
+        <mat-card class="mat-elevation-z8 signin-container">
 
-        <br />
+          <mat-card-title>
+            <div style="padding-bottom:10px;">Bob's Computer Repair Shop</div>
+            <img class="img-fluid" src="/assets/logo.png" width="80" height="89">
+            <br>
+            <div style="padding-top:5px;">Sign In</div>
+          </mat-card-title>
 
-        <mat-card-content>
-          <!-- If there is an error message -->
+          <!--
+            image created from
+            https://harrypotter.fandom.com/wiki/Hufflepuff
+            https://www.flaticon.com/free-icons/labour-day" Labour day icons created by Smashicons from Flaticon
+          -->
 
-          <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+          <mat-card-content>
 
-          <mat-card class="mat-elevation-z0">
+            <p-messages class="msg-error" [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-            <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()">
+            <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
+              <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()">
 
-              <mat-card-content fxLayout="column" fxLayoutGap="10px">
+                <mat-card-content fxLayout="column" fxLayoutGap="10px">
 
-                <mat-form-field fxFlex appearance="fill">
-                  <mat-label>Username</mat-label>
-                  <input type="text" matInput formControlName="userName" />
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput formControlName="userName" />
 
-                  <mat-error class="error" *ngIf="signinForm.controls['userName'].hasError('required') && signinForm.controls['userName'].touched">
-                    Username is a required field.
-                  </mat-error>
-                </mat-form-field>
+                    <mat-error class="error" *ngIf="signinForm.controls['userName'].hasError('required') && signinForm.controls['userName'].touched">
+                      Username is a required field.
+                    </mat-error>
+                  </mat-form-field>
 
-                <mat-form-field fxFlex appearance="fill">
-                  <mat-label>Password</mat-label>
-                  <input type="password" matInput formControlName="password" />
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" />
 
-                  <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched">
-                    Password is a required field.
-                  </mat-error>
+                    <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched">
+                      Password is a required field.
+                    </mat-error>
 
-                  <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('pattern') && signinForm.controls['password'].touched">
-                    Password must be at least 8 characters, contain one letter, and one number.
-                  </mat-error>
-                </mat-form-field>
+                    <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('pattern') && signinForm.controls['password'].touched">
+                      Password must be at least 8 characters, contain one letter, and one number.
+                    </mat-error>
+                  </mat-form-field>
 
-                </mat-card-content>
+                  </mat-card-content>
 
-                <mat-card-actions>
-                  <button type="submit" [disabled]="!signinForm.valid" fxFlex mat-raised-button color="accent">Submit</button>
-                </mat-card-actions>
+                  <mat-card-actions>
+                    <button type="submit" [disabled]="!signinForm.valid" fxFlex mat-raised-button color="accent">Submit</button>
+                  </mat-card-actions>
 
-                <br />
+                  <br />
 
-                <div fxLayout="row">
-                  <div class="signin-footer-container">
-                    <div fxFlex class="center-text">
-                      <a class="signin-footer-link" routerLink="/session/register">Create new account</a>
-                    </div>
+                  <div fxLayout="row">
+                    <div class="signin-footer-container">
+                      <div fxFlex>
+                        <button mat-button routerLink="/session/register">Create new account</button>
+                      </div>
 
-                    <div fxFlex class="center-text">
-                      <a class="signin-footer-link" routerLink="/session/forgot">Forgot password?</a>
+                      <div fxFlex>
+                        <button mat-button routerLink="/session/forgot">Forgot password?</button>
+                      </div>
                     </div>
                   </div>
 
-                </div>
-            </form>
-          </mat-card>
-        </mat-card-content>
-      </mat-card>
+              </form>
+            </mat-card>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
+
   </div>
+</div>
