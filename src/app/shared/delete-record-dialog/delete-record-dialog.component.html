@@ -1,0 +1,24 @@
+<!--
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 14 September 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service.
+===========================================
+-->
+
+<h2 mat-dialog-title>{{ dialogHeader }}</h2>
+
+<div mat-dialog-content>
+  <p>{{ dialogBody }}</p>
+  <small style="color:#df546a;">WARNING: This cannot be undone.</small>
+</div>
+
+<hr>
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button matDialogClose="cancel" color="primary">No Thanks</button>
+  <button mat-raised-button matDialogClose="confirm" color="accent" cdkFocusInitial>Accept</button>
+</div>

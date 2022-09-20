@@ -1,0 +1,46 @@
+<!--
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 14 September 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service.
+; Resources:
+; [Ref A]: Stackoverflow: https://stackoverflow.com/questions/65486599/
+; error-ts2739-type-abstractcontrol-is-missing-the-following-properties-from-ty (error TS2739: Type
+; 'AbstractControl' is missing the following properties from type 'FormControl': registerOnChange,
+; registerOnDisabledChange)
+===========================================
+-->
+
+<div fxLayout="column">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-title>Create Security Question</mat-card-title>
+
+      <br />
+
+      <form [formGroup]="form" (ngSubmit)="create()" #securityQuestionForm>
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutGap="10px">
+            <mat-form-field>
+
+              <!-- [REF A] Add the built-in casting operator $any() to [formControl] value to fix Type 'AbstractControl<any, any>' error. -->
+              <input type="text" matInput [formControl]="$any(form.controls['text'])"
+                    placeholder="Question text" (keydown.enter)="create()" />
+
+              <mat-error *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched" class="error">
+                Security question is a required field.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+
+        <br />
+        <mat-card-actions align="end">
+          <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+          <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">Submit</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+</div>

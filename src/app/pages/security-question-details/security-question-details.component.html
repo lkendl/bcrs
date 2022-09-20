@@ -1,0 +1,38 @@
+<!--
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 14 September 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service.
+===========================================
+-->
+
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Security Question Details</mat-card-title>
+    <br />
+    <form [formGroup]="form" (ngSubmit)="saveQuestion()" #questionForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input matInput [formControl]="$any(form.controls['text'])"
+                    placeholder="Security question text..." (keydown.enter)="saveQuestion()" />
+
+            <mat-error class="error" *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched">
+              Security question is a required field.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br />
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card>
+</div>
