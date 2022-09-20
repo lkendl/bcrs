@@ -16,12 +16,12 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class sessionService {
+export class SessionService {
 
   constructor(private http: HttpClient) { }
 
   signin(userName: string, password: string): Observable<any> {
-    return this.http.post('/api/session/login', {
+    return this.http.post('/api/session/signin', {
       userName,
       password
     })
