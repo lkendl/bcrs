@@ -18,6 +18,12 @@
   color: var(--accent-color);
 }
 
+mat-title-parent {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 #home-title {
   text-align: center;
   font-family: 'Marcellus', serif;
@@ -25,6 +31,7 @@
   line-height: 1.5;
   width: 70%;
   padding-bottom: 20px;
+  padding-top: 35px;
 }
 
 mat-card {
