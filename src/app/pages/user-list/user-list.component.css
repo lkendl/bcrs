@@ -12,3 +12,11 @@
 .mat-cell {
   padding: 10px 25px;
 }
+
+.mat-table {
+  width: 50%;
+}
+
+mat-card {
+  margin: auto auto;
+}

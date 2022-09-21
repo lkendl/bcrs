@@ -9,16 +9,89 @@
 ===========================================
 */
 
-.main-welcome {
-  margin-top: 30px;
+.square-border {
+  border-radius: 0px 0px 0px 0px;
 }
 
-.title {
-  text-align: center;
-  font-weight: lighter;
+.primary-card {
+  background-color: var(--header-background-color);
+  color: var(--accent-color);
 }
 
-.subtitle {
+#home-title {
   text-align: center;
-  font-size: 14px;
+  font-family: 'Marcellus', serif;
+  font-size: 2.5em;
+  line-height: 1.5;
+  width: 70%;
+  padding-bottom: 20px;
+}
+
+mat-card {
+  margin: -16px;
+  min-height: 150px;
+}
+
+mat-card-title {
+  text-align: center;
+  font-family: 'Marcellus', serif;
+  font-size: 2em;
+  line-height: .9;
+  padding-top: 5%;
+}
+
+mat-card-subtitle {
+  text-align: center;
+  color: var(--accent-title-color);
+  font-family: 'Marcellus', serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: .9;
+  padding-top: 5%;
+}
+
+.accent-card {
+  /* background-color: var(--accent-background-color);
+  color: var(--accent-color); */
+  padding-bottom: 50px;
+}
+
+.icon-card {
+  width: 50%;
+  text-align: center;
+  padding: 15px;
+}
+
+.icon-card:hover {
+  transform: scale(1.1);
+  transition: 100ms ease-in;
+}
+
+.icon {
+  width: 100px;
+  /* -webkit-filter: invert(1);
+   filter: invert(1); */
+}
+
+.icon-subtitle {
+  /* color: var(--accent-title-color); */
+  font-family: 'Marcellus', serif;
+  font-size: 18px;
+  margin-top: -5px;
+}
+
+.button {
+  background-color: var(--btn-background-color);
+  color: var(--btn-color);
+  padding: 20px;
+  font-family: 'Marcellus', serif;
+  font-size: 1.5em;
+}
+
+.button:hover {
+  background-color: var(--btn-hover-background-color);
+  color: var(--btn-color);
+  padding: 20px;
+  font-family: 'Marcellus', serif;
+  font-size: 1.5em;
 }

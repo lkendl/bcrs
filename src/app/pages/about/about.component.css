@@ -9,6 +9,10 @@
 ===========================================
 */
 
+.about-title {
+  font-size: 1.2em;
+}
+
 .text-enhance {
   font-weight: 500;
   font-size: 18px;
@@ -16,7 +20,7 @@
 
 .div-row {
   margin: auto;
-  width: 800px;
+  width: 80%;
   padding-bottom: 70px;
 }
 
