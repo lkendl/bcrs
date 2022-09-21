@@ -66,7 +66,6 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
-import { MessageService, SelectItem } from 'primeng/api';
 
 @NgModule({
   declarations: [
