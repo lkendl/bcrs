@@ -2,7 +2,7 @@
 ============================================
 ; Title: bcrs
 ; Author: Professor Krasso
-; Date: 7 September 2022
+; Date: 20 September 2022
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service. 
@@ -23,7 +23,8 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,14 @@ const routes: Routes = [
       {
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
       }
     ],
     canActivate: [AuthGuard]

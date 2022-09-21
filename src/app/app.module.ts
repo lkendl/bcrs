@@ -31,6 +31,8 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 // Shared
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
@@ -63,24 +65,25 @@ import { DialogModule } from '@angular/cdk/dialog';
  */
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
-import { TableModule } from 'primeng/table'
-
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
+    AboutComponent,
     AppComponent,
     AuthLayoutComponent,
     BaseLayoutComponent,
+    ContactComponent,
     DeleteRecordDialogComponent,
     HomeComponent,
+    NotFoundComponent,
     SecurityQuestionCreateComponent,
     SecurityQuestionDetailsComponent,
     SecurityQuestionListComponent,
     SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
-    UserListComponent,
-    NotFoundComponent
+    UserListComponent
   ],
   imports: [
     AppRoutingModule,
