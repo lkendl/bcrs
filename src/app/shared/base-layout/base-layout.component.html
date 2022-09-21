@@ -24,11 +24,12 @@
 
         <div class="navbar-container-right">
           <button class="navbar-link" routerLink="/" mat-button>Home</button>
-          <button class="navbar-link" mat-button>About</button>
+          <button class="navbar-link" mat-button routerLink="/about">About</button>
+          <button class="navbar-link" mat-button routerLink="/contact">Contact Us</button>
           <button class="navbar-link" mat-button routerLink="/users">Users</button>
           <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
           <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
-          <button class="navbar-link" mat-button [matMenuTriggerFor]="menu">  username</button>
+          <button class="navbar-link" mat-button [matMenuTriggerFor]="menu">username</button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item>Item 1</button>
               <button mat-menu-item>Item 2</button>
