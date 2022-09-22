@@ -9,13 +9,27 @@
 ===========================================
 */
 
+/* Gryffindor Colors
+Crimson: #740001
+Red: #ae0001
+Yellow: #eeba30
+Gold: #d3a625
+Black */
+
+/* Available Font Families
+font-family: 'Fauna One', serif;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Marcellus', serif;
+font-family: 'Prociono', serif;
+font-family: 'Raleway', sans-serif; */
+
 .square-border {
   border-radius: 0px 0px 0px 0px;
 }
 
 .primary-card {
-  background-color: var(--header-background-color);
-  color: var(--accent-color);
+  background-color: #740001;
+  color: #FFF;
 }
 
 mat-title-parent {
@@ -49,7 +63,7 @@ mat-card-title {
 
 mat-card-subtitle {
   text-align: center;
-  color: var(--accent-title-color);
+  color: #000;
   font-family: 'Marcellus', serif;
   font-size: 16px;
   font-style: italic;
@@ -57,11 +71,6 @@ mat-card-subtitle {
   padding-top: 5%;
 }
 
-.accent-card {
-  /* background-color: var(--accent-background-color);
-  color: var(--accent-color); */
-  padding-bottom: 50px;
-}
 
 .icon-card {
   width: 50%;
@@ -76,28 +85,28 @@ mat-card-subtitle {
 
 .icon {
   width: 100px;
+  /* If icons need to be inverted to white, uncomment below */
   /* -webkit-filter: invert(1);
    filter: invert(1); */
 }
 
 .icon-subtitle {
-  /* color: var(--accent-title-color); */
   font-family: 'Marcellus', serif;
   font-size: 18px;
   margin-top: -5px;
 }
 
 .button {
-  background-color: var(--btn-background-color);
-  color: var(--btn-color);
+  background-color: #740001;
+  color: #FFF;
   padding: 20px;
   font-family: 'Marcellus', serif;
   font-size: 1.5em;
 }
 
 .button:hover {
-  background-color: var(--btn-hover-background-color);
-  color: var(--btn-color);
+  background-color: #ae0001;
+  color: #FFF;
   padding: 20px;
   font-family: 'Marcellus', serif;
   font-size: 1.5em;

@@ -9,6 +9,20 @@
 ===========================================
 */
 
+/* Gryffindor Colors
+Crimson: #740001
+Red: #ae0001
+Yellow: #eeba30
+Gold: #d3a625
+Black */
+
+/* Available Font Families
+font-family: 'Fauna One', serif;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Marcellus', serif;
+font-family: 'Prociono', serif;
+font-family: 'Raleway', sans-serif; */
+
 .page-container {
   position: relative;
   min-height: 100vh;
@@ -20,7 +34,7 @@
 
 .menu-bar {
   width: 100%;
-  background-color: var(--header-background-color);
+  background-color: #740001;
 }
 
 .bcrs-bar {
@@ -62,11 +76,13 @@
   font-size: 1em;
   font-weight: lighter;
   font-family: 'Marcellus', sans-serif;
-  color: var(--nav-link-color);
+  color: #FFF;
 }
 
 .content-container {
   margin-bottom: 100px;
+  margin: 25px auto auto;
+  width: 75%;
 }
 
 /* Left Container */

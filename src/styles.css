@@ -23,68 +23,13 @@ font-family: 'Marcellus', serif;
 font-family: 'Prociono', serif;
 font-family: 'Raleway', sans-serif; */
 
-
-body.gryffindor-theme {
-  --text-color: #000;
-  --background-color: rgba(235, 228, 212, 0.6);
-  --anchor-color: #740001;
-  --container-background-color: #FFF;
-
-   /* Primary: */
-  --header-background-color: #740001; /* Primary */
-  --header-color: #FFF;
-  --footer-background-color: #000;
-  --footer-color: #FFF;
-
-  --heading-background-color: #FFF;
-  --heading-color: #ae0001;
-  --heading-border-color: #FFF;
-
-  --h1-background-color: #FFF;
-  --h1-border-color: #FFF;
-  --h3-color: #740001;
-
-  --btn-background-color: #740001;
-  --btn-color: #FFF;
-  --btn-hover-color: #FFF;
-  --btn-border-color: #740001;
-
-  --nav-background-color: #FFF;
-  --nav-link-color: #FFF;
-  --logo-txt-color: #740001;
-  --logo-txt-background-color-1: #C9E2F2;
-  --logo-txt-background-color-2: #E9831E;
-  --logo-txt-background-color-3: #FCDD1D;
-
-  /* Warm */
-
-  /* Accent #1 */
-  --anchor-hover-background-color: #ae0001;
-  --anchor-hover-color: #FFF;
-  --anchor-color-hover: #ae0001;
-  --btn-hover-background-color: #ae0001;
-
-  /* Accent #2 */
-
-  --accent-background-color: #1E2021;
-  --accent-color: #FFF;
-  --accent-title-color: #FFF;
-  --accent-title-background-color: #d3a625;
-  --accent-main-background-color: #ffffff;
-
-  --input-border-color: #CCC;
-  --table-header-background-color: #d3a625;
-  --table-header-color: #FFF;
-  --table-border-color: #DDD;
+html, body {
+  height: 100%;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.content-container {
-  margin: 25px auto auto;
-  width: 75%;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 mat-card-title {
