@@ -27,9 +27,9 @@ import { VerifySecurityQuestionModel } from 'src/app/shared/models/verify-securi
 export class VerifySecurityQuestionsComponent implements OnInit {
 
   selectedSecurityQuestions: SelectedSecurityQuestion[];
-  verifySecurityQuestionsModel: VerifySecurityQuestionModel[];
+  verifySecurityQuestionsModel: VerifySecurityQuestionModel;
   userName: string;
-  errorMessages: Message[] = [];
+  errorMessages: Message[];
 
   form: FormGroup = this.fb.group({
     answerToSecurityQuestion1: [null, Validators.compose([Validators.required])],
