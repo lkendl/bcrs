@@ -102,6 +102,7 @@ const routes: Routes = [
       {
         path: '404',
         component: NotFoundComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: '500',
