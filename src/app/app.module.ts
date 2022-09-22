@@ -68,7 +68,6 @@ import { DialogModule } from '@angular/cdk/dialog';
  */
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
-import { RegisterComponent } from './pages/register/register.component';
 import { TableModule } from 'primeng/table';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
