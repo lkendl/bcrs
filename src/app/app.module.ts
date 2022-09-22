@@ -70,6 +70,11 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { RegisterComponent } from './pages/register/register.component';
 import { TableModule } from 'primeng/table';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +93,11 @@ import { TableModule } from 'primeng/table';
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifySecurityQuestionsComponent,
+    ResetPasswordComponent,
+    ErrorComponent,
+    VerifyUsernameFormComponent
   ],
   imports: [
     AppRoutingModule,

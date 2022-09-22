@@ -48,7 +48,7 @@ font-family: 'Raleway', sans-serif; */
 }
 
 .logo {
-  padding-left: 20px;
+  margin-left: 20px;
   margin-top: 10px;
 }
 
@@ -80,8 +80,7 @@ font-family: 'Raleway', sans-serif; */
 }
 
 .content-container {
-  margin-bottom: 100px;
-  margin: 25px auto auto;
+  margin: 25px auto 100px auto;
   width: 75%;
 }
 
@@ -124,12 +123,13 @@ font-family: 'Raleway', sans-serif; */
   bottom: 0;
   position: absolute;
   width: 100%;
+  overflow: hidden;
 }
 
 .footer-content {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: lighter;
-  padding-left: 100px;
+  padding-left: 2%;
   letter-spacing: 3px;
 }
 

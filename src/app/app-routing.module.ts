@@ -25,6 +25,11 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
   {
@@ -75,19 +80,39 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       {
-        path: 'not-found',
+        path: 'signin',
+        component: SigninComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'forgot',
+        component: VerifyUsernameFormComponent
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsComponent
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent
+      },
+      {
+        path: '404',
         component: NotFoundComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'signin',
-        component: SigninComponent
+        path: '500',
+        component: ErrorComponent
       }
     ]
   },
   {
     path: '**', // If there is any URL not found in the routing file, redirects to session/not-found.
-    redirectTo: 'session/not-found' // Session is the parent route.
+    redirectTo: 'session/404' // Session is the parent route.
   }
 ];
 

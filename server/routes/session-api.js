@@ -121,6 +121,32 @@ router.post('/signin', async(req, res) => {
 /**
  * VerifyUser
  */
+/**
+ * verifyUser
+ * @openapi
+ * /api/session/verify/users/{userName}:
+ *  get:
+ *    tags:
+ *      - Session
+ *    description: API for verifying username
+ *    summary: Verifies user and returns user document
+ *    parameters:
+ *      - name: userName
+ *        in: path
+ *        required: true
+ *        description: The username requested by user
+ *        schema:
+ *          type: string
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "400":
+ *        description: Invalid username
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
+ */
 router.get('/verify/users/:userName', async (req, res) => {
   try
   {
@@ -158,6 +184,48 @@ router.get('/verify/users/:userName', async (req, res) => {
 
 /**
  * VerifySecurityQuestions
+ */
+/**
+ * verifySecurityQuestions
+ * @openapi
+ * /api/session/verify/users/{userName}/security-quesitons:
+ *  post:
+ *    tags:
+ *      - Session
+ *    description: API for comparing users entered security question answers against what's saved in user document
+ *    summary: Verifies user's security question answers
+ *    parameters:
+ *      - name: userName
+ *        in: path
+ *        required: true
+ *        description: The username requested by user
+ *        schema:
+ *          type: string
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            required:
+ *              - answerText1
+ *              - answerText2
+ *              - answerText3
+ *            properties:
+ *              answerText1:
+ *                type: string
+ *              answerText2:
+ *                type: string
+ *              answerText3:
+ *                type: string
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "400":
+ *        description: Invalid username
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
  */
 router.post('/verify/users/:userName/security-questions', async(req, res) => {
     try

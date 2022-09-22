@@ -9,16 +9,7 @@
 ===========================================
 */
 
-import { SelectedSecurityQuestion } from "./selected-security-question.interface";
-
-export interface User {
-    _id?: string;
-    userName?: string;
-    password?: string;
-    selectedSecurityQuestions?: SelectedSecurityQuestion[];
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    address: string;
-    email: string;
+export interface SelectedSecurityQuestion {
+  questionText: string;
+  answerText: string;
 }

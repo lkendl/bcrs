@@ -10,6 +10,8 @@
 */
 
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-not-found',
@@ -17,10 +19,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent implements OnInit {
+  year: number = Date.now();
+  userName: string;
 
-  constructor() { }
+  constructor(private cookieService: CookieService, private router: Router) {
+    this.userName = this.cookieService.get('sessionuser') ?? '';
+  }
 
   ngOnInit(): void {
   }
 
+  signOut() {
+    this.cookieService.deleteAll();
+    this.router.navigate(['/session/sign-in']);
+  }
 }
