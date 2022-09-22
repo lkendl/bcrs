@@ -112,7 +112,7 @@ const routes: Routes = [
   },
   {
     path: '**', // If there is any URL not found in the routing file, redirects to session/not-found.
-    redirectTo: 'session/not-found' // Session is the parent route.
+    redirectTo: 'session/404' // Session is the parent route.
   }
 ];
 

@@ -41,7 +41,8 @@ export class VerifySecurityQuestionsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private userService: UserService) {
+    private userService: UserService,
+    private sessionService: SessionService) {
 
       this.userName = this.route.snapshot.queryParamMap.get('userName') ?? '';
       this.errorMessages = [];
