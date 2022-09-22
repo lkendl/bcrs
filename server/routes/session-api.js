@@ -100,8 +100,8 @@ router.post('/signin', async(req, res) => {
                 else
                 {
                     console.log(`Username: ${req.body.userName} is invalid`);
-                    const invalidUserNameResponse = new BaseResponse(200, 'Invalid username and/or password, please try again', null);
-                    res.status(401).send(invalidUserNameResponse.toObject());
+                    const invalidUsernameResponse = new BaseResponse(200, 'Invalid username and/or password, please try again', null);
+                    res.status(401).send(invalidUsernameResponse.toObject());
                 }
             }
         })
@@ -121,10 +121,88 @@ router.post('/signin', async(req, res) => {
 /**
  * VerifyUser
  */
+router.get('/verify/users/:userName', async (req, res) => {
+  try
+  {
+      User.findOne({'userName': req.params.userName}, function(err, user)
+      {
+          if (user)
+          {
+              if (err)
+              {
+                  console.log(err);
+                  const verifyUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                  res.status(500).send(verifyUserMongodbErrorResponse.toObject());
+              }
+              else
+              {
+                  console.log(user);
+                  const verifyUserResponse = new BaseResponse(200, 'Query successful', user);
+                  res.json(verifyUserResponse.toObject());
+              }
+          }
+              else
+              {
+                  const invalidUsernameResponse = new BaseResponse(400, 'Invalid username', req.params.userName);
+                  res.status(400).send(invalidUsernameResponse.toObject());
+              }
+      })
+  }
+  catch (e)
+  {
+      console.log(e);
+      const verifyUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+      res.status(500).send(verifyUserCatchErrorResponse.toObject());
+  }
+});
 
 /**
  * VerifySecurityQuestions
  */
+router.post('/verify/users/:userName/security-questions', async(req, res) => {
+    try
+    {
+        User.findOne({'userName': req.params.userName}, function(err, user) {
+            if (err)
+            {
+                console.log(err);
+                const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(verifySecurityQuestionsMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(user);
+
+                const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionsText1);
+                const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q2 => q2.questionText === req.body.questionText2);
+                const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText3);
+
+                const isValidAnswerOne = selectedSecurityQuestionOne.answerText === req.body.answerText1;
+                const isValidAnswerTwo = selectedSecurityQuestionTwo.answerText === req.body.answerText2;
+                const isValidAnswerThree = selectedSecurityQuestionThree.answerText = req.body.answerText3;
+
+                if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree)
+                {
+                    console.log(`User ${user.userName} answered their security questions correctly`);
+                    const validSecurityQuestionsResponse = new BaseResponse(200, 'Success', user);
+                    res.json(validSecurityQuestionsResponse.toObject());
+                }
+                else
+                {
+                    console.log(`User ${user.userName} did not answer their security questions correctly`);
+                    const invalidSecurityQuestionsResponse = new BaseResponse(200, 'Error', user);
+                    res.json(invalidSecurityQuestionsResponse.toObject());
+                }
+            }
+        })
+    }
+    catch (e)
+    {
+        console.log(e);
+        const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+        res.status(500).send(verifySecurityQuestionsCatchErrorResponse.toObject());
+    }
+});
 
 /**
  * ResetPassword
