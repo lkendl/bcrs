@@ -17,7 +17,7 @@ import { Message } from 'primeng/api';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { SecurityQuestionService } from '../../shared/services/security-question.service';
-import { SelectedSecurityQuestion } from '../../shared/models/selected-security-question.interface';
+import { SelectedSecurityQuestion } from './../../shared/models/selected-security-question.interface';
 import { User } from '../../shared/models/user.interface';
 import { SessionService } from "../../shared/services/session.service";
 
