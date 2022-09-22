@@ -54,4 +54,8 @@ export class UserService {
   deleteUser(userId: string): Observable<any> {
     return this.http.delete('/api/users/' + userId);
   }
+
+  findSelectedSecurityQuestions(userName: string): Observable<any> {
+    return this.http.get('/api/users/' + userName + '/security-questions');
+  }
 }
