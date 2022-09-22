@@ -80,8 +80,7 @@ font-family: 'Raleway', sans-serif; */
 }
 
 .content-container {
-  margin-bottom: 100px;
-  margin: 25px auto auto;
+  margin: 25px auto 100px auto;
   width: 75%;
 }
 
