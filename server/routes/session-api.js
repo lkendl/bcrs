@@ -114,4 +114,20 @@ router.post('/signin', async(req, res) => {
     }
 });
 
+/**
+ * Register
+ */
+
+/**
+ * VerifyUser
+ */
+
+/**
+ * VerifySecurityQuestions
+ */
+
+/**
+ * ResetPassword
+ */
+
 module.exports = router;
