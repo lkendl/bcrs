@@ -124,12 +124,13 @@ font-family: 'Raleway', sans-serif; */
   bottom: 0;
   position: absolute;
   width: 100%;
+  overflow: hidden;
 }
 
 .footer-content {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: lighter;
-  padding-left: 100px;
+  padding-left: 2%;
   letter-spacing: 3px;
 }
 
