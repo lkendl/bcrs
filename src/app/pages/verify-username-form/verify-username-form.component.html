@@ -9,18 +9,6 @@
 ===========================================
 -->
 
-<mat-toolbar color="primary" style="border-bottom:15px solid #D6A800">
-  <mat-toolbar-row></mat-toolbar-row>
-  <mat-toolbar-row>
-    <div class="layout-header-container">
-      <p id="large-text" class="layout-header-text comic-text">
-        Bob's Computer Repair Shop
-        <br><br><br>
-      </p>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
-
 <br><br><br>
 
 <div fxLayout="row wrap" fxLayoutAlign="center start">
@@ -32,7 +20,7 @@
 
       <mat-card-title>
         <h1 class="title">
-          Forgot Password
+          Forgot Password (verify-user-form.component.html [remove later])
           <br>
           <span class="subtitle">
             Fields marked with an asterisk (*) are required.
@@ -61,7 +49,7 @@
           <br><br>
 
           <div fxFlex fxLayoutAlign="end" class="p5">
-            <button mat-raised-buttom routerLink="/session/login" color="accent">Cancel</button>
+            <button mat-raised-button routerLink="/session/login" color="accent">Cancel</button>
             <button mat-raised-button [disabled]="!form.valid" color="primary">Forgot Password</button>
           </div>
 

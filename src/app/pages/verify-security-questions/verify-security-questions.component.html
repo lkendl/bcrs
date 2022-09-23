@@ -6,5 +6,57 @@
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service. 
+; Resources:
+; Howtojs: https://howtojs.io/how-to-solve-undefined-or-null-is-not-assignable-to-type-formgroup-in-angular-13/
 ===========================================
 -->
+
+<br><br><br>
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55" fxFlex="100">
+
+    <br><br>
+
+    <mat-card class="mat-elevation-z4 card-container">
+
+      <mat-card-title>
+        <h1 class="title">
+          Forgot Password (verify-security-questions.component.html [remove later])
+          <br>
+          <span class="subtitle">
+            Fields marked with an asterisk (*) are required.
+          </span>
+        </h1>
+      </mat-card-title>
+
+      <br><br>
+
+      <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+      <form [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #sqForm>
+
+        <mat-card-content fxLayout="column">
+
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>SQ</mat-label>
+
+            <input matInput required formControlName="sqForm" />
+
+            <mat-error class="error" *ngIf="form.controls['userName'].hasError('required') && form.controls['userName'].touched">
+              SQ is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <br><br>
+
+          <div fxFlex fxLayoutAlign="end" class="p5">
+            <button mat-raised-button routerLink="/session/login" color="accent">Cancel</button>
+            <button mat-raised-button [disabled]="!form.valid" color="primary">Verify Security Questions</button>
+          </div>
+
+        </mat-card-content>
+      </form>
+    </mat-card>
+  </div>
+</div>
