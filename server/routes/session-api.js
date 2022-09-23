@@ -18,6 +18,7 @@ const ErrorResponse = require('../models/error-response');
 
 // configurations
 const router = express.Router();
+const saltRounds = 10; // default salt rounds for hashing algorithm
 
 /**
  * User sign-in
@@ -117,6 +118,136 @@ router.post('/signin', async(req, res) => {
 /**
  * Register
  */
+/**
+ * Register
+ */
+/**
+ * register
+ * @openapi
+ * /api/session/register:
+ *  post:
+ *    tags:
+ *      - Session
+ *    description: API for registering new user
+ *    summary: Registers new user
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            description: User's information
+ *            required:
+ *              - userName
+ *              - password
+ *              - firstName
+ *              - lastName
+ *              - phoneNumber
+ *              - address
+ *              - email
+ *              - role
+ *              - selectedSecurityQuestions
+ *            properties:
+ *              userName:
+ *                type: string
+ *              password:
+ *                type: string
+ *              firstName:
+ *                type: string
+ *              lastName:
+ *                type: string
+ *              phoneNumber:
+ *                type: string
+ *              address:
+ *                type: string
+ *              email:
+ *                type: string
+ *              role:
+ *                type: string
+ *              selectedSecurityQuestions:
+ *                type: array
+ *                items:
+ *                  type: object
+ *                  properties:
+ *                    questionText:
+ *                      type: string
+ *                    answerText:
+ *                      type: string
+ *
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "400":
+ *        description: Invalid username
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
+ */
+router.post('/register', async(req, res) => {
+  try
+  {
+    User.findOne({'userName': req.body.userName}, function(err, user)
+    {
+      if (err)
+      {
+        console.log(err);
+        const registerUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(registerUserMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        if (!user)
+        {
+          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+          standardRole = {
+            role: 'standard'
+          }
+
+          // User object
+          let registeredUser = {
+            userName: req.body.userName,
+            password: hashedPassword,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phoneNumber: req.body.phoneNumber,
+            address: req.body.address,
+            email: req.body.email,
+            role: standardRole,
+            selectedSecurityQuestions: req.body.selectedSecurityQuestions
+          };
+
+          User.create(registeredUser, function (err, newUser)
+          {
+            if (err)
+            {
+              console.log(err);
+              const newUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+              res.status(500).send(newUserMongodbErrorResponse.toObject());
+            }
+            else
+            {
+              console.log(newUser);
+              const registeredUserResponse = new BaseResponse('200', 'Query successful', newUser);
+              res.json(registeredUserResponse.toObject());
+            }
+          })
+        }
+        else
+        {
+          console.log(`Username '${req.body.userName}' already exists.`);
+          const userInUseError = new BaseResponse('400', `The username '${req.body.userName}' is already in use.`, null);
+          res.status(500).send(userInUseError.toObject());
+        }
+      }
+    })
+  } catch (e)
+  {
+    console.log(e)
+    const registerUserCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(registerUserCatchErrorResponse.toObject());
+  }
+});
 
 /**
  * VerifyUser
@@ -188,7 +319,7 @@ router.get('/verify/users/:userName', async (req, res) => {
 /**
  * verifySecurityQuestions
  * @openapi
- * /api/session/verify/users/{userName}/security-quesitons:
+ * /api/session/verify/users/{userName}/security-questions:
  *  post:
  *    tags:
  *      - Session
