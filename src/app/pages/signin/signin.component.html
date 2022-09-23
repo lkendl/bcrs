@@ -25,77 +25,76 @@
     <div fxLayout="column">
 
       <div fxFlex>
-        <mat-card class="mat-elevation-z8 signin-container">
 
-          <mat-card-title>
-            <div style="padding-bottom:10px;">Bob's Computer Repair Shop</div>
-            <img class="img-fluid" src="/assets/logo.png" width="80" height="89">
-            <br>
-            <div style="padding-top:5px;">Sign In</div>
-          </mat-card-title>
+        <mat-card-title>
+          <!-- <div style="padding-bottom:10px;">Bob's Computer Repair Shop</div> -->
+          <div>Bob's Computer Repair Shop</div>
+          <br>
+          <img class="img-fluid" src="/assets/logo.png" width="80" height="89">
+          <br>
+          <!-- <div style="padding-top:5px;">Sign In</div> -->
+          <div>Sign In</div>
+          <br>
+        </mat-card-title>
 
-          <!--
-            image created from
-            https://harrypotter.fandom.com/wiki/Hufflepuff
-            https://www.flaticon.com/free-icons/labour-day" Labour day icons created by Smashicons from Flaticon
-          -->
+        <!--
+          image created from
+          https://harrypotter.fandom.com/wiki/Hufflepuff
+          https://www.flaticon.com/free-icons/labour-day" Labour day icons created by Smashicons from Flaticon
+        -->
 
-          <mat-card-content>
+          <p-messages class="msg-error" [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-            <p-messages class="msg-error" [(value)]="errorMessages" [enableService]="false"></p-messages>
+          <div class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
+            <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()">
 
-            <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
-              <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()">
+              <div fxLayout="column" fxLayoutGap="10px">
 
-                <mat-card-content fxLayout="column" fxLayoutGap="10px">
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Username</mat-label>
+                  <input type="text" matInput formControlName="userName" />
 
-                  <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Username</mat-label>
-                    <input type="text" matInput formControlName="userName" />
+                  <mat-error class="error" *ngIf="signinForm.controls['userName'].hasError('required') && signinForm.controls['userName'].touched">
+                    Username is a required field.
+                  </mat-error>
+                </mat-form-field>
 
-                    <mat-error class="error" *ngIf="signinForm.controls['userName'].hasError('required') && signinForm.controls['userName'].touched">
-                      Username is a required field.
-                    </mat-error>
-                  </mat-form-field>
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput formControlName="password" />
 
-                  <mat-form-field fxFlex appearance="fill">
-                    <mat-label>Password</mat-label>
-                    <input type="password" matInput formControlName="password" />
+                  <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched">
+                    Password is a required field.
+                  </mat-error>
 
-                    <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched">
-                      Password is a required field.
-                    </mat-error>
+                  <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('pattern') && signinForm.controls['password'].touched">
+                    Password must be at least 8 characters, contain one letter, and one number.
+                  </mat-error>
+                </mat-form-field>
 
-                    <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('pattern') && signinForm.controls['password'].touched">
-                      Password must be at least 8 characters, contain one letter, and one number.
-                    </mat-error>
-                  </mat-form-field>
+              </div>
 
-                  </mat-card-content>
+              <br>
 
-                  <mat-card-actions>
-                    <button type="submit" [disabled]="!signinForm.valid" fxFlex mat-raised-button color="accent">Submit</button>
-                  </mat-card-actions>
+              <mat-card-actions>
+                <button type="submit" [disabled]="!signinForm.valid" fxFlex mat-raised-button color="accent" class="submit-button">Submit</button>
+              </mat-card-actions>
 
-                  <br />
+              <br />
 
-                  <div fxLayout="row">
-                    <div class="signin-footer-container">
-                      <div fxFlex>
-                        <button mat-button routerLink="/session/register">Create new account</button>
-                      </div>
-
-                      <div fxFlex>
-                        <button mat-button routerLink="/session/forgot">Forgot password?</button>
-                      </div>
-                    </div>
+              <div fxLayout="row">
+                  <div fxFlex>
+                    <button mat-button routerLink="/session/register">Create new account</button>
                   </div>
 
-              </form>
-            </mat-card>
+                  <div fxFlex>
+                    <button mat-button routerLink="/session/forgot">Forgot password?</button>
+                  </div>
+              </div>
 
-          </mat-card-content>
-        </mat-card>
+            </form>
+          </div>
+
       </div>
     </div>
 

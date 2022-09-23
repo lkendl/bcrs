@@ -27,17 +27,27 @@ font-family: 'Prociono', serif;
 font-family: 'Raleway', sans-serif; */
 
 .signin-container {
+
 }
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #fff;
+  color: black;
+  font-size: 16px;
+}
+
+.submit-button {
+  height: 50px;
+  width: 200px;
+
+}
+
 
 .msg-error {
   margin: 0;
   padding: 0;
   color: #D8000C;
   background-color: #FFD2D2;
-}
-
-#submit {
-  /* margin-bottom: -5px; */
 }
 
 /* [ref:A] */
