@@ -30,6 +30,7 @@ import { SessionService } from "../../shared/services/session.service";
   }]
 })
 export class RegisterComponent implements OnInit {
+  year: number = Date.now();
 
   securityQuestions: SecurityQuestion[];
   errorMessages: Message[];

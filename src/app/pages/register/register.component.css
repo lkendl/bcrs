@@ -9,6 +9,15 @@
 ===========================================
 */
 
+.page-container {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('/assets/drive.jpg'), linear-gradient(0deg, rgb(255, 255, 255, 1), rgb(255, 255, 255, 0.8));
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .menu-bar {
   width: 100%;
   background-color: #740001;
@@ -40,4 +49,18 @@
 
 .employee-button {
   text-decoration: none;
+}
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-content {
+  font-size: 1em;
+  font-weight: lighter;
+  padding-left: 2%;
+  letter-spacing: 3px;
 }

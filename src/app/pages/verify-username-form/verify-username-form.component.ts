@@ -21,6 +21,7 @@ import { SessionService } from 'src/app/shared/services/session.service';
   styleUrls: ['./verify-username-form.component.css']
 })
 export class VerifyUsernameFormComponent implements OnInit {
+  year: number = Date.now();
 
   errorMessages: Message[] = [];
 

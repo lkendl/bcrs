@@ -25,6 +25,7 @@ import { VerifySecurityQuestionModel } from 'src/app/shared/models/verify-securi
   styleUrls: ['./verify-security-questions.component.css']
 })
 export class VerifySecurityQuestionsComponent implements OnInit {
+  year: number = Date.now();
 
   selectedSecurityQuestions: SelectedSecurityQuestion[];
   verifySecurityQuestionsModel: VerifySecurityQuestionModel;

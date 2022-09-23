@@ -8,17 +8,15 @@
 ; service repair fees, generates invoices, and tracks purchases by service.
 ===========================================
 -->
+<div class="page-container">
 
 <div class="menu-bar" fxLayoutGap="20" fxLayout.xs="column">
   <div class="navbar-container">
-
     <div class="navbar-container-left">
       <a routerLink="/" class="navbar-link">
         <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
       </a>
     </div>
-
-
   </div>
 </div>
 
@@ -275,4 +273,18 @@
 
     </mat-card-content>
   </mat-card>
+
+
+  <!-- footer -->
+  <div fxFlex>
+    <footer class="footer">
+      <mat-toolbar class="footer-content">
+        <p>
+          &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
+        </p>
+      </mat-toolbar>
+    </footer>
+  </div>
+
+</div>
 </div>
