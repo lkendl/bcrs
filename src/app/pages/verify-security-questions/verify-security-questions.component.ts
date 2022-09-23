@@ -62,7 +62,7 @@ export class VerifySecurityQuestionsComponent implements OnInit {
           this.verifySecurityQuestionsModel.question2 = this.selectedSecurityQuestions[1].questionText;
           this.verifySecurityQuestionsModel.question3 = this.selectedSecurityQuestions[2].questionText;
 
-          console.log('Verify securiy questions model');
+          console.log('Verify security questions model');
           console.log(this.verifySecurityQuestionsModel);
         }
       })
