@@ -72,8 +72,13 @@ font-family: 'Raleway', sans-serif; */
   margin-right: 50px;
 }
 
+.nav-username {
+  font-size: 1.6em !important;
+}
+
+
 .navbar-link {
-  font-size: 1em;
+  font-size: 1.4em;
   font-weight: lighter;
   font-family: 'Marcellus', sans-serif;
   color: #FFF;
