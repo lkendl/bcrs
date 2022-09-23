@@ -1,0 +1,42 @@
+/**
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 7 September 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service. 
+===========================================
+*/
+
+.menu-bar {
+  width: 100%;
+  background-color: #740001;
+}
+
+.bcrs-bar {
+  background-color: #000;
+  color: #FFF;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-left: 15px;
+  height: 30px;
+}
+
+.logo {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.card-container {
+  margin: 0 3%;
+}
+
+.subtitle {
+  font-size: 16px;
+}
+
+.employee-button {
+  text-decoration: none;
+}

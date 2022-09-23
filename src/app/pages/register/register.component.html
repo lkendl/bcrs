@@ -9,19 +9,22 @@
 ===========================================
 -->
 
-<mat-toolbar style="border-bottom: 15px solid #D6A800">
-  <mat-toolbar-row></mat-toolbar-row>
-  <mat-toolbar-row>
-    <div class="layout-header-container">
-      <p id="large-text" class="layout-header-text comic-text">
-        Bob's Computer Repair Shop <br /><br /><br />
-      </p>
-    </div>
-  </mat-toolbar-row>
-  <mat-toolbar-row></mat-toolbar-row>
-</mat-toolbar>
+<div class="menu-bar" fxLayoutGap="20" fxLayout.xs="column">
+  <div class="navbar-container">
 
-<br /><br /><br />
+    <div class="navbar-container-left">
+      <a routerLink="/" class="navbar-link">
+        <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
+      </a>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="bcrs-bar" fxLayoutGap="20" fxLayout.xs="column">
+  Bob's Computer Repair Shop
+</div>
 
 <div fxLayout="column">
   <br /><br />
@@ -265,7 +268,9 @@
       </mat-horizontal-stepper>
 
       <div>
-        <a routerLink="/session/login" class="register-footer-link">Employee Sign In</a>
+        <button mat-button>
+          <a routerLink="/session/login" class="register-footer-link employee-button">Employee Sign In</a>
+        </button>
       </div>
 
     </mat-card-content>
