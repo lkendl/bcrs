@@ -48,7 +48,38 @@
 
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-      <form [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #sqForm>
+      <form *ngIf="selectedSecurityQuestions" [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #usernameForm>
+        <mat-card-content fxLayout="column">
+
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>{{ verifySecurityQuestionsModel.question1 }}</mat-label>
+            <input matInput required formControlName="answerToSecurityQuestion1" />
+            <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion1'].hasError('required') && form.controls['answerToSecurityQuestion1'].touched">
+              Required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>{{ verifySecurityQuestionsModel.question2 }}</mat-label>
+            <input matInput required formControlName="answerToSecurityQuestion2" />
+            <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion2'].hasError('required') && form.controls['answerToSecurityQuestion2'].touched">
+              Required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>{{ verifySecurityQuestionsModel.question3 }}</mat-label>
+            <input matInput required formControlName="answerToSecurityQuestion3" />
+            <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion3'].hasError('required') && form.controls['answerToSecurityQuestion3'].touched">
+              Required field.
+            </mat-error>
+          </mat-form-field>
+        </mat-card-content>
+
+      </form>
+
+      <!-- Previous code -->
+      <!-- <form [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #sqForm>
 
         <mat-card-content fxLayout="column">
 
@@ -70,7 +101,9 @@
           </div>
 
         </mat-card-content>
-      </form>
+      </form> -->
+
+
     </mat-card>
   </div>
 
