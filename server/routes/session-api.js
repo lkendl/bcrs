@@ -456,11 +456,7 @@ router.post('/verify/users/:userName/security-questions', async(req, res) => {
     User.findOne({ userName: req.params.userName }, function (err, user) {
       if (err) {
         console.log(err);
-        const resetPasswordMongodbErrorResponse = new ErrorResponse(
-          '500',
-          'Internal server error',
-          err,
-        );
+        const resetPasswordMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
         res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
       } else {
         console.log(user);
@@ -473,32 +469,20 @@ router.post('/verify/users/:userName/security-questions', async(req, res) => {
         user.save(function (err, updatedUser) {
           if (err) {
             console.log(err);
-            const updatedUserMongodbErrorResponse = new ErrorResponse(
-              '500',
-              'Internal server error',
-              err,
-            );
+            const updatedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
             res.status(500).send(updatedUserMongodbErrorResponse.toObject());
           } else {
             console.log(updatedUser);
-            const updatedPasswordResponse = new BaseResponse(
-              '200',
-              'Query successful',
-              updatedUser,
-            );
+            const updatedPasswordResponse = new BaseResponse(200, 'Query successful', updatedUser);
             res.json(updatedPasswordResponse.toObject());
           }
         });
       }
     });
   } catch (e) {
-    console.log(e);
-    const resetPasswordCatchError = new ErrorResponse(
-      '500',
-      'Internal server error',
-      e,
-    );
-    res.status(500).send(resetPasswordCatchError.toObject());
+      console.log(e);
+      const resetPasswordCatchError = new ErrorResponse(500, 'Internal server error', e);
+      res.status(500).send(resetPasswordCatchError.toObject());
   }
 });
 
