@@ -119,9 +119,6 @@ router.post('/signin', async(req, res) => {
  * Register
  */
 /**
- * Register
- */
-/**
  * register
  * @openapi
  * /api/session/register:
