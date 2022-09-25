@@ -341,10 +341,19 @@ router.get('/verify/users/:userName', async (req, res) => {
  *        application/json:
  *          schema:
  *            required:
+ *              - questionText1
+ *              - questionText2
+ *              - questionText3
  *              - answerText1
  *              - answerText2
  *              - answerText3
  *            properties:
+ *              questionText1:
+ *                type: string
+ *              questionText2:
+ *                type: string
+ *              questionText3:
+ *                type: string
  *              answerText1:
  *                type: string
  *              answerText2:
