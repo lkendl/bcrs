@@ -63,15 +63,14 @@ export class ResetPasswordComponent implements OnInit {
 
   // Connect VerifySecurityQuestionsComponent and VerifyUsernameFormComponent into Matstepper
 
-  @ViewChild('verifySqStep', { static: false }) verifySqStep!: VerifySecurityQuestionsComponent;
-  @ViewChild('verifyUsernameStep', { static: false }) verifyUsernameStep!: VerifyUsernameFormComponent;
+//   @ViewChild('verifySqStep', { static: false }) verifySqStep!: VerifySecurityQuestionsComponent;
+//   @ViewChild('verifyUsernameStep', { static: false }) verifyUsernameStep!: VerifyUsernameFormComponent;
 
-  get frmStepOne() {
-    return this.verifySqStep ? this.verifySqStep.form : null;
- }
+//   get frmStepOne() {
+//     return this.verifySqStep ? this.verifySqStep.form : null;
+//  }
 
- get frmStepTwo() {
-    return this.verifyUsernameStep ? this.verifyUsernameStep.form : null;
- }
-
+//  get frmStepTwo() {
+//     return this.verifyUsernameStep ? this.verifyUsernameStep.form : null;
+//  }
 }
