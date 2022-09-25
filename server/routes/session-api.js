@@ -170,7 +170,13 @@ router.post('/signin', async(req, res) => {
  *                      type: string
  *                    answerText:
  *                      type: string
- *
+ *                example:
+ *                  - questionText: string
+ *                    answerText: string
+ *                  - questionText: string
+ *                    answerText: string
+ *                  - questionText: string
+ *                    answerText: string
  *    responses:
  *      "200":
  *        description: Query successful
@@ -317,54 +323,43 @@ router.get('/verify/users/:userName', async (req, res) => {
  * verifySecurityQuestions
  * @openapi
  * /api/session/verify/users/{userName}/security-questions:
- *   post:
- *     tags:
- *       - Session
- *     summary: Verifies a user's security questions
- *     parameters:
- *       - name: userName
- *         in: path
- *         required: true
- *         description: The username requested by user
- *         schema:
- *           type: string
- *     description: Validates a user's form input matches their database answers
- *     requestBody:
- *       required: true
- *       description: User security question information
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - questionText1
- *               - questionText2
- *               - questionText3
- *               - answerText1
- *               - answerText2
- *               - answerText3
- *             properties:
- *               questionText1:
- *                 type: string
- *               questionText2:
- *                 type: string
- *               questionText3:
- *                 type: string
- *               answerText1:
- *                 type: string
- *               answerText2:
- *                 type: string
- *               answerText3:
- *                 type: string
- *     responses:
- *       '200':
- *         description: User logged in
- *       '401':
- *         description: Invalid userName and/or password
- *       '500':
- *         description: Server Exception
- *       '501':
- *         description: MongoDB Exception
+ *  post:
+ *    tags:
+ *      - Session
+ *    description: API for comparing users entered security question answers against what's saved in user document
+ *    summary: Verifies user's security question answers
+ *    parameters:
+ *      - name: userName
+ *        in: path
+ *        required: true
+ *        description: The username requested by user
+ *        schema:
+ *          type: string
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            required:
+ *              - answerText1
+ *              - answerText2
+ *              - answerText3
+ *            properties:
+ *              answerText1:
+ *                type: string
+ *              answerText2:
+ *                type: string
+ *              answerText3:
+ *                type: string
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "400":
+ *        description: Invalid username
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
  */
 router.post('/verify/users/:userName/security-questions', async(req, res) => {
     try
@@ -414,76 +409,53 @@ router.post('/verify/users/:userName/security-questions', async(req, res) => {
 /**
  * ResetPassword
  */
-/**
- * resetPassword
- * @openapi
- * /api/session/users/{userName}/reset-password:
- *   post:
- *     tags:
- *       - Session
- *     name: resetPassword
- *     description: API to reset a user password
- *     summary: resets a password
- *     parameters:
- *       - name: userName
- *         in: path
- *         required: true
- *         schema:
- *           type: string
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - password
- *             properties:
- *               password:
- *                 type: string
- *     responses:
- *       '200':
- *         description: Query successful
- *       '500':
- *         description: Server Exception
- *       '501':
- *         description: MongoDB Exception
- */
- router.post('/users/:userName/reset-password', async (req, res) => {
-  try {
-    const password = req.body.password;
+router.post('/users/:userName/reset-password', async(req, res) => {
+    try
+    {
+        const password = req.body.password;
 
-    User.findOne({ userName: req.params.userName }, function (err, user) {
-      if (err) {
-        console.log(err);
-        const resetPasswordMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-        res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        let hashedPassword = bcrypt.hashSync(password, saltRounds); // salt/hash the password
+        User.findOne({'userName': req.params.userName}, function(err, user)
+        {
+            if (err)
+            {
+                console.log(err);
+                const resetPasswordMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
+            }
+            else
+            {
+                console.log(user);
 
-        user.set({
-          password: hashedPassword,
-        });
+                let hashedPassword = bcrypt.hashSync(password, saltRounds); // salt/hash the password
 
-        user.save(function (err, updatedUser) {
-          if (err) {
-            console.log(err);
-            const updatedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-            res.status(500).send(updatedUserMongodbErrorResponse.toObject());
-          } else {
-            console.log(updatedUser);
-            const updatedPasswordResponse = new BaseResponse(200, 'Query successful', updatedUser);
-            res.json(updatedPasswordResponse.toObject());
-          }
-        });
-      }
-    });
-  } catch (e) {
-      console.log(e);
-      const resetPasswordCatchError = new ErrorResponse(500, 'Internal server error', e);
-      res.status(500).send(resetPasswordCatchError.toObject());
-  }
+                user.set({
+                    password: hashedPassword
+                });
+
+                user.save(function(err, updatedUser)
+                {
+                    if (err)
+                    {
+                        console.log(err);
+                        const updatedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(updatedUserMongodbErrorResponse.toObject());
+                    }
+                    else
+                    {
+                        console.log(updatedUser);
+                        const updatedPasswordResponse = new BaseResponse(200, 'Query successful', updatedUser);
+                        res.json(updatedPasswordResponse.toObject());
+                    }
+                })
+            }
+        })
+    }
+    catch (e)
+    {
+        console.log(e);
+        const resetPasswordCatchError = new ErrorResponse(500, 'Internal server error', e);
+        res.status(500).send(resetPasswordCatchError.toObject());
+    }
 });
 
 module.exports = router;
