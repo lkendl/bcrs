@@ -30,24 +30,26 @@
             <button class="navbar-link" routerLink="/" mat-button>Home</button>
             <button class="navbar-link" mat-button routerLink="/about">About</button>
             <button class="navbar-link" mat-button routerLink="/contact">Contact Us</button>
+            <!--
             <button class="navbar-link" mat-button routerLink="/users">Users</button>
             <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
-            <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
-            <button class="navbar-link" mat-button [matMenuTriggerFor]="menu">{{userName}}</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item routerLink="/users">
-                <mat-icon>people</mat-icon>
-                <span>Users</span>
-              </button>
-              <button mat-menu-item routerLink="/security-questions">
-                <mat-icon>security</mat-icon>
-                <span>Security Questions</span>
-              </button>
-              <button mat-menu-item (click)="signOut()">
-                  <mat-icon>exit_to_app</mat-icon>
-                  <span>Sign Out</span>
-              </button>
-            </mat-menu>
+            -->
+
+            <button class="navbar-link nav-username" mat-button [matMenuTriggerFor]="menu">{{userName}}<mat-icon>arrow_drop_down</mat-icon></button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/users">
+                  <mat-icon>people</mat-icon>
+                  <span>Users</span>
+                </button>
+                <button mat-menu-item routerLink="/security-questions">
+                  <mat-icon>security</mat-icon>
+                  <span>Security Questions</span>
+                </button>
+                <button mat-menu-item (click)="signOut()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Sign Out</span>
+                </button>
+              </mat-menu>
           </div>
         </div>
     </div>
