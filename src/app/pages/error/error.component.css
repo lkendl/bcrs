@@ -31,7 +31,7 @@
   color: #FFF;
   font-family: 'IM Fell English SC', serif;
   font-size: 20px;
-  padding-top: 10px;
+  padding-top: 7px;
   padding-left: 15px;
   height: 30px;
 }
@@ -79,12 +79,7 @@ button {
   background-color: #740001;
   color: #FFF;
 }
-/* Gryffindor Colors
-Crimson: #740001
-Red: #ae0001
-Yellow: #eeba30
-Gold: #d3a625
-Black */
+
 
 button:hover{
   background-color: #ae0001;
@@ -173,6 +168,7 @@ button:hover{
   text-align: center;
   font-size: 20px;
   padding: 0 10px;
+  margin-top: 20px;
 }
 
 /* [ref:A] */
