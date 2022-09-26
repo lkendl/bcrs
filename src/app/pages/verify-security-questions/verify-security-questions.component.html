@@ -36,7 +36,7 @@
 
       <mat-card-title>
         <h1 class="title">
-          Forgot Password (verify-security-questions.component.html [remove later])
+          Forgot Password
           <br>
           <span class="subtitle">
             Fields marked with an asterisk (*) are required.
@@ -52,7 +52,7 @@
         <mat-card-content fxLayout="column">
 
 
-          <mat-form-field fxFlex appearance="fill" [floatLabel]="getFloatLabelValue()">
+          <mat-form-field fxFlex appearance="fill">
             <mat-label>{{ this.verifySecurityQuestionsModel.question1 }}</mat-label>
             <input matInput required placeholder="Answer here" formControlName="answerToSecurityQuestion1" />
             <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion1'].hasError('required') && form.controls['answerToSecurityQuestion1'].touched">
@@ -60,7 +60,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field fxFlex appearance="fill" [floatLabel]="getFloatLabelValue()">
+          <mat-form-field fxFlex appearance="fill">
             <mat-label>{{ verifySecurityQuestionsModel.question2 }}</mat-label>
             <input matInput required placeholder="Answer here" formControlName="answerToSecurityQuestion2" />
             <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion2'].hasError('required') && form.controls['answerToSecurityQuestion2'].touched">
@@ -68,7 +68,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field fxFlex appearance="fill" [floatLabel]="getFloatLabelValue()">
+          <mat-form-field fxFlex appearance="fill">
             <mat-label>{{ verifySecurityQuestionsModel.question3 }}</mat-label>
             <input matInput required placeholder="Answer here" formControlName="answerToSecurityQuestion3" />
             <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion3'].hasError('required') && form.controls['answerToSecurityQuestion3'].touched">
@@ -86,32 +86,6 @@
       </form>
     </mat-card>
   </div>
-
-
-      <!-- Previous code -->
-      <!-- <form [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #sqForm>
-
-        <mat-card-content fxLayout="column">
-
-          <mat-form-field fxFlex appearance="fill">
-            <mat-label>SQ</mat-label>
-
-            <input matInput required formControlName="sqForm" />
-
-            <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion1'].hasError('required') && form.controls['answerToSecurityQuestion1'].touched">
-              SQ is a required field.
-            </mat-error>
-          </mat-form-field>
-
-          <br><br>
-
-          <div fxFlex fxLayoutAlign="end" class="p5">
-            <button mat-raised-button routerLink="/session/login" color="accent">Cancel</button>
-            <button mat-raised-button [disabled]="!form.valid" color="primary">Verify Security Questions</button>
-          </div>
-
-        </mat-card-content>
-      </form> -->
 
   <!-- footer -->
   <footer class="footer">

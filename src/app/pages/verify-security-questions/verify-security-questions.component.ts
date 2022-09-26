@@ -12,13 +12,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { SelectedSecurityQuestion } from 'src/app/shared/models/selected-security-question.interface';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Message } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { VerifySecurityQuestionModel } from 'src/app/shared/models/verify-security-question.interface';
-import { FloatLabelType } from '@angular/material/form-field';
 
 
 @Component({
@@ -98,17 +97,5 @@ export class VerifySecurityQuestionsComponent implements OnInit {
         console.log(e);
       }
     })
-  }
-
-  hideRequiredControl = new FormControl(false);
-  floatLabelControl = new FormControl('auto' as FloatLabelType);
-  options = this.fb.group({
-    hideRequired: this.hideRequiredControl,
-    floatLabel: this.floatLabelControl,
-  });
-
-
-  getFloatLabelValue(): FloatLabelType {
-    return this.floatLabelControl.value || 'auto';
   }
 }
