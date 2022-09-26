@@ -25,6 +25,7 @@ import { VerifyUsernameFormComponent } from '../verify-username-form/verify-user
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
+  year: number = Date.now();
 
   isAuthenticated: string;
   username: string;
