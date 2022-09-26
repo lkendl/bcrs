@@ -45,7 +45,7 @@ mat-title-parent {
   line-height: 1.5;
   width: 70%;
   padding-bottom: 20px;
-  padding-top: 35px;
+  padding-top: 20px;
 }
 
 mat-card {
@@ -71,6 +71,10 @@ mat-card-subtitle {
   padding-top: 5%;
 }
 
+#icon-container {
+  width: 75%;
+  margin: auto auto;
+}
 
 .icon-card {
   width: 50%;
