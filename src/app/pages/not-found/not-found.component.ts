@@ -21,6 +21,8 @@ import { Router } from '@angular/router';
 export class NotFoundComponent implements OnInit {
   year: number = Date.now();
   userName: string;
+  getMouseCoords = {};
+
 
   constructor(private cookieService: CookieService, private router: Router) {
     this.userName = this.cookieService.get('sessionuser') ?? '';
@@ -33,4 +35,5 @@ export class NotFoundComponent implements OnInit {
     this.cookieService.deleteAll();
     this.router.navigate(['/session/sign-in']);
   }
+
 }

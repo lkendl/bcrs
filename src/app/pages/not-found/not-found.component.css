@@ -2,7 +2,7 @@
 ============================================
 ; Tile: bcrs
 ; Author: Professor Krasso
-; Date: 14 September 2022
+; Date: 25 September 2022
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service.
@@ -13,8 +13,8 @@
 */
 .page-container {
   position: relative;
-  min-height: 100vh;
-  background-image: url('/assets/drive.jpg'), linear-gradient(0deg, rgb(255, 255, 255, 1), rgb(255, 255, 255, 0.8));
+  max-height: 100vh;
+  background-image: url('/assets/hogwarts-drawing.png'), linear-gradient(0deg, rgb(255, 255, 255, 1), rgb(255, 255, 255, 0.8));
   background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
@@ -75,6 +75,23 @@
   width: 75%;
 }
 
+button {
+  background-color: #740001;
+  color: #FFF;
+}
+/* Gryffindor Colors
+Crimson: #740001
+Red: #ae0001
+Yellow: #eeba30
+Gold: #d3a625
+Black */
+
+button:hover{
+  background-color: #ae0001;
+  color: #FFF;
+}
+
+
 /* Left Container */
 .left-container {
   /* background-image: url("../../../assets/leaves.png");
@@ -133,13 +150,26 @@
   text-decoration: underline;
 }
 
+.error-code {
+  font-size: 5vw;
+  color: #FFF;
+  font-family: 'IM Fell English SC', serif;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 25%;
+  left: 0;
+  right: 10%;
+  text-align: center;
+}
+
 .not-found-msg {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  bottom: 16%;
+  top: 68%;
   text-align: center;
   font-size: 20px;
   padding: 0 10px;
@@ -670,9 +700,14 @@
   .wind--2:after {
     width: 50vw;
   }
+
+
+
   .schnatz {
     position: absolute;
     transition-timing-function: ease-in-out;
+    margin-left: 80%;
+    margin-bottom: 22%;
   }
   .schnatz .kugel {
     width: 3vw;
