@@ -34,10 +34,20 @@
             <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
             <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
             <button class="navbar-link" mat-button [matMenuTriggerFor]="menu">{{userName}}</button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item>Item 1</button>
-                <button mat-menu-item>Item 2</button>
-              </mat-menu>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/users">
+                <mat-icon>people</mat-icon>
+                <span>Users</span>
+              </button>
+              <button mat-menu-item routerLink="/security-questions">
+                <mat-icon>security</mat-icon>
+                <span>Security Questions</span>
+              </button>
+              <button mat-menu-item (click)="signOut()">
+                  <mat-icon>exit_to_app</mat-icon>
+                  <span>Sign Out</span>
+              </button>
+            </mat-menu>
           </div>
         </div>
     </div>

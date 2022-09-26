@@ -91,7 +91,6 @@ button:hover{
   color: #FFF;
 }
 
-
 /* Left Container */
 .left-container {
   /* background-image: url("../../../assets/leaves.png");
@@ -161,7 +160,7 @@ button:hover{
   left: 0;
   right: 10%;
   text-align: center;
-  margin-top: 20px;
+  transform: rotate(-10deg);
 }
 
 .not-found-msg {
