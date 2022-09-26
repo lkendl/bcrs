@@ -694,15 +694,30 @@
   .wind--2:after {
     width: 50vw;
   }
-
-
-
   .schnatz {
+    animation: schnatz 2s linear infinite;
     position: absolute;
     transition-timing-function: ease-in-out;
     margin-left: 80%;
     margin-bottom: 22%;
   }
+  .schnatz:after {
+    position: absolute;
+    display: block;
+    content: "";
+    position: absolute;
+    background-color: #e5e5e5;
+    margin-left: 80%;
+    margin-bottom: 22%;
+  }
+@keyframes schnatz {
+  0%, 100% {
+    bottom: 25%;
+  }
+  50% {
+    bottom: 50%;
+  }
+}
   .schnatz .kugel {
     width: 3vw;
     height: 3vw;
