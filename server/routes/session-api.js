@@ -418,6 +418,41 @@ router.post('/verify/users/:userName/security-questions', async(req, res) => {
 /**
  * ResetPassword
  */
+/**
+ * resetPassword
+ * @openapi
+ * /api/session/users/{userName}/reset-password:
+ *   post:
+ *     tags:
+ *       - Session
+ *     name: resetPassword
+ *     description: API to reset a user password
+ *     summary: Resets a password
+ *     parameters:
+ *       - name: userName
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - password
+ *             properties:
+ *               password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
+ */
 router.post('/users/:userName/reset-password', async(req, res) => {
     try
     {
