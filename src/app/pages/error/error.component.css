@@ -63,7 +63,7 @@
 }
 
 .navbar-link {
-  font-size: 1em;
+  font-size: 1.4em;
   font-weight: lighter;
   font-family: 'Marcellus', sans-serif;
   color: #FFF;
@@ -75,17 +75,15 @@
   width: 75%;
 }
 
-button {
+.back-home-button {
   background-color: #740001;
   color: #FFF;
 }
 
-
-button:hover{
+.back-home-button:hover{
   background-color: #ae0001;
   color: #FFF;
 }
-
 
 /* Left Container */
 .left-container {
