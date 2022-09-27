@@ -42,7 +42,8 @@ export class ResetPasswordComponent implements OnInit {
     private cookieService: CookieService,
     private sessionService: SessionService) {
     this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated') ?? '';
-    this.username = this.route.snapshot.queryParamMap.get('username') ?? '';
+    this.username = this.route.snapshot.queryParamMap.get('userName') ?? '';
+    console.log('This is from the constructor' + this.username);
   }
 
   ngOnInit(): void {
@@ -50,6 +51,9 @@ export class ResetPasswordComponent implements OnInit {
 
   updatePassword() {
     const password = this.form.controls['password'].value;
+
+    console.log('This is the updatePassword API');
+    console.log(this.username);
 
     this.sessionService.updatePassword(password, this.username).subscribe({
       next: (res) => {
