@@ -28,7 +28,7 @@ export class ResetPasswordComponent implements OnInit {
   year: number = Date.now();
 
   isAuthenticated: string;
-  username: string;
+  userName: string;
 
   form: FormGroup = this.fb.group({
     password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])]
@@ -42,8 +42,8 @@ export class ResetPasswordComponent implements OnInit {
     private cookieService: CookieService,
     private sessionService: SessionService) {
     this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated') ?? '';
-    this.username = this.route.snapshot.queryParamMap.get('userName') ?? '';
-    console.log('This is from the constructor' + this.username);
+    this.userName = this.route.snapshot.queryParamMap.get('userName') ?? '';
+    console.log('This is from the constructor' + this.userName);
   }
 
   ngOnInit(): void {
@@ -53,11 +53,11 @@ export class ResetPasswordComponent implements OnInit {
     const password = this.form.controls['password'].value;
 
     console.log('This is the updatePassword API');
-    console.log(this.username);
+    console.log(this.userName);
 
-    this.sessionService.updatePassword(password, this.username).subscribe({
+    this.sessionService.updatePassword(password, this.userName).subscribe({
       next: (res) => {
-      this.cookieService.set('sessionuser', this.username, 1);
+      this.cookieService.set('sessionuser', this.userName, 1);
       this.router.navigate(['/']);
       },
       error: (e) => {
@@ -65,17 +65,4 @@ export class ResetPasswordComponent implements OnInit {
       }
     })
   }
-
-  // Connect VerifySecurityQuestionsComponent and VerifyUsernameFormComponent into Matstepper
-
-//   @ViewChild('verifySqStep', { static: false }) verifySqStep!: VerifySecurityQuestionsComponent;
-//   @ViewChild('verifyUsernameStep', { static: false }) verifyUsernameStep!: VerifyUsernameFormComponent;
-
-//   get frmStepOne() {
-//     return this.verifySqStep ? this.verifySqStep.form : null;
-//  }
-
-//  get frmStepTwo() {
-//     return this.verifyUsernameStep ? this.verifyUsernameStep.form : null;
-//  }
 }
