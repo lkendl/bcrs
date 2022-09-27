@@ -1,0 +1,85 @@
+<!--
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 21 September 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service. 
+===========================================
+-->
+
+<div class="page-container">
+
+  <div class="menu-bar" fxLayoutGap="20" fxLayout.xs="column">
+    <div class="navbar-container">
+      <div class="navbar-container-left">
+        <a routerLink="/" class="navbar-link">
+          <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bcrs-bar" fxLayoutGap="20" fxLayout.xs="column">
+    Bob's Computer Repair Shop
+  </div>
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55" fxFlex="100">
+
+    <br><br>
+
+    <mat-card class="mat-elevation-z4 card-container">
+
+      <mat-card-title>
+        <h1 class="title">
+          Forgot Password
+          <br>
+          <span class="subtitle">
+            Fields marked with an asterisk (*) are required.
+          </span>
+        </h1>
+      </mat-card-title>
+
+      <br><br>
+
+      <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+      <form [formGroup]="form" (ngSubmit)="verifyUser()" #userNameForm>
+
+        <mat-card-content fxLayout="column">
+
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Username</mat-label>
+
+            <input matInput required formControlName="userName" />
+
+            <mat-error class="error" *ngIf="form.controls['userName'].hasError('required') && form.controls['userName'].touched">
+              Username is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <br><br>
+
+          <div fxFlex fxLayoutAlign="end" class="p5">
+            <button mat-raised-button routerLink="/session/login" color="accent">Cancel</button>
+            <button mat-raised-button [disabled]="!form.valid" color="primary">Forgot Password</button>
+          </div>
+
+        </mat-card-content>
+      </form>
+    </mat-card>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <mat-toolbar class="footer-content">
+      <p>
+        &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
+      </p>
+    </mat-toolbar>
+  </footer>
+
+</div>
+</div>

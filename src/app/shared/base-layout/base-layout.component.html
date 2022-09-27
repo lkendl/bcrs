@@ -8,40 +8,108 @@
 ; service repair fees, generates invoices, and tracks purchases by service. 
 ===========================================
 -->
+<body class="gryffindor-theme">
+  <div class="page-container">
 
-<div fxLayout="column">
+    <div fxLayout="column">
 
-  <!-- navigation -->
-  <nav fxFlex>
-    <mat-toolbar>
-      <div class="navbar-container">
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+      <!-- navigation -->
+      <div class="menu-bar" fxLayoutGap="20" fxLayout.xs="column">
+          <div class="navbar-container">
 
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
-        <button class="navbar-link" mat-button routerLink="/users">Users</button>
-        <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
-        <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
+            <div class="navbar-container-left">
+              <a routerLink="/" class="navbar-link">
+                <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
+              </a>
+            </div>
+
+            <div class="navbar-container-right">
+              <button class="navbar-link" routerLink="/" mat-button>Home</button>
+              <button class="navbar-link" mat-button routerLink="/about">About</button>
+              <button class="navbar-link" mat-button routerLink="/contact">Contact Us</button>
+              <!--
+              <button class="navbar-link" mat-button routerLink="/users">Users</button>
+              <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
+              -->
+
+              <button class="navbar-link nav-username" mat-button [matMenuTriggerFor]="menu">{{userName}}<mat-icon>arrow_drop_down</mat-icon></button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item routerLink="/users">
+                    <mat-icon>people</mat-icon>
+                    <span>Users</span>
+                  </button>
+                  <button mat-menu-item routerLink="/security-questions">
+                    <mat-icon>security</mat-icon>
+                    <span>Security Questions</span>
+                  </button>
+                  <button mat-menu-item (click)="signOut()">
+                      <mat-icon>exit_to_app</mat-icon>
+                      <span>Sign Out</span>
+                  </button>
+                </mat-menu>
+
+            </div>
+          </div>
       </div>
 
-    </mat-toolbar>
-  </nav>
+      <div class="bcrs-bar" fxLayoutGap="20" fxLayout.xs="column">
+        Bob's Computer Repair Shop
+      </div>
 
-  <!-- main content -->
-  <div fxFlex>
-    <main class="main-content" fxFlex="100%;">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
+      <!-- Left container -->
+      <!-- <div fxFlex="10">
+        <div class="left-container">
 
-  <!-- footer -->
-  <div fxFlex>
-    <footer class="footer">
-      <mat-toolbar class="footer-content">
-        <p>
-          &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-        </p>
-      </mat-toolbar>
-    </footer>
+          <img class="img-fluid" src="/assets/logo.png" alt="logo">
+          <br><br>
+
+          <div class="toolbar-left">Workspace</div>
+            <button mat-button>
+              <mat-icon>laptop</mat-icon>
+            </button>
+
+            <div class="toolbar-left">Members</div>
+            <button mat-button>
+              <mat-icon>person</mat-icon>
+            </button>
+            <button mat-button>
+              <mat-icon>person</mat-icon>
+            </button>
+            <button mat-button>
+              <mat-icon>person_add</mat-icon>
+            </button>
+
+            <div class="toolbar-left">Settings</div>
+            <button mat-button>
+              <mat-icon>settings</mat-icon>
+            </button>
+        </div>
+      </div> -->
+
+      <!-- main content -->
+      <div fxLayout="row wrap">
+        <div fxFlex>
+          <mat-card class="content-container" color="accent, 50">
+
+            <mat-card-content>
+              <router-outlet></router-outlet>
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div fxFlex>
+        <footer class="footer">
+          <mat-toolbar class="footer-content">
+            <p>
+              &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
+            </p>
+          </mat-toolbar>
+        </footer>
+      </div>
+    </div>
+
   </div>
-</div>
+</body>

@@ -9,7 +9,33 @@
 ===========================================
 */
 
-/* You can add global styles to this file, and also import other style files */
+/* Gryffindor Colors
+Crimson: #740001
+Red: #ae0001
+Yellow: #eeba30
+Gold: #d3a625
+Black */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Available Font Families
+font-family: 'Fauna One', serif;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Marcellus', serif;
+font-family: 'Prociono', serif;
+font-family: 'Raleway', sans-serif; */
+
+html, body {
+  height: 100%;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-card-title {
+  font-family: 'Marcellus', serif;
+}

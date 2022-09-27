@@ -1,0 +1,62 @@
+<!--
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 20 September 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service.
+===========================================
+-->
+
+<div fxLayout="column">
+
+  <mat-card class="mat-elevation-z0" style="overflow:hidden;">
+
+    <mat-card-title style="text-align:center;margin-bottom:70px;">Contact</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+
+    <mat-card-content>
+
+      <div fxLayout="row" class="div-row">
+
+        <div fxLayout="column" class="div-column">
+          <mat-icon class="icon-display">location_on</mat-icon>
+          <br><br>
+          <div class="div-text">
+            Bob's Computer Repair Shop
+            <br>
+            Address: <span style="font-style:italic;color:#ecb939;">123 Magic Ln</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" class="div-column">
+          <mat-icon class="icon-display">phone</mat-icon>
+          <div class="div-text">
+            <br><br>
+            Direct: <span style="color:#ecb939;">222-222-2222</span>
+            <br>
+            Toll-free: 1-800-222-2222
+          </div>
+        </div>
+
+      </div>
+
+      <div class="div-column-lower">
+        <mat-icon class="icon-display-owl" svgIcon="owl"></mat-icon>
+        <br><br>
+        <div class="div-text">
+          <span style="color:#ecb939;">125 Diagon Alley</span>
+          <br>
+          Hogwarts, Britain
+        </div>
+      </div>
+
+      <div class="div-text" style="margin-top:100px;">
+        Visit us <span routerLink="/" style="color:#ecb939;cursor: pointer;">online</span> or at one of our many locations throughout the Hogwarts Metro Area
+        <!-- hogwarts image from https://harrypotter.fandom.com/wiki/Hogwarts_School_of_Witchcraft_and_Wizardry -->
+        <img src="assets/hogwarts_60x60.png" alt="">
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

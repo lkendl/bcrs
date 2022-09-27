@@ -20,8 +20,11 @@ import { Router } from '@angular/router';
 })
 export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
+  userName: string;
 
-  constructor(private cookieService: CookieService, private router: Router) { }
+  constructor(private cookieService: CookieService, private router: Router) {
+    this.userName = this.cookieService.get('sessionuser') ?? '';
+  }
 
   ngOnInit(): void {
   }

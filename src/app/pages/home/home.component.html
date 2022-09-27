@@ -6,14 +6,132 @@
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service.
+; Resources:
+; IconScout: https://iconscout.com/icons/ (Icons)
 ===========================================
 -->
 
-<div fxLayout="column" class="main-welcome">
-  <h1 class="title">
-    Welcome to WEB 450's - Bob's Computer Repair Shop<br />
-    <span class="subtitle">
-      Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait until the last minute to begin working on your tasks.
-    </span>
-  </h1>
+<div fxLayout="column">
+
+  <mat-card class="mat-elevation-z0 square-border primary-card" style="overflow:hidden">
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="center center" class="mat-title-parent">
+
+        <mat-card-title id="home-title">
+          Welcome to Bob's Computer Repair Shop!
+        </mat-card-title>
+
+      </div>
+    </div>
+  </mat-card>
+
+
+  <mat-card class="mat-elevation-z0 square-border accent-card" style="overflow:hidden">
+
+    <mat-card-title>Services We Offer</mat-card-title>
+    <br /><br />
+
+    <mat-card-content id="icon-container">
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="center center">
+
+          <div class="icon-card">
+            <div>
+              <img src="/assets/icons/password.png" class="icon">
+            </div>
+            <div class="icon-subtitle">
+              <span>Password Reset</span>
+            </div>
+          </div>
+
+          <div class="icon-card">
+            <div>
+              <img src="/assets/icons/spyware.png" class="icon">
+            </div>
+            <div class="icon-subtitle">
+              <span>Spyware Removal</span>
+            </div>
+          </div>
+
+          <div class="icon-card">
+            <div>
+              <img src="/assets/icons/ram.png" class="icon">
+            </div>
+            <div class="icon-subtitle">
+              <span>Ram Upgrade</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center">
+
+          <div class="icon-card">
+            <div>
+              <img src="/assets/icons/install.png" class="icon">
+            </div>
+            <div class="icon-subtitle">
+              <span>Software Installation</span>
+            </div>
+          </div>
+
+          <div class="icon-card">
+            <div>
+              <img src="/assets/icons/tune-up.png" class="icon">
+            </div>
+            <div class="icon-subtitle">
+              <span>PC Tune-Up</span>
+            </div>
+          </div>
+
+          <div class="icon-card">
+            <div>
+              <img src="/assets/icons/keyboard.png" class="icon">
+            </div>
+            <div class="icon-subtitle">
+              <span>Keyboard Cleaning</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center">
+
+          <div class="icon-card" style="margin-bottom:5px;">
+            <div>
+              <img src="/assets/icons/hard-disk.png" class="icon">
+            </div>
+            <div class="icon-subtitle">
+              <span>Disk Clean-up</span>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mat-elevation-z0" style="overflow:hidden">
+
+    <mat-card-content>
+
+      <div fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="row" class="div-row">
+
+        <div fxLayout="column" class="div-column">
+          <div class="div-text">
+
+            <br /><br />
+
+            <a mat-raised-button class="button" routerLink="/contact">Fix my computer!</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </mat-card-content>
+  </mat-card>
+
 </div>

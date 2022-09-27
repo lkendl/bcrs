@@ -51,7 +51,7 @@ export class SigninComponent implements OnInit {
     this.sessionService.signin(userName, password).subscribe({
       next: (res) => {
         console.log(res);
-        this.cookieService.set('sessionuser', res.data.username, 1);
+        this.cookieService.set('sessionuser', res.data.userName, 1);
         this.router.navigate(['/']);
       },
       error: (e) => {

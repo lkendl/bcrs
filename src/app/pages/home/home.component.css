@@ -9,16 +9,109 @@
 ===========================================
 */
 
-.main-welcome {
-  margin-top: 30px;
+/* Gryffindor Colors
+Crimson: #740001
+Red: #ae0001
+Yellow: #eeba30
+Gold: #d3a625
+Black */
+
+/* Available Font Families
+font-family: 'Fauna One', serif;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Marcellus', serif;
+font-family: 'Prociono', serif;
+font-family: 'Raleway', sans-serif; */
+
+.square-border {
+  border-radius: 0px 0px 0px 0px;
 }
 
-.title {
-  text-align: center;
-  font-weight: lighter;
+.primary-card {
+  background-color: #740001;
+  color: #FFF;
 }
 
-.subtitle {
+mat-title-parent {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+#home-title {
   text-align: center;
-  font-size: 14px;
+  font-family: 'Marcellus', serif;
+  font-size: 2.5em;
+  line-height: 1.5;
+  width: 70%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+mat-card {
+  margin: -16px;
+  min-height: 150px;
+}
+
+mat-card-title {
+  text-align: center;
+  font-family: 'Marcellus', serif;
+  font-size: 2em;
+  line-height: .9;
+  padding-top: 5%;
+}
+
+mat-card-subtitle {
+  text-align: center;
+  color: #000;
+  font-family: 'Marcellus', serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: .9;
+  padding-top: 5%;
+}
+
+#icon-container {
+  width: 75%;
+  margin: auto auto;
+}
+
+.icon-card {
+  width: 50%;
+  text-align: center;
+  padding: 15px;
+}
+
+.icon-card:hover {
+  transform: scale(1.1);
+  transition: 100ms ease-in;
+}
+
+.icon {
+  width: 100px;
+  /* If icons need to be inverted to white, uncomment below */
+  /* -webkit-filter: invert(1);
+   filter: invert(1); */
+}
+
+.icon-subtitle {
+  font-family: 'Marcellus', serif;
+  font-size: 18px;
+  margin-top: -5px;
+}
+
+.button {
+  background-color: #740001;
+  color: #FFF;
+  padding: 20px;
+  font-family: 'Marcellus', serif;
+  font-size: 1.5em;
+}
+
+.button:hover {
+  background-color: #ae0001;
+  color: #FFF;
+  padding: 20px;
+  font-family: 'Marcellus', serif;
+  font-size: 1.5em;
 }

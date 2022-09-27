@@ -12,17 +12,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 /**
  * Components
  */
 // Pages
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
@@ -30,7 +33,6 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 // Shared
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
@@ -44,15 +46,21 @@ import { CookieService } from 'ngx-cookie-service';
  * Angular material imports
  */
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatList, MatListModule } from '@angular/material/list';
+import { MatMenu } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+// Dialog
 import { DialogModule } from '@angular/cdk/dialog';
 
 /**
@@ -60,16 +68,23 @@ import { DialogModule } from '@angular/cdk/dialog';
  */
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
-import { TableModule } from 'primeng/table'
-
+import { TableModule } from 'primeng/table';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 
 @NgModule({
   declarations: [
+    AboutComponent,
     AppComponent,
     AuthLayoutComponent,
     BaseLayoutComponent,
+    ContactComponent,
     DeleteRecordDialogComponent,
     HomeComponent,
+    NotFoundComponent,
     SecurityQuestionCreateComponent,
     SecurityQuestionDetailsComponent,
     SecurityQuestionListComponent,
@@ -77,7 +92,11 @@ import { TableModule } from 'primeng/table'
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
-    NotFoundComponent
+    RegisterComponent,
+    VerifySecurityQuestionsComponent,
+    ResetPasswordComponent,
+    ErrorComponent,
+    VerifyUsernameFormComponent
   ],
   imports: [
     AppRoutingModule,
@@ -93,7 +112,10 @@ import { TableModule } from 'primeng/table'
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatMenuModule,
+    MatSelectModule,
+    MatStepperModule,
     MatTableModule,
     MatToolbarModule,
     MessageModule,

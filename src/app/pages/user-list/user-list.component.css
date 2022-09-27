@@ -9,6 +9,15 @@
 ===========================================
 */
 
+
 .mat-cell {
   padding: 10px 25px;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+mat-card {
+  margin: auto auto;
 }

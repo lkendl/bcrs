@@ -10,13 +10,13 @@
 -->
 
 <div fxLayout="column">
-  <mat-card>
+  <mat-card class="mat-elevation-z0" style="width:95%;">
     <mat-card-title>Users Configuration</mat-card-title>
     <mat-card-subtitle>
       <button mat-button routerLink="/users/create/new" color="accent">Create</button>
     </mat-card-subtitle>
 
-    <mat-card-content *ngIf="users">
+    <mat-card-content *ngIf="users" class="mat-card-content">
       <table mat-table [dataSource]="users">
 
         <ng-container matColumnDef="userName">

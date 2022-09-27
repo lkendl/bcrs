@@ -6,45 +6,49 @@
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service.
+; Code Attribution:
+;   box border design from CodePen by Swarup Kumar Kulia [ref:A]
+;     https://codepen.io/uiswarup/pen/RBByzW
 ===========================================
 -->
-<mat-toolbar color="primary">
-  <mat-toolbar-row></mat-toolbar-row>
-  <mat-toolbar-row>
-    <div class="layout-header-container">
-      <p class="layout-header-text">
-        Bob's Computer Repair Shop <br />
-        <mat-icon>build</mat-icon>
-      </p>
-    </div>
-  </mat-toolbar-row>
-  <mat-toolbar-row></mat-toolbar-row>
-  <mat-toolbar-row></mat-toolbar-row>
-</mat-toolbar>
 
-  <div fxLayout="row wrap" fxLayoutAlign="center start">
-    <div fxFlex.gt-sm="55" fxFlex="100">
 
-      <br /><br />
+<!-- [ref:A] -->
+<div class="box">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 
-      <mat-card class="card-container mat-elevation-z4">
-        <mat-card-title class="mat-headline card-title">Employee Sign in</mat-card-title>
+  <div class="content">
+  <!-- /[ref:A] -->
+    <div fxLayout="column">
 
-        <mat-card-subtitle style="text-align: center;" class="mat-headline">You must enter a valid username and password to proceed.
-        </mat-card-subtitle>
+      <div fxFlex>
 
-        <br />
+        <mat-card-title>
+          <!-- <div style="padding-bottom:10px;">Bob's Computer Repair Shop</div> -->
+          <div>Bob's Computer Repair Shop</div>
+          <br>
+          <img class="img-fluid" src="/assets/logo.png" width="80" height="89">
+          <br>
+          <!-- <div style="padding-top:5px;">Sign In</div> -->
+          <div>Sign In</div>
+          <br>
+        </mat-card-title>
 
-        <mat-card-content>
-          <!-- If there is an error message -->
+        <!--
+          image created from
+          https://harrypotter.fandom.com/wiki/Hufflepuff
+          https://www.flaticon.com/free-icons/labour-day" Labour day icons created by Smashicons from Flaticon
+        -->
 
-          <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+          <p-messages class="msg-error" [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-          <mat-card class="mat-elevation-z0">
-
+          <div class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
             <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset()">
 
-              <mat-card-content fxLayout="column" fxLayoutGap="10px">
+              <div fxLayout="column" fxLayoutGap="10px">
 
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Username</mat-label>
@@ -68,29 +72,31 @@
                   </mat-error>
                 </mat-form-field>
 
-                </mat-card-content>
+              </div>
 
-                <mat-card-actions>
-                  <button type="submit" [disabled]="!signinForm.valid" fxFlex mat-raised-button color="accent">Submit</button>
-                </mat-card-actions>
+              <br>
 
-                <br />
+              <mat-card-actions>
+                <button type="submit" [disabled]="!signinForm.valid" fxFlex mat-raised-button color="accent" class="submit-button">Submit</button>
+              </mat-card-actions>
 
-                <div fxLayout="row">
-                  <div class="signin-footer-container">
-                    <div fxFlex class="center-text">
-                      <a class="signin-footer-link" routerLink="/session/register">Create new account</a>
-                    </div>
+              <br />
 
-                    <div fxFlex class="center-text">
-                      <a class="signin-footer-link" routerLink="/session/forgot">Forgot password?</a>
-                    </div>
+              <div fxLayout="row">
+                  <div fxFlex>
+                    <button mat-button routerLink="/session/register">Create new account</button>
                   </div>
 
-                </div>
+                  <div fxFlex>
+                    <button mat-button routerLink="/session/forgot">Forgot password?</button>
+                  </div>
+              </div>
+
             </form>
-          </mat-card>
-        </mat-card-content>
-      </mat-card>
+          </div>
+
+      </div>
     </div>
+
   </div>
+</div>
