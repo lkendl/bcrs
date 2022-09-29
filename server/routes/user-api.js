@@ -81,7 +81,7 @@ router.get('/', async (req, res) => {
  *    tags:
  *      - Users
  *    description: API for returning a single user object from MongoDB
- *    summary: Returns an user document
+ *    summary: Returns a user document
  *    parameters:
  *      - name: id
  *        in: path
@@ -423,6 +423,59 @@ router.get('/:userName/security-questions', async(req, res) => {
         const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
         res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
     }
+});
+
+/**
+ * FindUserRole
+ */
+/**
+ * findUserRole
+ * @openapi
+ * /api/{userName}/role:
+ *  get:
+ *    tags:
+ *      - Users
+ *    description: API for returning a single user role object from MongoDB
+ *    summary: Returns a user role document
+ *    parameters:
+ *      - name: userName
+ *        in: path
+ *        required: true
+ *        description: The username requested by user
+ *        schema:
+ *          type: string
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
+ */
+ router.get('/:userName/role', async(req, res) => {
+  try
+  {
+      User.findOne({'userName': req.params.userName}, function(err, user) {
+          if (err)
+          {
+              console.log(err);
+              const findUserRoleMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+              res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
+          }
+          else
+          {
+              console.log(user);
+              const findUserRoleResponse = new BaseResponse(200, 'Query successful', user);
+              res.json(findUserRoleResponse.toObject());
+          }
+      })
+  }
+  catch (e)
+  {
+      console.log(e);
+      const findUserRoleCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
+      res.status(500).send(findUserRoleCatchErrorResponse.toObject());;
+  }
 });
 
 module.exports = router;

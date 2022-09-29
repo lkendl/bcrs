@@ -45,7 +45,7 @@ export class RoleService {
     return this.http.delete(`/api/roles/${roleId}`);
   }
 
-  findUserRole(roleId: string): Observable<any> {
+  findUserRole(userName: string): Observable<any> {
     console.log('userName from the findUserRole API' + userName);
     return this.http.get(`/api/users/${userName}/role`);
   }
