@@ -14,6 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/models/user.interface";
+import { RoleService } from './../../shared/services/role.service';
 
 @Component({
   selector: 'app-user-details',
@@ -26,21 +27,8 @@ export class UserDetailsComponent implements OnInit {
   form!: FormGroup;
   roles: any;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService, private roleService: RoleService ) {
     this.userId = this.route.snapshot.paramMap.get('userId');
-
-  //   this.userService.findUserById(this.userId!).subscribe(res => {
-  //     this.user = res['data'];
-  //   }, err => {
-  //     console.log(err);
-  //   }, () => {
-  //     this.form.controls['firstName'].setValue(this.user.firstName);
-  //     this.form.controls['lastName'].setValue(this.user.lastName);
-  //     this.form.controls['phoneNumber'].setValue(this.user.phoneNumber);
-  //     this.form.controls['address'].setValue(this.user.address);
-  //     this.form.controls['email'].setValue(this.user.email);
-  //   });
-  // }
 
   // UPDATED SUBSCRIBE CODE
   this.userService.findUserById(this.userId!).subscribe({
@@ -56,6 +44,17 @@ export class UserDetailsComponent implements OnInit {
       this.form.controls['phoneNumber'].setValue(this.user.phoneNumber);
       this.form.controls['address'].setValue(this.user.address);
       this.form.controls['email'].setValue(this.user.email);
+
+      console.log(this.user);
+
+      this.roleService.findAllRoles().subscribe({
+        next: (res) => {
+          this.roles = res.data;
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      })
     }
   });
 }
@@ -78,13 +77,6 @@ export class UserDetailsComponent implements OnInit {
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value
     };
-
-  //   this.userService.updateUser(this.userId!, updatedUser).subscribe(res => {
-  //     this.router.navigate(['/users']);
-  //   }, err => {
-  //     console.log(err);
-  //   });
-  // }
 
   // UPDATED SUBSCRIBE CODE
   this.userService.updateUser(this.userId!, updatedUser).subscribe({
