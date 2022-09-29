@@ -1,0 +1,26 @@
+<!--
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 28 September 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service.
+===========================================
+-->
+
+<div fxLayout="column" fxLayoutGap="20px">
+  <div fxFlex>
+    <h1 class="title">
+      Welcome to the Purchases by Service Page! <br />
+      <span class="subtitle">
+        You can hide or show items by selecting their label.
+      </span>
+    </h1>
+  </div>
+
+  <div fxFlex>
+    <p-chart height='450' width='450' type='pie' [data]='data'></p-chart>
+  </div>
+  <br />
+</div>
