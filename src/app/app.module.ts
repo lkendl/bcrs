@@ -77,7 +77,7 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ButtonModule } from 'primeng/button';
 import { RoleListComponent } from './pages/role-list/role-list.component';
