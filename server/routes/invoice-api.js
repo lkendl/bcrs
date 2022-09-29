@@ -12,6 +12,55 @@
 /**
  * CreateInvoice
  */
+/**
+ * createInvoice
+ * @openapi
+ * /api/invoices/{userName}:
+ *   post:
+ *     tags:
+ *       - Invoices
+ *     description: API to create new invoice objects
+ *     summary: Creates a new invoice object
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - userName
+ *               - lineItems
+ *               - partsAmount
+ *               - laborAmount
+ *               - lineItemTotal
+ *               - total
+ *             properties:
+ *              userName:
+ *                type: string
+ *              lineItems:
+ *                type: array
+ *                items:
+ *                  type: object
+ *                  properties:
+ *                    title:
+ *                      type: string
+ *                    price:
+ *                      type: number
+ *              partsAmount:
+ *                type: number
+ *              laborAmount:
+ *                type: number
+ *              lineItemTotal:
+ *                type: number
+ *              total:
+ *                type: number
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Internal server error
+ *       '501':
+ *         description: MongoDB Exception
+ */
 router.post('/:userName', async(req, res) => {
   try
   {
