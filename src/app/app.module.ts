@@ -83,6 +83,7 @@ import { ButtonModule } from 'primeng/button';
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     VerifyUsernameFormComponent,
     RoleListComponent,
     InvoiceSummaryDialogComponent,
-    PurchasesByServiceGraphComponent
+    PurchasesByServiceGraphComponent,
+    RoleDetailsComponent
   ],
   imports: [
     AppRoutingModule,
