@@ -24,7 +24,7 @@ import { Message } from 'primeng/api';
 })
 export class RoleListComponent implements OnInit {
 
-  roles: role[];
+  roles: Role[];
   errorMessages: Message[];
 
   roleForm: FormGroup = this.fb.group({
@@ -81,7 +81,7 @@ export class RoleListComponent implements OnInit {
         this.roleService.deleteRole(roleId).subscribe({
           next: (res) => {
             console.log('Security question deleted successfully!');
-            this.roles = this.roles.filter(role = > role._id !== roleId);
+            this.roles = this.roles.filter(role => role.id !== roleId); //changed _id to id
           },
           error: (e) => {
             console.log(e);
