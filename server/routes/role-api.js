@@ -87,7 +87,7 @@ router.delete('/:roleId', async (req, res) => {
                       $lookup:
                         {
                           from: 'roles',
-                          localField: 'role.role',
+                          localField: 'role.text', // may be role.role
                           foreignField: 'text',
                           as: 'userRoles'
                         }
