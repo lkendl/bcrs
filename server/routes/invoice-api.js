@@ -53,5 +53,72 @@ router.post('/:userName', async(req, res) => {
 /**
  * FindPurchasesByService
  */
+/**
+ * findPurchasesByService
+ * @openapi
+ * /api/purchases-graph:
+ *  get:
+ *    tags:
+ *      - Invoices
+ *    description: API for finding purchases by service from MongoDB.
+ *    summary: Returns purchases by service document
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
+ */
+ router.get('/purchases-graph', async(req, res) => {
+  try
+  {
+    Invoice.aggregate([
+      {
+        $unwind: '$lineItems'
+      },
+      {
+        $group:
+        {
+          '_id':
+          {
+            'title': '$lineItems.title',
+            'price': '$lineItems.price'
+          },
+          'count':
+          {
+            $sum: 1
+          }
+        }
+      },
+      {
+        $sort:
+        {
+          '_id.title': 1
+        }
+      }
+    ], function(err, purchaseGraph)
+    {
+      if (err)
+      {
+        console.log(err);
+        const findPurchasesByServiceGraphMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+        res.status(500).send(findPurchasesByServiceGraphMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(err);
+        const findPurchasesByServiceGraphResponse = new BaseResponse(200, 'Query successful', invoice);
+        res.json(findPurchasesByServiceGraphResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const findPurchasesByServiceGraphCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+    res.status(500).send(findPurchasesByServiceGraphCatchErrorResponse.toObject());
+  }
+});
 
 module.exports = router;
