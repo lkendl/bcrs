@@ -33,6 +33,11 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 
 // Shared
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
@@ -59,6 +64,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 
 // Dialog
 import { DialogModule } from '@angular/cdk/dialog';
@@ -69,11 +76,12 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
-import { RegisterComponent } from './pages/register/register.component';
-import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { ErrorComponent } from './pages/error/error.component';
-import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+import { ChartModule } from 'primeng/chart';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
 
 @NgModule({
   declarations: [
@@ -96,19 +104,26 @@ import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify
     VerifySecurityQuestionsComponent,
     ResetPasswordComponent,
     ErrorComponent,
-    VerifyUsernameFormComponent
+    VerifyUsernameFormComponent,
+    RoleListComponent,
+    InvoiceSummaryDialogComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    ButtonModule,
+    ChartModule,
+    ConfirmDialogModule,
     DialogModule,
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDialogModule,
+    MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
