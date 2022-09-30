@@ -21,4 +21,5 @@ export interface User {
     phoneNumber: string;
     address: string;
     email: string;
+    role: string; // Is this right?
 }
