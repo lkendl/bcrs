@@ -28,6 +28,7 @@ export class RoleGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    // Use pipe and map to handle promise service.
     return this.roleService.findUserRole(this.cookieService.get('sessionuser')).pipe(map(res => {
       this.role = res.data;
 
