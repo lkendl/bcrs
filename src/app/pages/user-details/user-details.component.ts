@@ -26,7 +26,7 @@ import { Message } from "primeng/api";
 export class UserDetailsComponent implements OnInit {
 
   user: User;
-  userId: string | null;
+  userId: string;
   errorMessages: Message[];
   roles: Role[];
 
@@ -61,10 +61,11 @@ export class UserDetailsComponent implements OnInit {
       this.form.controls['phoneNumber'].setValue(this.user.phoneNumber);
       this.form.controls['address'].setValue(this.user.address);
       this.form.controls['email'].setValue(this.user.email);
-      this.form.controls['role'].setValue(this.user.role?.text ?? 'standard');
+      this.form.controls['role'].setValue(this.user.role?.text ?? 'standard'); // If text is null, default to 'standard'
 
       console.log(this.user);
 
+      // API to call roleService to retrieve list roles in database
       this.roleService.findAllRoles().subscribe({
         next: (res) => {
           this.roles = res.data;
@@ -87,13 +88,14 @@ export class UserDetailsComponent implements OnInit {
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
+     // Create the role object with the input from the form control.
       role: {
         text: this.form.controls['role'].value
       }
     };
 
   // UPDATED SUBSCRIBE CODE
-  this.userService.updateUser(this.userId!, updatedUser).subscribe({
+  this.userService.updateUser(this.userId, updatedUser).subscribe({
     next: (res) => {
       this.router.navigate(['/users']);
     },
