@@ -13,7 +13,7 @@
 const express = require('express');
 const Role = require('../models/role');
 const User = require('../models/user');
-const ErrorResponse = require('../service/error-response');
+const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
 
 const router = express.Router();
