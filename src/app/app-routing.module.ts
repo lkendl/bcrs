@@ -1,6 +1,3 @@
-import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
-import { RoleDetailsComponent } from './pages/role-details/role-details.component';
-import { RoleListComponent } from './pages/role-list/role-list.component';
 /*
 ============================================
 ; Title: bcrs
@@ -12,28 +9,31 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 ===========================================
 */
 
-import { HomeComponent } from './pages/home/home.component';
-import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './pages/about/about.component';
 import { AuthGuard } from './shared/auth.guard';
-import { UserListComponent } from './pages/user-list/user-list.component';
-import { UserDetailsComponent } from './pages/user-details/user-details.component';
-import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
-import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
-import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
+import { ContactComponent } from './pages/contact/contact.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NgModule } from '@angular/core';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleGuard } from './shared/role.guard';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RouterModule, Routes } from '@angular/router';
+import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { AboutComponent } from './pages/about/about.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { ErrorComponent } from './pages/error/error.component';
-import { RoleGuard } from './shared/role.guard';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 
 const routes: Routes = [
   {
