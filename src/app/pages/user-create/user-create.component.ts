@@ -37,6 +37,7 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])],
+      role: [null, Validators.compose([Validators.required])]
     });
   }
 
@@ -48,16 +49,9 @@ export class UserCreateComponent implements OnInit {
       lastName: this.form.controls['lastName'].value,
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
-      email: this.form.controls['email'].value
+      email: this.form.controls['email'].value,
+      role: this.form.controls['role.text'].value
     };
-
-  //OUTDATED SUBSCRIBE CODE
-  //   this.userService.createUser(newUser).subscribe(res => {
-  //     this.router.navigate(['/users']);
-  //   }, err => {
-  //     console.log(err);
-  //   });
-  // }
 
   // UPDATED SUBSCRIBE CODE
   this.userService.createUser(newUser).subscribe({
