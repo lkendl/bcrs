@@ -50,7 +50,7 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
-      role: this.form.controls['role.text'].value
+      role: this.form.controls['role'].value
     };
 
   // UPDATED SUBSCRIBE CODE
