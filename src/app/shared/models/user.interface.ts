@@ -10,6 +10,7 @@
 */
 
 import { SelectedSecurityQuestion } from "./selected-security-question.interface";
+import { Role } from "./role.interface";
 
 export interface User {
     _id?: string;
@@ -21,5 +22,5 @@ export interface User {
     phoneNumber: string;
     address: string;
     email: string;
-    role: string; // Is this right?
+    role?: Role;
 }
