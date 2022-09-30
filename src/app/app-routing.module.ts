@@ -33,6 +33,7 @@ import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { RoleGuard } from './shared/role.guard';
 
 const routes: Routes = [
   {
