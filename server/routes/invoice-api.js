@@ -9,6 +9,14 @@
 ===========================================
 */
 
+// require statements
+const express = require('express');
+const Invoice = require('../models/invoice');
+const ErrorResponse = require('../services/error-response');
+const BaseResponse = require('../services/base-response');
+
+const router = express.Router();
+
 /**
  * CreateInvoice
  */
@@ -21,21 +29,25 @@
  *       - Invoices
  *     description: API to create new invoice objects
  *     summary: Creates a new invoice object
+ *     parameters:
+ *       -  name: userName
+ *          in: path
+ *          required: true
+ *          description: The user's username
+ *          schema:
+ *            type: string
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             required:
- *               - userName
  *               - lineItems
  *               - partsAmount
  *               - laborAmount
  *               - lineItemTotal
  *               - total
  *             properties:
- *              userName:
- *                type: string
  *              lineItems:
  *                type: array
  *                items:
@@ -105,7 +117,7 @@ router.post('/:userName', async(req, res) => {
 /**
  * findPurchasesByService
  * @openapi
- * /api/purchases-graph:
+ * /api/invoices/purchases-graph:
  *  get:
  *    tags:
  *      - Invoices
