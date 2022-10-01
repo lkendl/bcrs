@@ -229,6 +229,7 @@ router.post('/', async(req, res) => {
  *               - phoneNumber
  *               - address
  *               - email
+ *               - role
  *             properties:
  *              firstName:
  *                description: User's first name
@@ -244,6 +245,8 @@ router.post('/', async(req, res) => {
  *                type: string
  *              email:
  *                description: User's email address
+ *                type: string
+ *              role:
  *                type: string
  *     responses:
  *       '200':
