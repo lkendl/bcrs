@@ -62,8 +62,8 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         recordId,
-        dialogHeader: 'Delete Record Dialog',
-        dialogBody: `Are you sure you want to delete user ${recordId}?`
+        dialogHeader: 'Confirmation',
+        dialogBody: `Are you sure you want to delete user: ${recordId}?`
       },
       disableClose: true,
       width: '800px'
