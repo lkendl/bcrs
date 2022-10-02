@@ -12,8 +12,8 @@
 // require statements
 const express = require('express');
 const Invoice = require('../models/invoice');
-const ErrorResponse = require('../services/error-response');
-const BaseResponse = require('../services/base-response');
+const ErrorResponse = require('../models/error-response');
+const BaseResponse = require('../models/base-response');
 
 const router = express.Router();
 
@@ -169,7 +169,7 @@ router.post('/:userName', async(req, res) => {
       else
       {
         console.log(err);
-        const findPurchasesByServiceGraphResponse = new BaseResponse(200, 'Query successful', invoice);
+        const findPurchasesByServiceGraphResponse = new BaseResponse(200, 'Query successful', purchaseGraph);
         res.json(findPurchasesByServiceGraphResponse.toObject());
       }
     })

@@ -15,7 +15,6 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const BaseResponse = require('../models/base-response');
 const ErrorResponse = require('../models/error-response');
-const RoleSchema = require('../schemas/user-role');
 
 // configurations
 const router = express.Router();
@@ -161,7 +160,7 @@ router.post('/', async(req, res) => {
     {
         let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
         standardRole = {
-            role: 'standard'
+            text: 'standard'
         }
 
         // user object
