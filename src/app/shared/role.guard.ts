@@ -38,7 +38,7 @@ export class RoleGuard implements CanActivate {
       if (res.data.role.text === 'admin') {
         return true;
       } else {
-        this.router.navigate(['/session/admin-error']);
+        this.router.navigate(['/error/admin-error']);
         return false;
       }
     }))
