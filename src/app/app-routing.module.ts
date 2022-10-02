@@ -10,6 +10,7 @@
 */
 
 import { AboutComponent } from './pages/about/about.component';
+import { AdminErrorComponent } from './admin-error/admin-error.component';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
@@ -124,6 +125,10 @@ const routes: Routes = [
       {
         path: '500',
         component: ErrorComponent
+      },
+      {
+        path: 'admin-error',
+        component: AdminErrorComponent
       }
     ]
   },
