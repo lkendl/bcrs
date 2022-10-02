@@ -159,8 +159,6 @@ router.post('/signin', async(req, res) => {
  *                type: string
  *              email:
  *                type: string
- *              role:
- *                type: string
  *              selectedSecurityQuestions:
  *                type: array
  *                items:
@@ -204,7 +202,7 @@ router.post('/register', async(req, res) => {
         {
           let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
           standardRole = {
-            role: 'standard'
+            text: 'standard'
           }
 
           // User object
