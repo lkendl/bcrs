@@ -35,7 +35,7 @@ export class RoleGuard implements CanActivate {
       console.log('User role: ' + this.role.text)
       console.log(this.role);
 
-      if (res.data.text === 'admin') {
+      if (res.data.role.text === 'admin') {
         return true;
       } else {
         this.router.navigate(['/']);
