@@ -433,7 +433,7 @@ router.get('/:userName/security-questions', async(req, res) => {
 /**
  * findUserRole
  * @openapi
- * /api/{userName}/role:
+ * /api/users/{userName}/role:
  *  get:
  *    tags:
  *      - Users
@@ -454,10 +454,10 @@ router.get('/:userName/security-questions', async(req, res) => {
  *      "501":
  *        description: MongoDB Exception
  */
- router.get('/users/:userName/role', async(req, res) => {
+ router.get('/:userName/role', async(req, res) => {
   try
   {
-      User.findOne({'userName': req.params.userName}, function(err, user) {
+      User.findOne({'userName': req.params.userName}, 'role.text', function(err, user) {
           if (err)
           {
               console.log(err);
