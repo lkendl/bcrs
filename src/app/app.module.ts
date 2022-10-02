@@ -23,6 +23,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
  */
 // Pages
 import { AboutComponent } from './pages/about/about.component';
+import { AdminErrorComponent } from './admin-error/admin-error.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -41,8 +42,6 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
-
-
 
 // Shared
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
@@ -112,7 +111,8 @@ import { TableModule } from 'primeng/table';
     UserDetailsComponent,
     UserListComponent,
     VerifySecurityQuestionsComponent,
-    VerifyUsernameFormComponent
+    VerifyUsernameFormComponent,
+    AdminErrorComponent
   ],
   imports: [
     AppRoutingModule,
