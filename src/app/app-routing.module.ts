@@ -16,6 +16,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
 import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { ErrorLayoutComponent } from './shared/error-layout/error-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -47,15 +48,18 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        component: UserListComponent
+        component: UserListComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'users/:userId',
-        component: UserDetailsComponent
+        component: UserDetailsComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'users/create/new',
-        component: UserCreateComponent
+        component: UserCreateComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions',
@@ -79,11 +83,13 @@ const routes: Routes = [
       },
       {
         path: 'roles',
-        component: RoleListComponent
+        component: RoleListComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'roles/:roleId',
-        component: RoleDetailsComponent
+        component: RoleDetailsComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'purchases-by-service-graph',
@@ -116,7 +122,26 @@ const routes: Routes = [
       {
         path: 'reset-password',
         component: ResetPasswordComponent
-      },
+      // },
+      // {
+      //   path: '404',
+      //   component: NotFoundComponent,
+      //   canActivate: [AuthGuard]
+      // },
+      // {
+      //   path: '500',
+      //   component: ErrorComponent
+      // },
+      // {
+      //   path: 'admin-error',
+      //   component: AdminErrorComponent
+      }
+    ]
+  },
+  {
+    path: 'error',
+    component: ErrorLayoutComponent,
+    children: [
       {
         path: '404',
         component: NotFoundComponent,
@@ -134,7 +159,7 @@ const routes: Routes = [
   },
   {
     path: '**', // If there is any URL not found in the routing file, redirects to session/not-found.
-    redirectTo: 'session/404' // Session is the parent route.
+    redirectTo: 'error/404' // Session is the parent route.
   }
 ];
 

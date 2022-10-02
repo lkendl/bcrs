@@ -85,6 +85,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
+import { ErrorLayoutComponent } from './shared/error-layout/error-layout.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import { TableModule } from 'primeng/table';
     UserListComponent,
     VerifySecurityQuestionsComponent,
     VerifyUsernameFormComponent,
-    AdminErrorComponent
+    AdminErrorComponent,
+    ErrorLayoutComponent
   ],
   imports: [
     AppRoutingModule,
