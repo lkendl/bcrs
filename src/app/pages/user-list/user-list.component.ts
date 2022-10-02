@@ -69,13 +69,20 @@ export class UserListComponent implements OnInit {
       width: '800px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'confirm') {
-        this.userService.deleteUser(userId).subscribe(res => {
-          console.log('User delete');
-          this.users = this.users.filter(u => u._id !== userId);
-        });
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result === 'confirm') {
+          this.userService.deleteUser(userId).subscribe({
+            next: (res) => {
+            console.log('User delete');
+            this.users = this.users.filter(u => u._id !== userId);
+            },
+            error: (e) => {
+              console.log(e);
+            }
+          })
+        }
       }
-    });
+    })
   }
 }
