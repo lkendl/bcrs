@@ -63,15 +63,18 @@ const routes: Routes = [
       },
       {
         path: 'security-questions',
-        component: SecurityQuestionListComponent
+        component: SecurityQuestionListComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions/:questionId',
-        component: SecurityQuestionDetailsComponent
+        component: SecurityQuestionDetailsComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions/create/new',
-        component: SecurityQuestionCreateComponent
+        component: SecurityQuestionCreateComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'about',
