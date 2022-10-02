@@ -5,12 +5,12 @@
 ; Date: 20 September 2022
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
-; service repair fees, generates invoices, and tracks purchases by service. 
+; service repair fees, generates invoices, and tracks purchases by service.
 ===========================================
 */
 
 import { AboutComponent } from './pages/about/about.component';
-import { AdminErrorComponent } from './admin-error/admin-error.component';
+import { AdminErrorComponent } from './pages/admin-error/admin-error.component';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
