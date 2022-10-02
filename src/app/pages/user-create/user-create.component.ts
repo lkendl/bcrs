@@ -38,7 +38,7 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])],
-      role: [null, Validators.compose([Validators.required])]
+      // role: [null, Validators.compose([Validators.required])]
     });
   }
 
@@ -51,7 +51,7 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
-      role: this.form.controls['role'].value
+      // role: this.form.controls['role'].value
     };
 
   // UPDATED SUBSCRIBE CODE
