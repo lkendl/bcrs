@@ -14,9 +14,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/models/user.interface";
+import { Role } from 'src/app/shared/models/role.interface';
 
 @Component({
-  selector: 'app-use-create',
+  selector: 'app-user-create',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.css']
 })
@@ -24,7 +25,7 @@ export class UserCreateComponent implements OnInit {
   user!: User;
   userId!: string;
   form!: FormGroup;
-  roles: any;
+  roles!: Role[];
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
 

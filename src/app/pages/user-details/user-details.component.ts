@@ -103,7 +103,7 @@ export class UserDetailsComponent implements OnInit {
       this.errorMessages = [
         { severity: 'error', summary: 'Error', detail: e.message }
       ]
-      console.log('Node.js server error; httpCode:$(e.httpCode);message:$(e.message)')
+      console.log(`Node.js server error; httpCode:${e.httpCode};message:${e.message}`)
       console.log(e);
     }
   });

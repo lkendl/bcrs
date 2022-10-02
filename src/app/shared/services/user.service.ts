@@ -37,7 +37,8 @@ export class UserService {
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       address: user.address,
-      email: user.email
+      email: user.email,
+      role: user.role?.text ?? 'standard'
     })
   }
 
