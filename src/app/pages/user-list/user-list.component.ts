@@ -27,6 +27,7 @@ export class UserListComponent implements OnInit {
     'userName',
     'firstName',
     'lastName',
+    'role',
     'phoneNumber',
     'address',
     'email',
