@@ -25,13 +25,17 @@
           </mat-form-field>
 
           <mat-form-field>
+
             <input type="password" matInput [formControl]="$any(form.controls['password'])" placeholder="Password" />
+
             <mat-error class="error" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">
               Password is a required field.
             </mat-error>
+
             <mat-error class="error" *ngIf="form.controls['password'].hasError('pattern') && form.controls['password'].touched">
               Password must be at least 8 characters, contain one letter, and one number.
             </mat-error>
+
           </mat-form-field>
 
           <mat-form-field>
@@ -48,7 +52,7 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- <mat-form-field>
+          <mat-form-field>
             <mat-label>Role</mat-label>
             <mat-select formControlName="role">
               <mat-option *ngFor="let role of roles" [value]="role.text">{{ role.text }}</mat-option>
@@ -57,7 +61,7 @@
             <mat-error class="error" *ngIf="form.controls['role'].hasError('required') && form.controls['role'].touched">
               Role is a required field.
             </mat-error>
-          </mat-form-field> -->
+          </mat-form-field>
 
           <mat-form-field>
             <input type="text" matInput [formControl]="$any(form.controls['phoneNumber'])" placeholder="Phone number" />
