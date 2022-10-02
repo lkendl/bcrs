@@ -256,7 +256,7 @@ router.get('/', async(req, res) => {
                   text: req.body.text
               });
 
-              role.save(function(err, UpdateRole)
+              role.save(function(err, updatedRole)
               {
                   if (err)
                   {
