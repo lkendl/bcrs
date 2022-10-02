@@ -36,7 +36,7 @@ export class UserDetailsComponent implements OnInit {
     phoneNumber: [null, Validators.compose([Validators.required])],
     address: [null, Validators.compose([Validators.required])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
-    role: [null, Validators.compose([Validators.required])]
+    // role: [null, Validators.compose([Validators.required])]
   });
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService, private roleService: RoleService ) {
@@ -61,19 +61,19 @@ export class UserDetailsComponent implements OnInit {
       this.form.controls['phoneNumber'].setValue(this.user.phoneNumber);
       this.form.controls['address'].setValue(this.user.address);
       this.form.controls['email'].setValue(this.user.email);
-      this.form.controls['role'].setValue(this.user.role?.text ?? 'standard'); // If text is null, default to 'standard'
+      // this.form.controls['role'].setValue(this.user.role?.text ?? 'standard'); // If text is null, default to 'standard'
 
       console.log(this.user);
 
       // API to call roleService to retrieve list roles in database
-      this.roleService.findAllRoles().subscribe({
-        next: (res) => {
-          this.roles = res.data;
-        },
-        error: (e) => {
-          console.log(e);
-        }
-      })
+      // this.roleService.findAllRoles().subscribe({
+      //   next: (res) => {
+      //     this.roles = res.data;
+      //   },
+      //   error: (e) => {
+      //     console.log(e);
+      //   }
+      // })
     }
   });
 }
@@ -82,16 +82,16 @@ export class UserDetailsComponent implements OnInit {
   }
 
   saveUser(): void {
-    const updatedUser: User = {
+    const updatedUser = {
       firstName: this.form.controls['firstName'].value,
       lastName: this.form.controls['lastName'].value,
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
      // Create the role object with the input from the form control.
-      role: {
-        text: this.form.controls['role'].value
-      }
+      // role: {
+      //   text: this.form.controls['role'].value
+      // }
     };
 
   // UPDATED SUBSCRIBE CODE
