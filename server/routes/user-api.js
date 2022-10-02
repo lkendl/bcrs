@@ -455,7 +455,7 @@ router.get('/:userName/security-questions', async(req, res) => {
  *      "501":
  *        description: MongoDB Exception
  */
- router.get('/:userName/role', async(req, res) => {
+ router.get('/users/:userName/role', async(req, res) => {
   try
   {
       User.findOne({'userName': req.params.userName}, function(err, user) {
