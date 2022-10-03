@@ -6,6 +6,8 @@
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service.
+; Resources:
+; Stackblitz: https://stackblitz.com/edit/angular-table-reponsive-re1dnq?file=src%2Fapp%2Fapp.component.ts (Angular Table Responsive)
 ===========================================
 */
 
