@@ -64,10 +64,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatList, MatListModule } from '@angular/material/list';
-import { MatMenu } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -137,7 +139,11 @@ import { ErrorLayoutComponent } from './shared/error-layout/error-layout.compone
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatRippleModule,
     MatSelectModule,
+    MatSortModule,
     MatStepperModule,
     MatTableModule,
     MatToolbarModule,
