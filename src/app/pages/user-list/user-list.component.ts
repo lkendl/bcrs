@@ -9,12 +9,14 @@
 ===========================================
 */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog/delete-record-dialog.component';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/models/user.interface";
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-user-list',
@@ -34,15 +36,11 @@ export class UserListComponent implements OnInit {
     'functions'
   ];
 
-  constructor(private dialog: MatDialog, private userService: UserService) {
+  dataSource!: MatTableDataSource<UserListComponent>;
 
-  //   this.userService.findAllUsers().subscribe(res => {
-  //     this.users = res['data'];
-  //     console.log(this.users);
-  //   }, err => {
-  //     console.log(err);
-  //   });
-  // }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  constructor(private dialog: MatDialog, private userService: UserService) {
 
   // UPDATED SUBSCRIBE CODE
   this.userService.findAllUsers().subscribe({
@@ -54,6 +52,11 @@ export class UserListComponent implements OnInit {
       console.log(e);
     }
   });
+}
+
+ngAfterViewInit() {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
 }
 
   ngOnInit(): void {
