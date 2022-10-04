@@ -123,7 +123,7 @@ export class RegisterComponent implements OnInit {
         console.log(e);
       }
     })
-   }
+  }
 
   ngOnInit(): void {
   }
