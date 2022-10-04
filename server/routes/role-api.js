@@ -364,8 +364,8 @@ router.delete('/:roleId', async (req, res) => {
                     if (users.length > 0)
                     {
                       console.log(`Role <${role.text}> is already in use and cannot be deleted`);
-                      const userRoleAlreadyInUseResponse = new BaseResponse(400, `Role ${role.text} is in use.`, role);
-                      res.status(400).send(userRoleAlreadyInUseResponse.toObject());
+                      const userRoleAlreadyInUseResponse = new BaseResponse(201, `Role ${role.text} is in use.`, role);
+                      res.status(201).send(userRoleAlreadyInUseResponse.toObject());
                     }
                     else
                     {
