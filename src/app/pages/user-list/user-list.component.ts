@@ -6,6 +6,8 @@
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service.
+; Resources:
+; Stackblitz: https://stackblitz.com/edit/angular-table-reponsive-re1dnq?file=src%2Fapp%2Fapp.component.ts (Angular Table Responsive)
 ===========================================
 */
 
@@ -14,7 +16,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog/delete-record-dialog.component';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/models/user.interface";
-
 
 @Component({
   selector: 'app-user-list',
@@ -27,6 +28,7 @@ export class UserListComponent implements OnInit {
     'userName',
     'firstName',
     'lastName',
+    'role',
     'phoneNumber',
     'address',
     'email',
@@ -34,14 +36,6 @@ export class UserListComponent implements OnInit {
   ];
 
   constructor(private dialog: MatDialog, private userService: UserService) {
-
-  //   this.userService.findAllUsers().subscribe(res => {
-  //     this.users = res['data'];
-  //     console.log(this.users);
-  //   }, err => {
-  //     console.log(err);
-  //   });
-  // }
 
   // UPDATED SUBSCRIBE CODE
   this.userService.findAllUsers().subscribe({
@@ -55,6 +49,9 @@ export class UserListComponent implements OnInit {
   });
 }
 
+ngAfterViewInit() {
+}
+
   ngOnInit(): void {
   }
 
@@ -62,20 +59,27 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         recordId,
-        dialogHeader: 'Delete Record Dialog',
-        dialogBody: `Are you sure you want to delete user ${recordId}?`
+        dialogHeader: 'Confirmation',
+        dialogBody: `Are you sure you want to delete user: ${recordId}?`
       },
       disableClose: true,
       width: '800px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'confirm') {
-        this.userService.deleteUser(userId).subscribe(res => {
-          console.log('User delete');
-          this.users = this.users.filter(u => u._id !== userId);
-        });
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result === 'confirm') {
+          this.userService.deleteUser(userId).subscribe({
+            next: (res) => {
+            console.log('User delete');
+            this.users = this.users.filter(u => u._id !== userId);
+            },
+            error: (e) => {
+              console.log(e);
+            }
+          })
+        }
       }
-    });
+    })
   }
 }

@@ -15,7 +15,6 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const BaseResponse = require('../models/base-response');
 const ErrorResponse = require('../models/error-response');
-const RoleSchema = require('../schemas/user-role');
 
 // configurations
 const router = express.Router();
@@ -81,7 +80,7 @@ router.get('/', async (req, res) => {
  *    tags:
  *      - Users
  *    description: API for returning a single user object from MongoDB
- *    summary: Returns an user document
+ *    summary: Returns a user document
  *    parameters:
  *      - name: id
  *        in: path
@@ -161,7 +160,7 @@ router.post('/', async(req, res) => {
     {
         let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
         standardRole = {
-            role: 'standard'
+            text: 'standard'
         }
 
         // user object
@@ -229,6 +228,7 @@ router.post('/', async(req, res) => {
  *               - phoneNumber
  *               - address
  *               - email
+ *               - role
  *             properties:
  *              firstName:
  *                description: User's first name
@@ -244,6 +244,8 @@ router.post('/', async(req, res) => {
  *                type: string
  *              email:
  *                description: User's email address
+ *                type: string
+ *              role:
  *                type: string
  *     responses:
  *       '200':
@@ -271,7 +273,8 @@ router.put('/:id', async (req, res) => {
                     lastName: req.body.lastName,
                     phoneNumber: req.body.phoneNumber,
                     address: req.body.address,
-                    email: req.body.email
+                    email: req.body.email,
+                    'role.text': req.body.role
                 })
 
                 user.save(function(err, savedUser) {
@@ -422,6 +425,59 @@ router.get('/:userName/security-questions', async(req, res) => {
         const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
         res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
     }
+});
+
+/**
+ * FindUserRole
+ */
+/**
+ * findUserRole
+ * @openapi
+ * /api/users/{userName}/role:
+ *  get:
+ *    tags:
+ *      - Users
+ *    description: API for returning a single user role object from MongoDB
+ *    summary: Returns a user role document
+ *    parameters:
+ *      - name: userName
+ *        in: path
+ *        required: true
+ *        description: The username requested by user
+ *        schema:
+ *          type: string
+ *    responses:
+ *      "200":
+ *        description: Query successful
+ *      "500":
+ *        description: Internal server error
+ *      "501":
+ *        description: MongoDB Exception
+ */
+ router.get('/:userName/role', async(req, res) => {
+  try
+  {
+      User.findOne({'userName': req.params.userName}, 'role.text', function(err, user) {
+          if (err)
+          {
+              console.log(err);
+              const findUserRoleMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+              res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
+          }
+          else
+          {
+              console.log(user);
+              const findUserRoleResponse = new BaseResponse(200, 'Query successful', user);
+              res.json(findUserRoleResponse.toObject());
+          }
+      })
+  }
+  catch (e)
+  {
+      console.log(e);
+      const findUserRoleCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
+      res.status(500).send(findUserRoleCatchErrorResponse.toObject());;
+  }
 });
 
 module.exports = router;

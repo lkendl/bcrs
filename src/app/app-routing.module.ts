@@ -5,31 +5,37 @@
 ; Date: 20 September 2022
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
-; service repair fees, generates invoices, and tracks purchases by service. 
+; service repair fees, generates invoices, and tracks purchases by service.
 ===========================================
 */
 
-import { HomeComponent } from './pages/home/home.component';
-import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './pages/about/about.component';
+import { AdminErrorComponent } from './pages/admin-error/admin-error.component';
 import { AuthGuard } from './shared/auth.guard';
-import { UserListComponent } from './pages/user-list/user-list.component';
-import { UserDetailsComponent } from './pages/user-details/user-details.component';
-import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
-import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
-import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
+import { ContactComponent } from './pages/contact/contact.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { ErrorLayoutComponent } from './shared/error-layout/error-layout.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NgModule } from '@angular/core';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleGuard } from './shared/role.guard';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RouterModule, Routes } from '@angular/router';
+import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { AboutComponent } from './pages/about/about.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { ErrorComponent } from './pages/error/error.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 
 const routes: Routes = [
   {
@@ -42,27 +48,33 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        component: UserListComponent
+        component: UserListComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'users/:userId',
-        component: UserDetailsComponent
+        component: UserDetailsComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'users/create/new',
-        component: UserCreateComponent
+        component: UserCreateComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions',
-        component: SecurityQuestionListComponent
+        component: SecurityQuestionListComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions/:questionId',
-        component: SecurityQuestionDetailsComponent
+        component: SecurityQuestionDetailsComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions/create/new',
-        component: SecurityQuestionCreateComponent
+        component: SecurityQuestionCreateComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'about',
@@ -71,6 +83,21 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent
+      },
+      {
+        path: 'roles',
+        component: RoleListComponent,
+        canActivate: [RoleGuard]
+      },
+      {
+        path: 'roles/:roleId',
+        component: RoleDetailsComponent,
+        canActivate: [RoleGuard]
+      },
+      {
+        path: 'purchases-by-service-graph',
+        component: PurchasesByServiceGraphComponent,
+        canActivate: [RoleGuard]
       }
     ],
     canActivate: [AuthGuard]
@@ -98,7 +125,26 @@ const routes: Routes = [
       {
         path: 'reset-password',
         component: ResetPasswordComponent
-      },
+      // },
+      // {
+      //   path: '404',
+      //   component: NotFoundComponent,
+      //   canActivate: [AuthGuard]
+      // },
+      // {
+      //   path: '500',
+      //   component: ErrorComponent
+      // },
+      // {
+      //   path: 'admin-error',
+      //   component: AdminErrorComponent
+      }
+    ]
+  },
+  {
+    path: 'error',
+    component: ErrorLayoutComponent,
+    children: [
       {
         path: '404',
         component: NotFoundComponent,
@@ -107,12 +153,16 @@ const routes: Routes = [
       {
         path: '500',
         component: ErrorComponent
+      },
+      {
+        path: 'admin-error',
+        component: AdminErrorComponent
       }
     ]
   },
   {
     path: '**', // If there is any URL not found in the routing file, redirects to session/not-found.
-    redirectTo: 'session/404' // Session is the parent route.
+    redirectTo: 'error/404' // Session is the parent route.
   }
 ];
 

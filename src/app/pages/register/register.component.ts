@@ -105,7 +105,8 @@ export class RegisterComponent implements OnInit {
       phoneNumber: contactInformation.phoneNumber,
       address: contactInformation.address,
       email: contactInformation.email,
-      selectedSecurityQuestions: this.selectedSecurityQuestions
+      selectedSecurityQuestions: this.selectedSecurityQuestions,
+      role: credentials.role // Is this right?
     }
     console.log(this.user);
 
@@ -122,7 +123,7 @@ export class RegisterComponent implements OnInit {
         console.log(e);
       }
     })
-   }
+  }
 
   ngOnInit(): void {
   }

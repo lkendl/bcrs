@@ -9,16 +9,16 @@
 ===========================================
 -->
 
-<h2 mat-dialog-title>{{ dialogHeader }}</h2>
+<h1 mat-dialog-title>{{ dialogHeader }}</h1>
 
 <div mat-dialog-content>
-  <p>{{ dialogBody }}</p>
-  <small style="color:#df546a;">WARNING: This cannot be undone.</small>
+  <h3>{{ dialogBody }}</h3>
+  <div style="color:#df546a;font-size:16px;font-weight:bold;">WARNING: This cannot be undone.</div>
 </div>
 
 <hr>
 
 <div mat-dialog-actions align="end">
-  <button mat-raised-button matDialogClose="cancel" color="primary">No Thanks</button>
+  <button mat-raised-button matDialogClose="cancel" color="primary">Cancel</button>
   <button mat-raised-button matDialogClose="confirm" color="accent" cdkFocusInitial>Accept</button>
 </div>

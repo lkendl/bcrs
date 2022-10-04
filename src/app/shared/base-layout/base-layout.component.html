@@ -14,6 +14,9 @@
     <div fxLayout="column">
 
       <!-- navigation -->
+      <div class="header-bar">
+
+      </div>
       <div class="menu-bar" fxLayoutGap="20" fxLayout.xs="column">
           <div class="navbar-container">
 
@@ -33,14 +36,16 @@
               -->
 
               <button class="navbar-link nav-username" mat-button [matMenuTriggerFor]="menu">{{userName}}<mat-icon>arrow_drop_down</mat-icon></button>
+
+                <!-- main menu -->
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item routerLink="/users">
-                    <mat-icon>people</mat-icon>
-                    <span>Users</span>
+                  <button mat-menu-item [matMenuTriggerFor]="configurations">
+                    <mat-icon>settings</mat-icon>
+                    <span>Configurations</span>
                   </button>
-                  <button mat-menu-item routerLink="/security-questions">
-                    <mat-icon>security</mat-icon>
-                    <span>Security Questions</span>
+                  <button mat-menu-item [matMenuTriggerFor]="reports">
+                    <mat-icon>insert_chart</mat-icon>
+                    <span>Reports</span>
                   </button>
                   <button mat-menu-item (click)="signOut()">
                       <mat-icon>exit_to_app</mat-icon>
@@ -48,43 +53,38 @@
                   </button>
                 </mat-menu>
 
+                <!-- configuration submenu -->
+                <mat-menu #configurations="matMenu">
+                  <button mat-menu-item routerLink="/users">
+                    <mat-icon>people</mat-icon>
+                    <span>Users</span>
+                  </button>
+                  <button mat-menu-item routerLink="/roles">
+                    <mat-icon>security</mat-icon>
+                    <span>Roles</span>
+                  </button>
+                  <button mat-menu-item routerLink="/security-questions">
+                    <mat-icon>help</mat-icon>
+                    <span>Security Questions Config</span>
+                  </button>
+                </mat-menu>
+
+                <!-- reports submenu -->
+                <mat-menu #reports="matMenu">
+                  <button mat-menu-item routerLink="/purchases-by-service-graph">
+                    <mat-icon>insert_chart</mat-icon>
+                    <span>Purchases by Service</span>
+                  </button>
+                </mat-menu>
+
             </div>
           </div>
       </div>
 
+      <div class="bar"></div>
       <div class="bcrs-bar" fxLayoutGap="20" fxLayout.xs="column">
         Bob's Computer Repair Shop
       </div>
-
-      <!-- Left container -->
-      <!-- <div fxFlex="10">
-        <div class="left-container">
-
-          <img class="img-fluid" src="/assets/logo.png" alt="logo">
-          <br><br>
-
-          <div class="toolbar-left">Workspace</div>
-            <button mat-button>
-              <mat-icon>laptop</mat-icon>
-            </button>
-
-            <div class="toolbar-left">Members</div>
-            <button mat-button>
-              <mat-icon>person</mat-icon>
-            </button>
-            <button mat-button>
-              <mat-icon>person</mat-icon>
-            </button>
-            <button mat-button>
-              <mat-icon>person_add</mat-icon>
-            </button>
-
-            <div class="toolbar-left">Settings</div>
-            <button mat-button>
-              <mat-icon>settings</mat-icon>
-            </button>
-        </div>
-      </div> -->
 
       <!-- main content -->
       <div fxLayout="row wrap">
@@ -100,16 +100,12 @@
       </div>
 
       <!-- footer -->
-      <div fxFlex>
-        <footer class="footer">
-          <mat-toolbar class="footer-content">
-            <p>
-              &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
-            </p>
-          </mat-toolbar>
-        </footer>
+      <div class="new-footer-p">
+        <div class="new-footer-c">
+          &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </body>

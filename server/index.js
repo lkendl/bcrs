@@ -26,6 +26,8 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const UserApi = require('./routes/user-api');
 const SessionApi = require('./routes/session-api');
 const SecurityQuestionApi = require('./routes/security-question-api');
+const RoleApi = require('./routes/role-api');
+const InvoiceApi = require('./routes/invoice-api');
 
 /**
  * Swagger
@@ -87,6 +89,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api/users', UserApi);
 app.use('/api/session', SessionApi);
 app.use('/api/security-questions', SecurityQuestionApi);
+app.use('/api/roles', RoleApi);
+app.use('/api/invoices', InvoiceApi);
 
 // Wire-up the Express server.
 app.listen(PORT, () => {

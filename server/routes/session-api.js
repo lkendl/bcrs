@@ -76,10 +76,13 @@ router.post('/signin', async(req, res) => {
                 {
                     let passwordIsValid = bcrypt.compareSync(req.body.password, user.password); // compare the saved hashed password against the sign-in password
 
+                    let isDisabled = user.isDisabled;
+                    console.log('isDisabled below:');
+                    console.log(isDisabled);
                     /**
                      * if password is valid
                      */
-                    if (passwordIsValid)
+                    if (passwordIsValid && !isDisabled)
                     {
                         console.log(`Login successful`);
                         const signinResponse = new BaseResponse(200, 'Login successful', user);
@@ -159,8 +162,6 @@ router.post('/signin', async(req, res) => {
  *                type: string
  *              email:
  *                type: string
- *              role:
- *                type: string
  *              selectedSecurityQuestions:
  *                type: array
  *                items:
@@ -204,7 +205,7 @@ router.post('/register', async(req, res) => {
         {
           let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
           standardRole = {
-            role: 'standard'
+            text: 'standard'
           }
 
           // User object

@@ -1,0 +1,794 @@
+/*
+============================================
+; Tile: bcrs
+; Author: Professor Krasso
+; Date: 1 October 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service.
+; Code attribution:
+;   Harry Potter by Christina Stephan found on codepen [ref:A] (translated from SCSS to CSS)
+;     https://codepen.io/christinastep/pen/KEbrzx
+; Stackoverflow: https://stackoverflow.com/questions/35990445/how-to-move-a-div-up-and-down-infinitely-in-css3 (How to move a div up and down infinitely in CSS3?)
+===========================================
+*/
+.page-container {
+  position: relative;
+  max-height: 100vh;
+  background-image: url('/assets/hogwarts-drawing.png'), linear-gradient(0deg, rgb(255, 255, 255, 1), rgb(255, 255, 255, 0.8));
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.menu-bar {
+  width: 100%;
+  background-color: #740001;
+}
+
+.bar {
+  height: 10px;
+  background-color: #ffad00;
+}
+
+.bar2 {
+  height: 10px;
+  background-color: #740001;
+}
+
+.bcrs-bar {
+  background-color: #740001;;
+  color: #FFF;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 20px;
+  padding-top: 7px;
+  padding-left: 15px;
+  height: 30px;
+}
+
+.logo {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.header {
+  height: 110px;
+}
+
+.navbar-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar-container-left {
+  display: flex;
+}
+
+.navbar-container-right {
+  padding-top: 30px;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.nav-username {
+  font-size: 1.6em !important;
+}
+
+.navbar-link {
+  font-size: 1.4em;
+  font-weight: lighter;
+  font-family: 'Marcellus', sans-serif;
+  color: #FFF;
+}
+
+.content-container {
+  margin-bottom: 100px;
+  margin: 25px auto auto;
+  width: 75%;
+}
+
+.back-home-button {
+  background-color: #740001;
+  color: #FFF;
+}
+
+.back-home-button:hover{
+  background-color: #ae0001;
+  color: #FFF;
+}
+
+/* Left Container */
+.left-container {
+  /* background-image: url("../../../assets/leaves.png");
+  box-shadow: inset 0 0 0 1000px rgba(236, 185, 57, .2); */ /* different background made by Mungujakisa Edmond from toptal*/
+  background-image: url("/assets/prism.png"); /* background image from toptal by Michal */
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-align: center;
+  padding: 15px;
+  border: 4px solid #fff;
+  padding: 2em;
+  position: relative;
+  color: rgb(204, 204, 204);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.left-container:before {
+  background: none;
+  border: 4px solid #fff;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  pointer-events: none;
+}
+
+.toolbar-left {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 20px 0;
+}
+
+
+.new-footer-p {
+  bottom: 0;
+  position: absolute;
+  left: calc(50% - 160px);
+}
+
+.new-footer-c {
+  text-align: center;
+  font-size: 16px;
+  width: 320px;
+  height: 45px;
+  margin-top: -70px;
+  border-bottom: 1px solid black;
+}
+
+
+.bu-link {
+  text-decoration: none;
+}
+
+.bu-link:hover {
+  text-decoration: underline;
+}
+
+.error-code {
+  font-size: 5vw;
+  color: #FFF;
+  font-family: 'IM Fell English SC', serif;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 25%;
+  left: 0;
+  right: 10%;
+  text-align: center;
+  transform: rotate(-10deg);
+}
+
+.not-found-msg {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 68%;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 10px;
+  margin-top: 20px;
+}
+
+/* [ref:A] */
+  .body-hp {
+    overflow:hidden;
+    height:100vh;
+    width:100vw;
+    overflow:hidden;
+    margin-top:-80px;
+  }
+  .wrapper {
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(.7);
+  }
+  .illu {
+    position: relative;
+    width: 60vw;
+    height: 19vw;
+    animation: fly 2s linear infinite alternate;
+    transform-origin: left 30% center;
+  }
+  @keyframes fly {
+    0% {
+      transform: rotate(-5 deg);
+  }
+    100% {
+      transform: rotate(2deg);
+  }
+  }
+  .besen {
+    position: absolute;
+    transform: rotate(-1deg);
+    bottom: 7vw;
+  }
+  .besen .besen__start {
+    top: 3vw;
+    position: absolute;
+    width: 62vw;
+    height: 2vw;
+    background-color: #7a4b2c;
+    border-radius: 30px;
+  }
+  .besen .besen__end {
+    position: absolute;
+    background-color: #fad08a;
+    width: 20vw;
+    height: 8vw;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
+  .besen .besen__end:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: #c02e1a;
+    width: 1.5vw;
+    height: 8vw;
+    left: 14vw;
+  }
+  .besen .besen__end:before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    bottom: 2vw;
+    border-top: 1.5vw solid transparent;
+    border-left: 3vw solid orange;
+  }
+  .cap {
+    position: relative;
+    left: 10vw;
+    top: -1vw;
+  }
+  .cap .cap__main {
+    position: absolute;
+    background-color: #c02e1a;
+    width: 30vw;
+    height: 15vw;
+    border-top-right-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+    border-bottom-right-radius: 100%;
+    animation: cap 1s linear infinite alternate;
+  }
+  @keyframes cap {
+    from {
+      border-bottom-left-radius: 2vw;
+      border-bottom-right-radius: 100%;
+  }
+    to {
+      border-bottom-left-radius: 6vw;
+      border-bottom-right-radius: 75%;
+  }
+  }
+  .cap .cap__end {
+    position: absolute;
+    background-color: #c02e1a;
+    border-bottom-left-radius: 4vw;
+    width: 8vw;
+    left: -8vw;
+    height: 4vw;
+    top: 0;
+    animation: cap_end 1s linear infinite alternate;
+  }
+  @keyframes cap_end {
+    from {
+      border-top-left-radius: 2vw;
+      border-bottom-left-radius: 2vw;
+  }
+    to {
+      border-top-left-radius: 1.5vw;
+      border-bottom-left-radius: 1.5vw;
+  }
+  }
+  .cap .cap__end:before {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: #c02e1a;
+    height: 4vw;
+    width: 4vw;
+    top: 4vw;
+    left: 4vw;
+  }
+  .cap .cap__end:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: orange;
+    height: 4vw;
+    width: 4vw;
+    top: 4vw;
+    left: 4vw;
+    border-top-right-radius: 5vw;
+  }
+  .body {
+    position: absolute;
+    background-color: #b9832a;
+    top: 2vw;
+    left: 21vw;
+    width: 21vw;
+    height: 12vw;
+    border-top-right-radius: 1vw;
+    border-bottom-right-radius: 100%;
+  }
+  .arm {
+    left: 37vw;
+    transform-origin: left center;
+    top: 2vw;
+    position: absolute;
+    animation: arm 2s linear infinite alternate;
+  }
+  @keyframes arm {
+    0% {
+      transform: rotate(40deg);
+  }
+    100% {
+      transform: rotate(45deg);
+  }
+  }
+  .arm .arm__top {
+    position: absolute;
+    background-color: #c6512e;
+    border-radius: 40%;
+    width: 15vw;
+    height: 4vw;
+  }
+  .arm .arm__down {
+    position: absolute;
+    left: 3vw;
+    bottom: -7vw;
+    transform-origin: right top;
+    background-color: #c6512e;
+    border-radius: 40%;
+    width: 10vw;
+    height: 3vw;
+    overflow: hidden;
+    animation: arm_down 2s linear infinite alternate;
+  }
+  @keyframes arm_down {
+    0% {
+      transform: rotate(150deg);
+  }
+    100% {
+      transform: rotate(142deg);
+  }
+  }
+  .arm .arm__down:before {
+    position: absolute;
+    display: block;
+    content: "";
+    right: 0;
+    background-color: #c6512e;
+    height: 100%;
+    width: 70%;
+  }
+  .arm .arm__down:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: beige;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 3vw;
+  }
+  .face--side {
+    left: 35vw;
+    top: -7vw;
+    position: relative;
+    animation: face 2s -2s linear infinite alternate;
+  }
+  @keyframes face {
+    0% {
+      transform: rotate(3deg);
+  }
+    100% {
+      transform: rotate(0deg);
+  }
+  }
+  .face--side .hair__bg {
+    position: absolute;
+    background-color: #49301b;
+    width: 12vw;
+    left: -1vw;
+    top: -1vw;
+    height: 8vw;
+    border-radius: 5vw;
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+  }
+  .face--side .base {
+    width: 10vw;
+    height: 11.5vw;
+    background-color: beige;
+    border-radius: 3vw;
+    border-bottom-left-radius: 6vw;
+    border-bottom-right-radius: 6vw;
+    position: relative;
+  }
+  .face--side .base .eye {
+    background-color: #000;
+    height: 1vw;
+    width: 1vw;
+    position: absolute;
+    border-radius: 50%;
+    top: 5.5vw;
+  }
+  .face--side .base .eye.eye--right {
+    right: 2vw;
+  }
+  .face--side .base .eye.eye--left {
+    left: 2vw;
+  }
+  .face--side .base .glases {
+    top: 5.7vw;
+    left: calc(50% - 0.5vw);
+    position: absolute;
+    width: 1.5vw;
+    height: 0.6vw;
+    background-color: black;
+  }
+  .face--side .base .glases:after, .face--side .base .glases:before {
+    position: absolute;
+    display: block;
+    content: "";
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    border: solid 0.6vw black;
+    top: -1.75vw;
+  }
+  .face--side .base .glases:after {
+    left: -4vw;
+    z-index: 3;
+  }
+  .face--side .base .glases:before {
+    left: 1vw;
+  }
+  .face--side .base .mouth {
+    background-color: #c02e1a;
+    width: 3vw;
+    height: 1vw;
+    position: absolute;
+    top: 9vw;
+    left: calc(50% - 1.5vw);
+    border-radius: 50% / 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .face--side .base .hair {
+    background-color: #49301b;
+    position: absolute;
+    width: 52%;
+    height: 5vw;
+  }
+  .face--side .base .hair.hair--right {
+    left: 0;
+    width: 80%;
+    border-top-left-radius: 2vw;
+    border-bottom-right-radius: 100%;
+  }
+  .face--side .base .hair.hair--left {
+    right: 0;
+    height: 5.5vw;
+    width: 40%;
+    border-top-right-radius: 2vw;
+    border-bottom-left-radius: 100%;
+  }
+  .face--profil {
+    left: 37vw;
+    top: -8vw;
+    position: relative;
+    animation: face 2s -2s linear infinite alternate;
+  }
+  @keyframes face {
+    0% {
+      transform: rotate(3deg);
+  }
+    100% {
+      transform: rotate(0deg);
+  }
+  }
+  .face--profil .nose {
+    position: absolute;
+    left: 9vw;
+    z-index: 1;
+    top: 6.3vw;
+    width: 1.5vw;
+    height: 1.5vw;
+    background-color: beige;
+    z-index: 5;
+    border-radius: 50%;
+  }
+  .face--profil .base {
+    width: 10vw;
+    height: 11.5vw;
+    background-color: beige;
+    border-radius: 3vw;
+    border-bottom-left-radius: 6vw;
+    border-bottom-right-radius: 6vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .face--profil .base .eye {
+    background-color: #000;
+    height: 1vw;
+    width: 1vw;
+    position: absolute;
+    border-radius: 50%;
+    top: 5.5vw;
+  }
+  .face--profil .base .eye.eye--right {
+    right: 2vw;
+  }
+  .face--profil .base .glases {
+    top: 5.7vw;
+    left: 9vw;
+    position: absolute;
+    width: 1.5vw;
+    height: 0.6vw;
+    background-color: black;
+  }
+  .face--profil .base .glases:after {
+    position: absolute;
+    display: block;
+    content: "";
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    border: solid 0.6vw black;
+    top: -1.75vw;
+    left: -3.8vw;
+    z-index: 3;
+  }
+  .face--profil .base .mouth {
+    background-color: #c02e1a;
+    width: 3vw;
+    height: 1vw;
+    position: absolute;
+    top: 9vw;
+    right: 0;
+    border-radius: 50% / 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .face--profil .base .hair {
+    background-color: #49301b;
+    position: absolute;
+    width: 52%;
+    height: 5vw;
+  }
+  .face--profil .base .hair.hair--right {
+    left: 0;
+    width: 40%;
+    height: 10vw;
+    border-top-left-radius: 2vw;
+    border-bottom-right-radius: 5vw;
+  }
+  .face--profil .base .hair.hair--left {
+    right: 0;
+    height: 3vw;
+    width: 100%;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 10%;
+  }
+  .face--profil .base .hair.hair--left:before {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 2vw;
+    width: 2vw;
+    position: absolute;
+    background-color: #49301b;
+    top: 3vw;
+    left: 4vw;
+  }
+  .face--profil .base .hair.hair--left:after {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 4vw;
+    width: 4vw;
+    background-color: beige;
+    top: 3vw;
+    left: 4vw;
+    border-radius: 50%;
+  }
+  .leg {
+    position: relative;
+    left: 20vw;
+    top: 9vw;
+    width: 22vw;
+    transform-origin: left top;
+    animation: leg 2s -2s linear infinite alternate;
+  }
+  @keyframes leg {
+    0% {
+      transform: rotate(7deg);
+  }
+    100% {
+      transform: rotate(0deg);
+  }
+  }
+  .leg .leg__top {
+    position: absolute;
+    width: 22vw;
+    height: 6vw;
+    background-color: #c6512e;
+    border-radius: 40%;
+  }
+  .leg .leg__down {
+    right: 0;
+    transform-origin: right center;
+    transform: rotate(-35deg);
+    position: absolute;
+    width: 18vw;
+    height: 5vw;
+    background-color: #c6512e;
+    border-radius: 40%;
+  }
+  .leg .foot {
+    position: absolute;
+    background-color: #49301b;
+    width: 2vw;
+    height: 6vw;
+    top: 1vw;
+    left: -1vw;
+    transform-origin: left top;
+    border-bottom-right-radius: 80vw;
+    animation: foot 2s linear infinite alternate;
+  }
+  @keyframes foot {
+    0% {
+      transform: rotate(0deg);
+  }
+    100% {
+      transform: rotate(20deg);
+  }
+  }
+  .wind {
+    animation: wind 1.5s linear infinite;
+    background-color: #e5e5e5;
+    border-radius: 40px;
+    height: 1.5vh;
+    position: absolute;
+  }
+  .wind:after {
+    position: absolute;
+    display: block;
+    content: "";
+    position: absolute;
+    height: 1.5vh;
+    background-color: #e5e5e5;
+    border-radius: 40px;
+    top: 4vw;
+    left: 8vw;
+  }
+  @keyframes wind {
+    from {
+      transform: translateX(100vw);
+  }
+    to {
+      transform: translateX(-100vw);
+  }
+  }
+  .wind--1 {
+    top: 10vh;
+    width: 30vw;
+  }
+  .wind--1:after {
+    width: 30vw;
+  }
+  .wind--2 {
+    bottom: 25vh;
+    width: 50vw;
+    animation-delay: -0.5s;
+  }
+  .wind--2:after {
+    width: 50vw;
+  }
+  .schnatz {
+    animation: schnatz 2s linear infinite;
+    position: absolute;
+    transition-timing-function: ease-in-out;
+    margin-left: 80%;
+    margin-bottom: 22%;
+  }
+  .schnatz:after {
+    position: absolute;
+    display: block;
+    content: "";
+    position: absolute;
+    background-color: #e5e5e5;
+    margin-left: 80%;
+    margin-bottom: 22%;
+  }
+@keyframes schnatz {
+  0%, 100% {
+    bottom: 25%;
+  }
+  50% {
+    bottom: 10%;
+  }
+}
+  .schnatz .kugel {
+    width: 3vw;
+    height: 3vw;
+    background-color: gold;
+    border-radius: 50%;
+    position: absolute;
+  }
+  .schnatz .wing {
+    position: absolute;
+    width: 6vw;
+    height: 1.5vw;
+    border-radius: 20px;
+    background-color: gold;
+    top: -2vw;
+  }
+  .schnatz .wing:after {
+    position: absolute;
+    display: block;
+    content: "";
+    position: absolute;
+    width: 4vw;
+    height: 1.5vw;
+    top: 1vw;
+    background-color: gold;
+    border-radius: 20px;
+  }
+  .schnatz .wing.wing--left {
+    left: -6vw;
+    transform-origin: right bottom;
+    animation: wing--left 1s infinite alternate;
+  }
+  @keyframes wing--left {
+    from {
+      transform: rotate(30deg);
+  }
+    to {
+      transform: rotate(0deg);
+  }
+  }
+  .schnatz .wing.wing--left:after {
+    left: 2vw;
+  }
+  .schnatz .wing.wing--right {
+    left: 3vw;
+    transform-origin: left bottom;
+    animation: wing--right 1s infinite alternate;
+  }
+  @keyframes wing--right {
+    from {
+      transform: rotate(-30deg);
+  }
+    to {
+      transform: rotate(0deg);
+  }
+  }
+/* /[ref:A] */

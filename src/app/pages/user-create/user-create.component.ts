@@ -11,33 +11,77 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/models/user.interface";
+import { RoleService } from './../../shared/services/role.service';
+import { Role } from "../../shared/models/role.interface";
+import { Message } from "primeng/api";
 
 @Component({
-  selector: 'app-use-create',
+  selector: 'app-user-create',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent implements OnInit {
-  user!: User;
-  userId!: string;
-  form!: FormGroup;
-  roles: any;
+  user: User;
+  userId: string;
+  errorMessages: Message[];
+  roles: Role[];
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
+  form: FormGroup = this.fb.group({
+    userName: [null, Validators.compose([Validators.required])],
+      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])],
+    firstName: [null, Validators.compose([Validators.required])],
+    lastName: [null, Validators.compose([Validators.required])],
+    phoneNumber: [null, Validators.compose([Validators.required])],
+    address: [null, Validators.compose([Validators.required])],
+    email: [null, Validators.compose([Validators.required, Validators.email])],
+    role: [null, Validators.compose([Validators.required])]
+  });
+
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService, private roleService: RoleService ) {
+    this.userId = this.route.snapshot.paramMap.get('userId') ?? '';
+    this.user = {} as User;
+    this.errorMessages = [];
+    this.roles = [];
+
+  // UPDATED SUBSCRIBE CODE
+  this.userService.findUserById(this.userId).subscribe({
+    next: (res) => {
+      this.user = res.data;
+      console.log('User object from findUserById call')
+      console.log(this.user)
+    },
+    error: (e) => {
+      console.log(e);
+    },
+    complete: () => {
+      this.form.controls['userName'].setValue(this.user.userName);
+      this.form.controls['password'].setValue(this.user.password);
+      this.form.controls['firstName'].setValue(this.user.firstName);
+      this.form.controls['lastName'].setValue(this.user.lastName);
+      this.form.controls['phoneNumber'].setValue(this.user.phoneNumber);
+      this.form.controls['address'].setValue(this.user.address);
+      this.form.controls['email'].setValue(this.user.email);
+      this.form.controls['role'].setValue(this.user.role?.text ?? 'standard'); // If text is null, default to 'standard'
+
+      console.log(this.user);
+
+      // API to call roleService to retrieve list roles in database
+      this.roleService.findAllRoles().subscribe({
+        next: (res) => {
+          this.roles = res.data;
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      })
+    }
+  });
+}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      userName: [null, Validators.compose([Validators.required])],
-      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])],
-      firstName: [null, Validators.compose([Validators.required])],
-      lastName: [null, Validators.compose([Validators.required])],
-      phoneNumber: [null, Validators.compose([Validators.required])],
-      address: [null, Validators.compose([Validators.required])],
-      email: [null, Validators.compose([Validators.required, Validators.email])],
-    });
   }
 
   createUser(): void {
@@ -48,16 +92,9 @@ export class UserCreateComponent implements OnInit {
       lastName: this.form.controls['lastName'].value,
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
-      email: this.form.controls['email'].value
+      email: this.form.controls['email'].value,
+      role: this.form.controls['role'].value
     };
-
-  //OUTDATED SUBSCRIBE CODE
-  //   this.userService.createUser(newUser).subscribe(res => {
-  //     this.router.navigate(['/users']);
-  //   }, err => {
-  //     console.log(err);
-  //   });
-  // }
 
   // UPDATED SUBSCRIBE CODE
   this.userService.createUser(newUser).subscribe({

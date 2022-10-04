@@ -12,56 +12,6 @@
 ===========================================
 -->
 
-<body class="gryffindor-theme">
-  <div class="page-container">
-    <div fxLayout="column">
-
-      <!-- navigation -->
-      <div class="menu-bar" fxLayoutGap="20" fxLayout.xs="column">
-          <div class="navbar-container">
-
-            <div class="navbar-container-left">
-              <a routerLink="/" class="navbar-link">
-                <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
-              </a>
-            </div>
-
-            <div class="navbar-container-right">
-              <button class="navbar-link" routerLink="/" mat-button>Home</button>
-              <button class="navbar-link" mat-button routerLink="/about">About</button>
-              <button class="navbar-link" mat-button routerLink="/contact">Contact Us</button>
-              <!--
-              <button class="navbar-link" mat-button routerLink="/users">Users</button>
-              <button class="navbar-link" mat-button routerLink="/security-questions">Security Questions</button>
-              -->
-
-              <button class="navbar-link nav-username" mat-button [matMenuTriggerFor]="menu">{{userName}}<mat-icon>arrow_drop_down</mat-icon></button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item routerLink="/users">
-                    <mat-icon>people</mat-icon>
-                    <span>Users</span>
-                  </button>
-                  <button mat-menu-item routerLink="/security-questions">
-                    <mat-icon>security</mat-icon>
-                    <span>Security Questions</span>
-                  </button>
-                  <button mat-menu-item (click)="signOut()">
-                      <mat-icon>exit_to_app</mat-icon>
-                      <span>Sign Out</span>
-                  </button>
-                </mat-menu>
-
-            </div>
-          </div>
-      </div>
-
-      <div class="bcrs-bar" fxLayoutGap="20" fxLayout.xs="column">
-        Bob's Computer Repair Shop
-      </div>
-
-    <!-- main content -->
-    <div fxLayout="row wrap">
-      <div fxFlex>
 
         <div class="not-found-msg">
           <h1>Oops!</h1>
@@ -128,23 +78,3 @@
         </div>
       </div>
       <!-- [ref:A] -->
-
-    </div>
-
-        <!-- footer -->
-        <div fxFlex>
-          <footer class="footer">
-            <mat-toolbar class="footer-content">
-              <p>
-                &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
-              </p>
-            </mat-toolbar>
-          </footer>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-
-
-

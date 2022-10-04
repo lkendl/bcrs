@@ -32,6 +32,17 @@
           </mat-form-field>
 
           <mat-form-field>
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role.text">{{ role.text }}</mat-option>
+            </mat-select>
+
+            <mat-error class="error" *ngIf="form.controls['role'].hasError('required') && form.controls['role'].touched">
+              Role is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
             <input type="text" matInput [formControl]="$any(form.controls['phoneNumber'])" placeholder="Phone number" />
             <mat-error class="error" *ngIf="form.controls['phoneNumber'].hasError('required') && form.controls['phoneNumber'].touched">
               Phone number is a required field.
@@ -60,8 +71,8 @@
 
       <br>
       <mat-card-actions align="end">
-        <button mat-raised-button (click)="cancel()" color="warm">Cancel</button>
-        <button mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
+        <button mat-raised-button (click)="cancel()" color="accent">Cancel</button>
+        <button mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
       </mat-card-actions>
 
     </form>
