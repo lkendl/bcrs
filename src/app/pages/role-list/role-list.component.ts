@@ -39,6 +39,8 @@ export class RoleListComponent implements OnInit {
 
     this.roleService.findAllRoles().subscribe({
       next: (res) => {
+        console.log('this is the role-list constructor');
+        console.log(res.data);
         this.roles = res.data;
       },
       error: (e) => {
@@ -116,9 +118,20 @@ export class RoleListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirm') {
-        this.roleService.deleteRole(roleId).subscribe(res => {
-          console.log('User delete');
-          this.roles = this.roles.filter(u => u.id !== roleId);
+        this.roleService.deleteRole(roleId).subscribe({
+          next: (res) => {
+          if (res.httpCode === 201) {
+            this.errorMessages = [
+              { severity: 'error', summary: 'Error', detail: res.message}
+            ]
+          } else {
+            console.log('Role delete');
+            this.roles = this.roles.filter(role => role._id !== roleId);
+          }
+          },
+          error: (e) => {
+            console.log(e.message);
+          }
         });
       }
     });

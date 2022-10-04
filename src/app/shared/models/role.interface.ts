@@ -10,6 +10,6 @@
 */
 
 export interface Role {
-  id?: string;
+  _id?: string;
   text: string;
 }
