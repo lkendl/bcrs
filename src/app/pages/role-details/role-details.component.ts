@@ -53,7 +53,7 @@ export class RoleDetailsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/roles']);
+    this.router.navigate(['/employee/roles']);
   }
 
   save() {
@@ -63,7 +63,7 @@ export class RoleDetailsComponent implements OnInit {
 
     this.roleService.updateRole(this.roleId, updatedRole).subscribe({
       next: (res) => {
-        this.router.navigate(['/roles']);
+        this.router.navigate(['/employee/roles']);
       },
       error: (e) => {
         this.errorMessages = [

@@ -20,6 +20,7 @@ import { ErrorLayoutComponent } from './shared/error-layout/error-layout.compone
 import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PublicLayoutComponent } from './shared/public-layout/public-layout.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -30,6 +31,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
@@ -40,11 +42,29 @@ import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify
 const routes: Routes = [
   {
     path: '',
-    component: BaseLayoutComponent,
+    component: PublicLayoutComponent,
     children: [
       {
         path: '',
         component: HomeComponent
+      },
+       {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      }
+    ]
+  },
+  {
+    path: 'employee',
+    component: BaseLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ServiceRepairComponent
       },
       {
         path: 'users',
@@ -75,14 +95,6 @@ const routes: Routes = [
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent,
         canActivate: [RoleGuard]
-      },
-      {
-        path: 'about',
-        component: AboutComponent
-      },
-      {
-        path: 'contact',
-        component: ContactComponent
       },
       {
         path: 'roles',
@@ -125,19 +137,6 @@ const routes: Routes = [
       {
         path: 'reset-password',
         component: ResetPasswordComponent
-      // },
-      // {
-      //   path: '404',
-      //   component: NotFoundComponent,
-      //   canActivate: [AuthGuard]
-      // },
-      // {
-      //   path: '500',
-      //   component: ErrorComponent
-      // },
-      // {
-      //   path: 'admin-error',
-      //   component: AdminErrorComponent
       }
     ]
   },
@@ -147,8 +146,7 @@ const routes: Routes = [
     children: [
       {
         path: '404',
-        component: NotFoundComponent,
-        canActivate: [AuthGuard]
+        component: NotFoundComponent
       },
       {
         path: '500',

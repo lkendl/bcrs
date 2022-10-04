@@ -99,7 +99,7 @@ export class UserCreateComponent implements OnInit {
   // UPDATED SUBSCRIBE CODE
   this.userService.createUser(newUser).subscribe({
     next: (res) => {
-      this.router.navigate(['/users']);
+      this.router.navigate(['/employee/users']);
     },
     error: (e) => {
       console.log(e);
@@ -108,6 +108,6 @@ export class UserCreateComponent implements OnInit {
 }
 
   cancel(): void {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/employee/users']);
   }
 }

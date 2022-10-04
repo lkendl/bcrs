@@ -28,6 +28,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PublicLayoutComponent } from './shared/public-layout/public-layout.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -36,6 +37,7 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
@@ -48,6 +50,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
+import { ErrorLayoutComponent } from './shared/error-layout/error-layout.component';
 
 // Services
 import { CookieService } from 'ngx-cookie-service';
@@ -87,7 +90,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
-import { ErrorLayoutComponent } from './shared/error-layout/error-layout.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +103,7 @@ import { ErrorLayoutComponent } from './shared/error-layout/error-layout.compone
     HomeComponent,
     InvoiceSummaryDialogComponent,
     NotFoundComponent,
+    PublicLayoutComponent,
     PurchasesByServiceGraphComponent,
     RegisterComponent,
     ResetPasswordComponent,
@@ -109,6 +112,7 @@ import { ErrorLayoutComponent } from './shared/error-layout/error-layout.compone
     SecurityQuestionCreateComponent,
     SecurityQuestionDetailsComponent,
     SecurityQuestionListComponent,
+    ServiceRepairComponent,
     SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
@@ -116,7 +120,9 @@ import { ErrorLayoutComponent } from './shared/error-layout/error-layout.compone
     VerifySecurityQuestionsComponent,
     VerifyUsernameFormComponent,
     AdminErrorComponent,
-    ErrorLayoutComponent
+    ErrorLayoutComponent,
+    ServiceRepairComponent,
+    PublicLayoutComponent
   ],
   imports: [
     AppRoutingModule,

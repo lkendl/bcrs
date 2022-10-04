@@ -16,7 +16,7 @@
     <mat-card-title>Users Configuration</mat-card-title>
     <br />
     <mat-card-subtitle>
-      <button mat-raised-button routerLink="/users/create/new" color="primary">Create User</button>
+      <button mat-raised-button routerLink="/employee/users/create/new" color="primary">Create User</button>
     </mat-card-subtitle>
 
     <mat-card-content *ngIf="users" class="mat-card-content">
@@ -61,7 +61,7 @@
         <ng-container matColumnDef="functions">
           <mat-header-cell *matHeaderCellDef>Functions</mat-header-cell>
           <mat-cell *matCellDef="let element" data-label="Functions">
-            <button mat-icon-button routerLink="/users/{{element._id}}">
+            <button mat-icon-button routerLink="/employee/users/{{element._id}}">
               <mat-icon color="warn">edit</mat-icon>
             </button>
             <button mat-icon-button (click)="delete(element._id, element.userName)">

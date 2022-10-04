@@ -1,0 +1,80 @@
+<!--
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 3 October 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service.
+===========================================
+-->
+
+<mat-card-title>
+  Service Repair Page
+</mat-card-title>
+
+<!-- DID IN CLASS (edited for necessities only)-->
+<div fxLayout="column">
+  <div fxFlex>
+
+    <form #invoiceForm="ngForm" (submit)="generateInvoice();">
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="5px">
+
+          <!-- Services check boxes -->
+          <div fxFlex>
+            <mat-card class="mat-elevation-z0">
+              <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+              <p-messages [(value)]="successMessages" [enableService]="false"></p-messages>
+
+              <mat-card-subtitle>Services</mat-card-subtitle>
+
+              <mat-card-content>
+                <div *ngFor="let product of products">
+                  <mat-checkbox value="{{ product.price }}" [(ngModel)]="product.checked" [name]="product.title">
+                    {{ product.title }} ({{ product.price | currency }})
+                  </mat-checkbox>
+                </div>
+              </mat-card-content>
+            </mat-card>
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+          </div>
+
+          <!-- Standard fees -->
+          <div fxFlex>
+            <mat-card class="mat-elevation-z0">
+              <mat-card-subtitle>Standard Fees</mat-card-subtitle>
+              <mat-card-content>
+                <div fxLayout="column">
+                  <mat-form-field class="w-50" appearance="fill" fxFlex>
+                    <mat-label>Parts</mat-label>
+                    <input matInput [(ngModel)]="invoice.partsAmount" type="number" name="txtPartsAmount" />
+                  </mat-form-field>
+
+                  <mat-form-field class="w-50" appearance="fill" fxFlex>
+                    <mat-label>Labor @ 50/hr</mat-label>
+                    <input matInput [(ngModel)]="invoice.laborHours" type="number" name="txtLaborHours" />
+                  </mat-form-field>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+        </div>
+      </mat-card-content>
+
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+
+      <mat-card-actions align="end">
+        <button mat-raised-button type="reset" color="accent">Cancel</button>
+        <button mat-raised-button color="primary">Generate Invoice</button>
+      </mat-card-actions>
+
+    </form>
+  </div>
+</div>
+

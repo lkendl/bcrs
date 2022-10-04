@@ -14,7 +14,7 @@
     <mat-card-title>Security Questions Configuration</mat-card-title>
     <br />
     <mat-card-subtitle>
-      <button mat-raised-button routerLink="/security-questions/create/new" color="primary">Create Security Question</button>
+      <button mat-raised-button routerLink="/employee/security-questions/create/new" color="primary">Create Security Question</button>
     </mat-card-subtitle>
 
     <br />
@@ -32,7 +32,7 @@
         <th mat-header-cell *matHeaderCellDef>Functions</th>
 
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button routerLink="/security-questions/{{element._id}}">
+          <button mat-icon-button routerLink="/employee/security-questions/{{element._id}}">
           <mat-icon color="warn">edit</mat-icon>
           </button>
           <button mat-icon-button (click)="delete(element._id)">

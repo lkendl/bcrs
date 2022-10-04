@@ -41,17 +41,10 @@ export class SecurityQuestionCreateComponent implements OnInit {
       text: this.form.controls['text'].value
     }
 
-    // REPLACE OUTDATED SUBSCRIBE CODE
-    // this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
-    //   this.router.navigate(['/security-questions']);
-    // }, err => {
-    //   console.log(err);
-    // });
-
     // UPDATED SUBSCRIBE CODE
     this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe({
       next: (res) => {
-        this.router.navigate(['/security-questions'])
+        this.router.navigate(['/employee/security-questions'])
       },
       error: (e) => {
         console.log(e);
@@ -60,6 +53,6 @@ export class SecurityQuestionCreateComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/security-questions']);
+    this.router.navigate(['/employee/security-questions']);
   }
 }

@@ -31,9 +31,12 @@ export class NotFoundComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  signOut() {
-    this.cookieService.deleteAll();
-    this.router.navigate(['/session/sign-in']);
+  back() {
+    if (this.userName) {
+      this.router.navigate(['/employee']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
 }

@@ -1,0 +1,147 @@
+/**
+============================================
+; Title: bcrs
+; Author: Professor Krasso
+; Date: 3 October 2022
+; Modified By: Seth Kerrey, Laura Kendl
+; Description: The Bob's Computer Repair Shop (BCRS) application calculates
+; service repair fees, generates invoices, and tracks purchases by service. 
+===========================================
+*/
+
+/* Gryffindor Colors
+Crimson: #740001
+Red: #ae0001
+Yellow: #eeba30
+Gold: #d3a625
+Black */
+
+/* Available Font Families
+font-family: 'Fauna One', serif;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Marcellus', serif;
+font-family: 'Prociono', serif;
+font-family: 'Raleway', sans-serif; */
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('/assets/drive.jpg'), linear-gradient(0deg, rgba(219, 217, 217, 0.7), rgba(212, 212, 212, 0.8));
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu-bar {
+  width: 100%;
+  background-color: #740001;
+}
+
+.bar {
+  height: 10px;
+  background-color: #ffad00;
+}
+
+.bar2 {
+  height: 10px;
+  background-color: #740001;
+}
+
+.bcrs-bar {
+  background-color: #740001;
+  color: #FFF;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 20px;
+  padding-top: 7px;
+  padding-left: 15px;
+  height: 30px;
+}
+
+.logo {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.header {
+  height: 110px;
+}
+
+.navbar-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar-container-left {
+  display: flex;
+}
+
+.navbar-container-right {
+  padding-top: 30px;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.nav-username {
+  font-size: 1.6em !important;
+}
+
+
+.navbar-link {
+  font-size: 1.4em;
+  font-weight: lighter;
+  font-family: 'Marcellus', sans-serif;
+  color: #FFF;
+}
+
+.content-container {
+  margin: 25px auto 100px auto;
+  width: 75%;
+}
+
+
+.toolbar-left {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 20px 0;
+}
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-content {
+  font-size: 1em;
+  font-weight: lighter;
+  padding-left: 2%;
+  letter-spacing: 3px;
+}
+
+.bu-link {
+  text-decoration: none;
+}
+
+.bu-link:hover {
+  text-decoration: underline;
+}
+
+
+.new-footer-p {
+  bottom: 0;
+  position: absolute;
+  left: calc(50% - 160px);
+}
+
+.new-footer-c {
+  text-align: center;
+  font-size: 16px;
+  width: 320px;
+  height: 45px;
+  margin-top: -70px;
+  border-bottom: 1px solid black;
+}
+
