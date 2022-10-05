@@ -13,14 +13,24 @@
 
   <div class="menu-bar" fxLayoutGap="20" fxLayout.xs="column">
     <div class="navbar-container">
+
       <div class="navbar-container-left">
         <a routerLink="/" class="navbar-link">
           <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
         </a>
       </div>
+
+      <div class="navbar-container-right">
+        <button class="navbar-link" routerLink="/" mat-button>Home</button>
+        <button class="navbar-link" mat-button routerLink="/about">About</button>
+        <button class="navbar-link" mat-button routerLink="/contact">Contact Us</button>
+         <button class="navbar-link nav-username" mat-button routerLink="/session/signin">Employee Login<mat-icon>profile</mat-icon></button>
+
+      </div>
     </div>
   </div>
 
+  <div class="bar"></div>
   <div class="bcrs-bar" fxLayoutGap="20" fxLayout.xs="column">
     Bob's Computer Repair Shop
   </div>
@@ -63,7 +73,7 @@
           <br><br>
 
           <div fxFlex fxLayoutAlign="end" class="p5">
-            <button mat-raised-button routerLink="/session/login" color="accent">Cancel</button> &nbsp;&nbsp;
+            <button mat-raised-button routerLink="/session/signin" color="accent">Cancel</button> &nbsp;&nbsp;
             <button mat-raised-button [disabled]="!form.valid" color="primary">Forgot Password</button>&nbsp;&nbsp;
           </div>
 
@@ -73,13 +83,11 @@
   </div>
 
   <!-- footer -->
-  <footer class="footer">
-    <mat-toolbar class="footer-content">
-      <p>
-        &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
-      </p>
-    </mat-toolbar>
-  </footer>
+  <div class="new-footer-p">
+    <div class="new-footer-c">
+      &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
+    </div>
+  </div>
 
 </div>
 </div>

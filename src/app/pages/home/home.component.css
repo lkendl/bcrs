@@ -30,6 +30,7 @@ font-family: 'Raleway', sans-serif; */
 .primary-card {
   background-color: #740001;
   color: #FFF;
+  margin-bottom: -50px;
 }
 
 mat-title-parent {
@@ -41,11 +42,16 @@ mat-title-parent {
 #home-title {
   text-align: center;
   font-family: 'Marcellus', serif;
-  font-size: 2.5em;
-  line-height: 1.5;
+  font-size: 1.7em;
   width: 70%;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+
+.bar {
+  width: 70%;
+  height: 5px;
+  background-color: #ffad00 !important;
 }
 
 mat-card {

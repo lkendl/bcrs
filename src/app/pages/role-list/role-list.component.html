@@ -11,15 +11,15 @@
 
 <p-confirmDialog [style]="{width: '35vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 
-<div fxLayout="column" fxLayoutGap="20px">
+<div fxLayout="column" fxLayoutGap="20px" style="padding: 15px;">
   <div fxFlex>
-    <h1 class="title">
+    <mat-card-title>
       Role Configuration Page!
-      <br>
+      <br><br>
       <span class="subtitle">
         Fields marked with an asterisk (*) are required.
       </span>
-    </h1>
+    </mat-card-title>
   </div>
 
   <!-- Create a new role form -->
@@ -56,7 +56,7 @@
 
       <ng-template pTemplate="header">
         <tr>
-          <th>Text</th>
+          <th>Roles</th>
           <th style="width:8rem;"></th>
         </tr>
       </ng-template>
