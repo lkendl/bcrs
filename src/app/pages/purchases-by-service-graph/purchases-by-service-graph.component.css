@@ -14,7 +14,7 @@ mat-card-title {
   font-family: 'Marcellus', serif;
   font-size: 2em;
   line-height: .9;
-  padding-top: 5%;
+  padding-top: 20px;
 }
 
 mat-card-subtitle {

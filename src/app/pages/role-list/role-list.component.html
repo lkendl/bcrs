@@ -25,7 +25,7 @@
   <!-- Create a new role form -->
   <div fxFlex>
     <div fxLayout="column">
-      <mat-card>
+      <mat-card class="mat-elevation-z0">
         <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
         <form [formGroup]="roleForm" (ngSubmit)="create(); roleForm.reset();">
