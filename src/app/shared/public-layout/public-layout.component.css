@@ -1,13 +1,27 @@
-/*
+/**
 ============================================
 ; Title: bcrs
 ; Author: Professor Krasso
-; Date: 25 September 2022
+; Date: 3 October 2022
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
 ; service repair fees, generates invoices, and tracks purchases by service. 
 ===========================================
 */
+
+/* Gryffindor Colors
+Crimson: #740001
+Red: #ae0001
+Yellow: #eeba30
+Gold: #d3a625
+Black */
+
+/* Available Font Families
+font-family: 'Fauna One', serif;
+font-family: 'IM Fell English SC', serif;
+font-family: 'Marcellus', serif;
+font-family: 'Prociono', serif;
+font-family: 'Raleway', sans-serif; */
 
 .page-container {
   position: relative;
@@ -28,6 +42,11 @@
   background-color: #ffad00;
 }
 
+.bar2 {
+  height: 10px;
+  background-color: #740001;
+}
+
 .bcrs-bar {
   background-color: #740001;
   color: #FFF;
@@ -42,18 +61,6 @@
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 5px;
-}
-
-.card-container {
-  margin: 0 3%;
-}
-
-.subtitle {
-  font-size: 16px;
-}
-
-.employee-button {
-  text-decoration: none;
 }
 
 .header {
@@ -92,6 +99,36 @@
   margin: 25px auto 100px auto;
   width: 75%;
 }
+
+
+.toolbar-left {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 20px 0;
+}
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-content {
+  font-size: 1em;
+  font-weight: lighter;
+  padding-left: 2%;
+  letter-spacing: 3px;
+}
+
+.bu-link {
+  text-decoration: none;
+}
+
+.bu-link:hover {
+  text-decoration: underline;
+}
+
 
 .new-footer-p {
   bottom: 0;

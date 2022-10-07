@@ -2,16 +2,12 @@
 ============================================
 ; Title: bcrs
 ; Author: Professor Krasso
-; Date: 18 September 2022
+; Date: 7 September 2022
 ; Modified By: Seth Kerrey, Laura Kendl
 ; Description: The Bob's Computer Repair Shop (BCRS) application calculates
-; service repair fees, generates invoices, and tracks purchases by service.
-; Code attribution:
-;   Harry Potter by Christina Stephan found on codepen [ref:A]
-;     https://codepen.io/christinastep/pen/KEbrzx
+; service repair fees, generates invoices, and tracks purchases by service. 
 ===========================================
 -->
-
 <body class="gryffindor-theme">
   <div class="page-container">
 
@@ -25,13 +21,17 @@
           <div class="navbar-container">
 
             <div class="navbar-container-left">
-              <a class="navbar-link" (click)="back()">
+              <a routerLink="/" class="navbar-link">
                 <img src="assets/logo.png" alt="logo" width="70" height="78" class="logo">
               </a>
             </div>
 
             <div class="navbar-container-right">
-              <button class="navbar-link" mat-button (click)="back()">Home</button>
+              <button class="navbar-link" routerLink="/" mat-button>Home</button>
+              <button class="navbar-link" mat-button routerLink="/about">About</button>
+              <button class="navbar-link" mat-button routerLink="/contact">Contact Us</button>
+               <button class="navbar-link nav-username" mat-button routerLink="/session/signin">Employee Login<mat-icon>profile</mat-icon></button>
+
             </div>
           </div>
       </div>
@@ -44,12 +44,18 @@
       <!-- main content -->
       <div fxLayout="row wrap">
         <div fxFlex>
-          <router-outlet></router-outlet>
+          <mat-card class="content-container" color="accent, 50">
+
+            <mat-card-content>
+              <router-outlet></router-outlet>
+            </mat-card-content>
+
+          </mat-card>
         </div>
       </div>
 
-       <!-- footer -->
-       <div class="new-footer-p">
+      <!-- footer -->
+      <div class="new-footer-p">
         <div class="new-footer-c">
           &copy; {{year | date: 'yyyy'}} - BCRS - Created by Ng Swerve
         </div>
@@ -58,7 +64,3 @@
     </div>
   </div>
 </body>
-
-
-
-

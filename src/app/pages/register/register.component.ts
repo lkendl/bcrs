@@ -37,6 +37,12 @@ export class RegisterComponent implements OnInit {
   user: User;
   selectedSecurityQuestions: SelectedSecurityQuestion[];
 
+  // // new
+  // questionsClone!: SecurityQuestion[];
+  // securityQuestion1!: SecurityQuestion[];
+  // securityQuestion2!: SecurityQuestion[];
+  // securityQuestion3!: SecurityQuestion[];
+
   contactForm: FormGroup = this.fb.group({
     firstName: [null, Validators.compose([Validators.required])],
     lastName: [null, Validators.compose([Validators.required])],
@@ -60,6 +66,7 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(private router: Router, private fb: FormBuilder, private cookieService: CookieService, private securityQuestionsService: SecurityQuestionService, private sessionService: SessionService) {
+
     this.securityQuestions = [];
     this.errorMessages = [];
     this.user = {} as User;
@@ -68,13 +75,37 @@ export class RegisterComponent implements OnInit {
     this.securityQuestionsService.findAllSecurityQuestions().subscribe({
       next: (res) => {
         this.securityQuestions = res.data;
-        console.log(this.securityQuestions)
+
+        // new
+        // this.questionsClone = res.data;
+        // this.securityQuestion1 = res.data;
+        // this.securityQuestion2 = res.data;
+        // this.securityQuestion3 = res.data;
+        // console.log(this.securityQuestions)
       },
       error: (e) => {
         console.log(e);
       }
     })
-   }
+  }
+
+    // new
+    // onSelect1(text: string) {
+    // this.securityQuestion1 = this.questionsClone;
+    // this.securityQuestion2 = this.questionsClone;
+    // this.securityQuestion3 = this.questionsClone;
+
+    // this.securityQuestion2.filter(question => question.text !== text);
+    // }
+
+    // onSelect2(text: string) {
+    //   this.securityQuestion3 = this.questionsClone;
+    //   this.securityQuestion3 = this.securityQuestion3.filter(question => question.text !== text);
+    // }
+
+    // onSelect3(text: string) {
+    //   this.securityQuestion1 = this.securityQuestion1.filter(question => question.text !== text);
+    // }
 
    register() {
     const contactInformation = this.contactForm.value;

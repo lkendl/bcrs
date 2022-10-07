@@ -11,21 +11,21 @@
 
 <p-confirmDialog [style]="{width: '35vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 
-<div fxLayout="column" fxLayoutGap="20px">
+<div fxLayout="column" fxLayoutGap="20px" style="padding: 15px;">
   <div fxFlex>
-    <h1 class="title">
+    <mat-card-title>
       Role Configuration Page!
-      <br>
+      <br><br>
       <span class="subtitle">
         Fields marked with an asterisk (*) are required.
       </span>
-    </h1>
+    </mat-card-title>
   </div>
 
   <!-- Create a new role form -->
   <div fxFlex>
     <div fxLayout="column">
-      <mat-card>
+      <mat-card class="mat-elevation-z0">
         <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
         <form [formGroup]="roleForm" (ngSubmit)="create(); roleForm.reset();">
@@ -56,7 +56,7 @@
 
       <ng-template pTemplate="header">
         <tr>
-          <th>Text</th>
+          <th>Roles</th>
           <th style="width:8rem;"></th>
         </tr>
       </ng-template>
@@ -65,7 +65,7 @@
         <tr>
           <td>{{ role.text }}</td>
           <td style="text-align: center">
-            <button mat-icon-button routerLink="/roles/{{role._id}}">
+            <button mat-icon-button routerLink="/employee/roles/{{role._id}}">
               <mat-icon color="warn">edit</mat-icon>
             </button>
             <button mat-icon-button (click)="delete(role._id, role.text)">

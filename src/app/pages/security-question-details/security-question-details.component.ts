@@ -68,15 +68,10 @@ export class SecurityQuestionDetailsComponent implements OnInit {
       text: this.form.controls['text'].value
     }
 
-    // REPLACE OUTDATED SUBSCRIBE CODE
-    // this.securityQuestionService.updatedSecurityQuestion(this.questionId, updatedSecurityQuestion).subscribe(res => {
-    //   this.router.navigate(['/security-questions'])
-    // });
-
     // UPDATED SUBSCRIBE CODE
     this.securityQuestionService.updateSecurityQuestion(this.questionId!, updatedSecurityQuestion).subscribe({
       next: (res) => {
-        this.router.navigate(['./security-questions'])
+        this.router.navigate(['./employee/security-questions'])
       },
       error: (e) => {
         console.log(e);
@@ -85,6 +80,6 @@ export class SecurityQuestionDetailsComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/security-questions']);
+    this.router.navigate(['/employee/security-questions']);
   }
 }
