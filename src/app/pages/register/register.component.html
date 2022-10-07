@@ -142,8 +142,8 @@
               <mat-list-item>
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Security Question</mat-label>
-                  <mat-select required formControlName="securityQuestion1" (change)="onSelect1($any($event.target).value)">
-                    <mat-option *ngFor="let question of securityQuestion1" [value]="question.text">
+                  <mat-select required formControlName="securityQuestion1" >
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                       {{ question.text }}
                     </mat-option>
                     </mat-select>
@@ -169,8 +169,8 @@
               <mat-list-item>
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Security Question</mat-label>
-                  <mat-select required formControlName="securityQuestion2" (change)="onSelect2($any($event.target).value)">
-                    <mat-option *ngFor="let question of securityQuestion2" [value]="question.text">
+                  <mat-select required formControlName="securityQuestion2" >
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                       {{ question.text }}
                     </mat-option>
                     </mat-select>
@@ -196,8 +196,8 @@
               <mat-list-item>
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Security Question</mat-label>
-                  <mat-select required formControlName="securityQuestion3">
-                    <mat-option *ngFor="let question of securityQuestion3" (change)="onSelect3($any($event.target).value)" [value]="question.text">
+                  <mat-select required formControlName="securityQuestion3" >
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                       {{ question.text }}
                     </mat-option>
                     </mat-select>

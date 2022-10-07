@@ -37,11 +37,11 @@ export class RegisterComponent implements OnInit {
   user: User;
   selectedSecurityQuestions: SelectedSecurityQuestion[];
 
-  // new
-  questionsClone!: SecurityQuestion[];
-  securityQuestion1!: SecurityQuestion[];
-  securityQuestion2!: SecurityQuestion[];
-  securityQuestion3!: SecurityQuestion[];
+  // // new
+  // questionsClone!: SecurityQuestion[];
+  // securityQuestion1!: SecurityQuestion[];
+  // securityQuestion2!: SecurityQuestion[];
+  // securityQuestion3!: SecurityQuestion[];
 
   contactForm: FormGroup = this.fb.group({
     firstName: [null, Validators.compose([Validators.required])],
@@ -77,11 +77,11 @@ export class RegisterComponent implements OnInit {
         this.securityQuestions = res.data;
 
         // new
-        this.questionsClone = res.data;
-        this.securityQuestion1 = res.data;
-        this.securityQuestion2 = res.data;
-        this.securityQuestion3 = res.data;
-        console.log(this.securityQuestions)
+        // this.questionsClone = res.data;
+        // this.securityQuestion1 = res.data;
+        // this.securityQuestion2 = res.data;
+        // this.securityQuestion3 = res.data;
+        // console.log(this.securityQuestions)
       },
       error: (e) => {
         console.log(e);
@@ -90,22 +90,22 @@ export class RegisterComponent implements OnInit {
   }
 
     // new
-    onSelect1(text: string) {
-    this.securityQuestion1 = this.questionsClone;
-    this.securityQuestion2 = this.questionsClone;
-    this.securityQuestion3 = this.questionsClone;
+    // onSelect1(text: string) {
+    // this.securityQuestion1 = this.questionsClone;
+    // this.securityQuestion2 = this.questionsClone;
+    // this.securityQuestion3 = this.questionsClone;
 
-    this.securityQuestion2.filter(question => question.text !== text);
-    }
+    // this.securityQuestion2.filter(question => question.text !== text);
+    // }
 
-    onSelect2(text: string) {
-      this.securityQuestion3 = this.questionsClone;
-      this.securityQuestion3 = this.securityQuestion3.filter(question => question.text !== text);
-    }
+    // onSelect2(text: string) {
+    //   this.securityQuestion3 = this.questionsClone;
+    //   this.securityQuestion3 = this.securityQuestion3.filter(question => question.text !== text);
+    // }
 
-    onSelect3(text: string) {
-      this.securityQuestion1 = this.securityQuestion1.filter(question => question.text !== text);
-    }
+    // onSelect3(text: string) {
+    //   this.securityQuestion1 = this.securityQuestion1.filter(question => question.text !== text);
+    // }
 
    register() {
     const contactInformation = this.contactForm.value;
